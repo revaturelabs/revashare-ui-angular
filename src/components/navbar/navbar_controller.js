@@ -1,6 +1,4 @@
 
-require("Src/index.js");
-
-angular.module("app").controller("navbar_controller", function () {
+angular.module("revashare").controller("navbar_controller", function () {
 
 });

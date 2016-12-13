@@ -6,6 +6,8 @@ var angular = require("angular");
 require("angular-ui-router");
 require("angular-animate");
 require("angular-aria");
+
+require("angular-material/angular-material.scss");
 require("angular-material");
 
 
@@ -16,6 +18,8 @@ var app = angular.module("revashare", [
     "ngMaterial"
 ]);
 
+
+require("Components/navbar/navbar_component");
 
 require("Routes/welcome/welcome_controller");
 require("Services/serverDataService");

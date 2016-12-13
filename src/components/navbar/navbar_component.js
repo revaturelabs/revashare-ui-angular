@@ -1,6 +1,7 @@
 
+require("./navbar_controller");
 
-angular.module("app").component("navbar", {
+angular.module("revashare").component("navbar", {
   template: require("./index.html"),
   controller: "navbar_controller"
 });
