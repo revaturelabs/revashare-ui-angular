@@ -4,25 +4,25 @@ require("Sass/style.scss");
 
 var angular = require("angular");
 require("angular-ui-router");
-require("angular-animate");
-require("angular-aria");
-
-require("angular-material/angular-material.scss");
-require("angular-material");
+require("ng-cookies")
 
 
 var app = angular.module("revashare", [
-    "ui.router", 
-    "ngAnimate", 
-    "ngAria", 
-    "ngMaterial"
+    "ui.router",
+    "ngCookies"
 ]);
 
 
+// services
+require("Services/serverDataService");
+require("Services/uiController");
+
+// components
 require("Components/navbar/navbar_component");
 require("Components/sidebar/sidebar_component");
 
+// controllers
 require("Routes/welcome/welcome_controller");
-require("Services/serverDataService");
 
+// routing
 require("Src/routing");
