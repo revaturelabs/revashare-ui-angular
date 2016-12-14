@@ -43,6 +43,9 @@ $navbar-icon-button-padding: ($navbar-icon-button-size - $navbar-icon-size) / 2;
     line-height: 1;
 }
 
-#navbar .navbar-title {
 
+#navbar .navbar-text {
+    height: $navbar-icon-size;
+    font-size: $navbar-icon-size;
+    line-height: 1;
 }
