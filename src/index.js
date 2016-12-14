@@ -4,7 +4,7 @@ require("Sass/style.scss");
 
 var angular = require("angular");
 require("angular-ui-router");
-require("ng-cookies")
+require("angular-cookies")
 
 
 var app = angular.module("revashare", [
@@ -15,7 +15,7 @@ var app = angular.module("revashare", [
 
 // services
 require("Services/serverDataService");
-require("Services/uiController");
+require("Services/displayStateService");
 
 // components
 require("Components/navbar/navbar_component");
@@ -26,3 +26,4 @@ require("Routes/welcome/welcome_controller");
 
 // routing
 require("Src/routing");
+

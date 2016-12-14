@@ -1,4 +1,5 @@
 
+require("./_style.scss");
 require("./sidebar_controller");
 
 angular.module("revashare").component("sidebar", {

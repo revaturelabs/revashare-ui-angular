@@ -11,8 +11,14 @@
     
         <navbar></navbar>
 
-        <div id="page-wrapper" ui-view="main"></div>
+        <section id="sidebar-page-wrapper">
 
+            <sidebar></sidebar>
+
+            <div id="page-wrapper" ui-view="main"></div>
+
+        </section>
+        
     <script src="js/bundle.js"/>
     </body>
 </html>

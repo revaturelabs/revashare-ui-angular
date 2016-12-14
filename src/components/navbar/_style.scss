@@ -1,5 +1,7 @@
 
 @import "../../sass/sizes";
+@import "configuration";
+
 
 //$navbar-height: 4rem;
 $navbar-icon-button-size: 3rem;
@@ -14,6 +16,7 @@ $navbar-icon-button-padding: ($navbar-icon-button-size - $navbar-icon-size) / 2;
     position: absolute;
     height: $navbar-height;
     width: 100%;
+    background-color: $nav-background-color;
 }
 
 #navbar .navbar-button {
