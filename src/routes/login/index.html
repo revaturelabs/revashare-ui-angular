@@ -1,21 +1,21 @@
 
 <div class="page-primary-content">
+    
     <form>
 
         <div class="form-group">
             <label for="username-input">username</label>
-            <input id="username-input" class="form-control" ng-model="vm.loginForm.username" type="text"/>
+            <input type="text" id="username-input" class="form-control" ng-model="vm.loginForm.username"/>
         </div>
 
         <div class="form-group">
             <label for="password-input">password</label>
-            <input id="password-input" class="form-control" type="password" ng-model="vm.loginForm.password" type="text"/>
+            <input type="password" id="password-input" class="form-control" ng-model="vm.loginForm.password"/>
         </div>
 
-            
-        <input type="submit" class="btn btn-default" ng-click="vm.loginUser()" value="login as user" />
-        <input type="submit" class="btn btn-default" ng-click="vm.loginAdmin()" value="login as admin" />
+        <input type="submit" class="btn btn-default" ng-click="vm.login()" value="login" />
 
     </form>
+    
 </div>
 

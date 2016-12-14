@@ -7,31 +7,6 @@
         my profile page
     </h1>
 
-    <h2>booked flights</h2>
-    <table>
-        <tr>
-        <th>#</th>
-        <th>id</th>
-        <th>departure time</th>
-        <th>arrival time</th>
-        <th>airline</th>
-        <th>occupancy</th>
-        <th>capacity</th>
-        <th>cost</th>
-        <th>actions</th>
-    </tr>
-    <tr ng-repeat="flight in vm.flights | limitTo:10 track by $index">
-        <td>{{$index}}</td>
-        <td>{{flight.FlightId}}</td>
-        <td>{{flight.DepartTime}}</td>
-        <td>{{flight.ArrivalTime}}</td>
-        <td>{{flight.AirlineName}}</td>
-        <td>{{flight.Enrollment}}</td>
-        <td>{{flight.Capacity}}</td>
-        <td>{{flight.Cost}}<td>
-        <td><div class="btn btn-primary" ng-click="vm.bookFlight($index)">book flight</div></td>
-    </tr>
-
 
 </div>
 
