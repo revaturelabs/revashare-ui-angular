@@ -1,6 +1,4 @@
 
-//require("Src/index.js");
-
 angular.module("revashare").config(function ($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise("/welcome");

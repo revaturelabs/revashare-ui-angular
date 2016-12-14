@@ -20,6 +20,7 @@ var app = angular.module("revashare", [
 
 
 require("Components/navbar/navbar_component");
+require("Components/sidebar/sidebar_component");
 
 require("Routes/welcome/welcome_controller");
 require("Services/serverDataService");
