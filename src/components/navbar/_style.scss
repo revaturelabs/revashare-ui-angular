@@ -1,0 +1,50 @@
+/*
+$app-bar-height: 56px;
+$app-bar-left-right-padding: 16px;
+$app-bar-icon-top-bottom-left-padding: 16px;
+$app-bar-title-left-padding: 72px;
+$app-bar-bottom-padding: 20px;
+*/
+
+$navbar-height: 4rem;
+$navbar-icon-button-size: 3rem;
+$navbar-icon-size: 2rem;
+
+$navbar-icon-button-margin: ($navbar-height - $navbar-icon-button-size) / 2;
+$navbar-icon-button-padding: ($navbar-icon-button-size - $navbar-icon-size) / 2;
+
+#navbar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: $navbar-height;
+    width: 100%;
+}
+
+#navbar .navbar-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $navbar-icon-button-size;
+    margin: 0 .5rem;
+}
+
+#navbar .navbar-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $navbar-icon-button-size;
+    width: $navbar-icon-button-size;
+    margin: 0 .5rem;
+}
+
+#navbar .navbar-icon {
+    height: $navbar-icon-size;
+    width: $navbar-icon-size;
+    font-size: $navbar-icon-size;
+    line-height: 1;
+}
+
+#navbar .navbar-title {
+
+}

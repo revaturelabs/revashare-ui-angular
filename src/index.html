@@ -5,30 +5,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body ng-app="revashare">
     
         <navbar></navbar>
 
-        <!--<sidebar></sidebar>-->
-
-        <section layout="row">
-            
-            <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-sidenav-left">
-                <md-toolbar class="md-theme-indigo">
-                    <h1 class="md-toolbar-tools">Sidenav Left</h1>
-                </md-toolbar>
-                <md-list flex="">
-                    <md-list-item class="md-3-line">first item</md-list-item>
-                    <md-list-item class="md-3-line">second item</md-list-item>
-                    <md-list-item class="md-3-line">third item</md-list-item>
-                </md-list>
-            </md-sidenav>
-
-            <div ui-view="main"></div>
-        </section>
-        
+        <div id="page-wrapper" ui-view="main"></div>
 
     <script src="js/bundle.js"/>
     </body>

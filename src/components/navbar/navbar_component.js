@@ -1,4 +1,5 @@
 
+require("./_style.scss");
 require("./navbar_controller");
 
 angular.module("revashare").component("navbar", {
