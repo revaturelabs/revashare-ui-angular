@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RevaShareUI.Admin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" ResizeMode="NoResize">
+        Title="MainWindow" Height="600" Width="900" ResizeMode="CanResize">
 
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -36,9 +36,8 @@
                     <MenuItem Header="Remove" Click="btnDriversRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Apartments">
-                    <MenuItem Header="View All" />
-                    <MenuItem Header="Add" />
-                    <MenuItem Header="Remove" />
+                    <MenuItem Header="View All" Click="btnApartments_Click" />
+                    <MenuItem Header="Remove" Click="btnApartmentsRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Trips">
                     <MenuItem Header="View All" />
@@ -72,7 +71,6 @@
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverRemoveTable"></DataGrid>
 
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentViewTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentAddTable"></DataGrid>
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentRemoveTable"></DataGrid>
 
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsViewTable"></DataGrid>

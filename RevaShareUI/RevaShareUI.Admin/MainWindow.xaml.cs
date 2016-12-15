@@ -31,7 +31,7 @@ namespace RevaShareUI.Admin
             public string CarModel { get; set; }
             public string CarLicensePlate { get; set; }
             public string CarColor { get; set; }
-            public string CarCapacity { get; set; }
+            public int CarCapacity { get; set; }
         }
 
         public class RiderObject
@@ -51,6 +51,13 @@ namespace RevaShareUI.Admin
             public string Complaint { get; set; }
         }
 
+        public class ApartmentObject
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string Address { get; set; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -64,6 +71,9 @@ namespace RevaShareUI.Admin
             this.DriverApproveTable.ItemsSource = GetDriversNeedingApproval();
             this.DriverReportsTable.ItemsSource = GetDriversReports();
             this.DriverRemoveTable.ItemsSource = GetDrivers();
+
+            this.ApartmentViewTable.ItemsSource = GetApartments();
+            this.ApartmentRemoveTable.ItemsSource = GetApartments();
         }
 
         public ObservableCollection<RiderObject> GetRiders()
@@ -112,32 +122,32 @@ namespace RevaShareUI.Admin
         public ObservableCollection<DriverObject> GetDrivers()
         {
             var list = new ObservableCollection<DriverObject>();
-            list.Add(new DriverObject() { ID = 1, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 2, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 3, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 4, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 5, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 6, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 7, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 8, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 9, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 10, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 11, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 12, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 13, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 14, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 15, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
+            list.Add(new DriverObject() { ID = 1, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 2, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 3, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 4, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 5, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 6, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 7, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 8, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 9, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 10, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 11, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 12, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 13, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 14, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 15, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
             return list;
         }
 
         public ObservableCollection<DriverObject> GetDriversNeedingApproval()
         {
             var list = new ObservableCollection<DriverObject>();
-            list.Add(new DriverObject() { ID = 1, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 2, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 3, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = "4" });
-            list.Add(new DriverObject() { ID = 4, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = "3" });
-            list.Add(new DriverObject() { ID = 5, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = "4" });
+            list.Add(new DriverObject() { ID = 1, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 2, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 3, Name = "Matt Damon", Email = "md@gmail.com", Phone = (5555551234).ToString("(###) ###-####"), CarMake = "Ford", CarModel = "Fusion", CarLicensePlate = "123-DEF", CarColor = "Blue", CarCapacity = 4 });
+            list.Add(new DriverObject() { ID = 4, Name = "Jim Bob", Email = "jb@gmail.com", Phone = (5551235555).ToString("(###) ###-####"), CarMake = "Toyota", CarModel = "Prius", CarLicensePlate = "123-ABC", CarColor = "Silver", CarCapacity = 3 });
+            list.Add(new DriverObject() { ID = 5, Name = "Bob Smith", Email = "bs@gmail.com", Phone = (5555555555).ToString("(###) ###-####"), CarMake = "Honda", CarModel = "Civic", CarLicensePlate = "456-ABC", CarColor = "Red", CarCapacity = 4 });
             return list;
         }
 
@@ -149,6 +159,15 @@ namespace RevaShareUI.Admin
             list.Add(new ReportObject() { ID = 3, UserID = 1, Name = "Jim Bob", Complaint = "Looks at me too much" });
             list.Add(new ReportObject() { ID = 4, UserID = 3, Name = "Matt Damon", Complaint = "Rarely shows up, normally have to get an uber" });
             list.Add(new ReportObject() { ID = 5, UserID = 2, Name = "Bob Smith", Complaint = "Texts and drives" });
+            return list;
+        }
+
+        public ObservableCollection<ApartmentObject> GetApartments()
+        {
+            var list = new ObservableCollection<ApartmentObject>();
+            list.Add(new ApartmentObject() { ID = 1, Name = "Apartment 1", Address = "123 Street St, City, State 12345" });
+            list.Add(new ApartmentObject() { ID = 2, Name = "Apartment 2", Address = "123 Avenue Ave, City, State 12345" });
+            list.Add(new ApartmentObject() { ID = 3, Name = "Apartment 3", Address = "123 Court Ct, City, State 12345" });
             return list;
         }
 
@@ -206,6 +225,20 @@ namespace RevaShareUI.Admin
             ResetView();
             DriverRemoveTable.Visibility = Visibility.Visible;
             TableName.Content = "Drivers - Remove Drivers";
+        }
+
+        private void btnApartments_Click(object sender, RoutedEventArgs e)
+        {
+            ResetView();
+            ApartmentViewTable.Visibility = Visibility.Visible;
+            TableName.Content = "Apartments - View All Apartments";
+        }
+
+        private void btnApartmentsRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ResetView();
+            ApartmentRemoveTable.Visibility = Visibility.Visible;
+            TableName.Content = "Apartments - Remove Apartments";
         }
 
         private void ResetView()
