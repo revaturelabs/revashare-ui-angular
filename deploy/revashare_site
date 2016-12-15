@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name 104.236.109.129;
+    server_name revashare.davidtowson.com www.revashare.davidtowson.com 104.236.109.129;
     root /usr/share/nginx/sites/revashare;
 
     location / {
