@@ -40,8 +40,8 @@
                     <MenuItem Header="Remove" Click="btnApartmentsRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Trips">
-                    <MenuItem Header="View All" />
-                    <MenuItem Header="Remove" />
+                    <MenuItem Header="View All" Click="btnTrips_Click" />
+                    <MenuItem Header="Remove" Click="btnTripsRemove_Click" />
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -74,7 +74,7 @@
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentRemoveTable"></DataGrid>
 
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsViewTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsAddTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsRemoveTable"></DataGrid>
             </Grid>
         </Grid>
     </Grid>

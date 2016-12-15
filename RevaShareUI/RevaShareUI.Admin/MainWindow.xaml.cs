@@ -58,6 +58,16 @@ namespace RevaShareUI.Admin
             public string Address { get; set; }
         }
 
+        public class TripObject
+        {
+            public int ID { get; set; }
+            public string StartLocation { get; set; }
+            public string EndLocation { get; set; }
+            public string DepartureTime { get; set; }
+            public DriverObject Driver { get; set; }
+            public ObservableCollection<RiderObject> Riders { get; set; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -74,6 +84,9 @@ namespace RevaShareUI.Admin
 
             this.ApartmentViewTable.ItemsSource = GetApartments();
             this.ApartmentRemoveTable.ItemsSource = GetApartments();
+
+            this.TripsViewTable.ItemsSource = GetTrips();
+            this.TripsRemoveTable.ItemsSource = GetTrips();
         }
 
         public ObservableCollection<RiderObject> GetRiders()
@@ -171,6 +184,18 @@ namespace RevaShareUI.Admin
             return list;
         }
 
+        public ObservableCollection<TripObject> GetTrips()
+        {
+            var list = new ObservableCollection<TripObject>();
+            list.Add(new TripObject() { ID = 1, StartLocation = "Apartment 1", EndLocation = "Revature", DepartureTime = (0800).ToString("##:##"), Driver = GetDrivers()[1], Riders = new ObservableCollection<RiderObject> { GetRiders()[2], GetRiders()[0], GetRiders()[9], GetRiders()[5] } });
+            list.Add(new TripObject() { ID = 2, StartLocation = "Revature", EndLocation = "Apartment 1", DepartureTime = (1800).ToString("##:##"), Driver = GetDrivers()[1], Riders = new ObservableCollection<RiderObject> { GetRiders()[2], GetRiders()[0], GetRiders()[9], GetRiders()[5] } });
+            list.Add(new TripObject() { ID = 3, StartLocation = "Apartment 3", EndLocation = "Revature", DepartureTime = (0820).ToString("##:##"), Driver = GetDrivers()[4], Riders = new ObservableCollection<RiderObject> { GetRiders()[1], GetRiders()[3], GetRiders()[7], GetRiders()[11] } });
+            list.Add(new TripObject() { ID = 4, StartLocation = "Revature", EndLocation = "Apartment 3", DepartureTime = (1710).ToString("##:##"), Driver = GetDrivers()[4], Riders = new ObservableCollection<RiderObject> { GetRiders()[1], GetRiders()[3], GetRiders()[7], GetRiders()[11] } });
+            list.Add(new TripObject() { ID = 5, StartLocation = "Apartment 2", EndLocation = "Revature", DepartureTime = (0815).ToString("##:##"), Driver = GetDrivers()[9], Riders = new ObservableCollection<RiderObject> { GetRiders()[4], GetRiders()[6], GetRiders()[10], GetRiders()[8] } });
+            list.Add(new TripObject() { ID = 6, StartLocation = "Revature", EndLocation = "Apartment 2", DepartureTime = (1835).ToString("##:##"), Driver = GetDrivers()[9], Riders = new ObservableCollection<RiderObject> { GetRiders()[4], GetRiders()[6], GetRiders()[10], GetRiders()[8] } });
+            return list;
+        }
+
         private void btnRiders_Click(object sender, RoutedEventArgs e)
         {
             ResetView();
@@ -239,6 +264,20 @@ namespace RevaShareUI.Admin
             ResetView();
             ApartmentRemoveTable.Visibility = Visibility.Visible;
             TableName.Content = "Apartments - Remove Apartments";
+        }
+
+        private void btnTrips_Click(object sender, RoutedEventArgs e)
+        {
+            ResetView();
+            TripsViewTable.Visibility = Visibility.Visible;
+            TableName.Content = "Trips - View All Trips";
+        }
+
+        private void btnTripsRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ResetView();
+            TripsRemoveTable.Visibility = Visibility.Visible;
+            TableName.Content = "Trips - Remove Trips";
         }
 
         private void ResetView()
