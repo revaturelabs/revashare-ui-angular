@@ -12,6 +12,22 @@
       owner: root
       group: root
       mode: 0644
+    notify: 
+      - reload nginx
+
+  - name: copy webapp
+    copy:
+      src: ../public/
+      dest: /usr/share/nginx/sites/revashare
+      owner: david
+      group: david
+    notify:
+     - reload nginx
+
+  handlers:
+    - name: reload nginx
+      service: name=nginx state=restarted
+      sudo: yes
 
 
   roles:
