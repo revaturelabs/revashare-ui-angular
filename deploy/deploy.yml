@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+
+  - name: print debug message
+    debug: msg="ansible is working"
+
+  roles:
+    - { role: geerlingguy.nginx }
