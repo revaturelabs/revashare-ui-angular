@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900" ResizeMode="NoResize">
 
-    <Grid>
+    <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="18" />
             <RowDefinition Height="*" MinHeight="100" />
             <RowDefinition Height="5" />
-            <RowDefinition Height="*" MinHeight="225" />
+            <RowDefinition Height="*" MinHeight="250">
+            </RowDefinition>
         </Grid.RowDefinitions>
         
         <DockPanel>
@@ -24,15 +25,15 @@
                 </MenuItem>
                 <MenuItem Header="_Riders">
                     <MenuItem Header="View All" Click="btnRiders_Click" />
-                    <MenuItem Header="Approve" />
-                    <MenuItem Header="Reports" />
-                    <MenuItem Header="Remove" />
+                    <MenuItem Header="Approve" Click="btnRidersApprove_Click" />
+                    <MenuItem Header="Reports" Click="btnRidersReports_Click" />
+                    <MenuItem Header="Remove" Click="btnRidersRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Drivers">
                     <MenuItem Header="View All" Click="btnDrivers_Click" />
-                    <MenuItem Header="Approve" />
-                    <MenuItem Header="Reports" />
-                    <MenuItem Header="Remove" />
+                    <MenuItem Header="Approve" Click="btnDriversApprove_Click" />
+                    <MenuItem Header="Reports" Click="btnDriversReports_Click" />
+                    <MenuItem Header="Remove" Click="btnDriversRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Apartments">
                     <MenuItem Header="View All" />
@@ -46,27 +47,37 @@
             </Menu>
         </DockPanel>
 
-        <Image Source="C:\Revature\revashare-ui-angular\RevaShareUI\RevaShareUI.Admin\bin\Debug\Images\Revature.jpg" Margin="0,1,0,5" MinHeight="50" Grid.Row="1"></Image>
+        <Image Source="http://lifeatrevature.com/wp-content/uploads/2016/03/Revature_CMYK.jpg" Margin="0,1,0,5" MinHeight="50" Grid.Row="1"></Image>
 
         <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch" />
 
-        <DataGrid Grid.Row="3"
-                  Visibility="Hidden"
-                  CanUserResizeColumns="True"
-                  CanUserResizeRows="False"
-                  ColumnWidth="*"
-                  HorizontalAlignment="Left"
-                  Name="dataGrid1"
-                  VerticalAlignment="Bottom">
-        </DataGrid>
+        <Grid Grid.Row="3" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
 
-        <DataGrid Grid.Row="3"
-                  CanUserResizeColumns="True"
-                  CanUserResizeRows="False"
-                  ColumnWidth="*"
-                  HorizontalAlignment="Left"
-                  Name="dataGrid2"
-                  VerticalAlignment="Bottom">
-        </DataGrid>
+            </Grid.RowDefinitions>
+
+            <Label HorizontalAlignment="Left" Name="TableName" TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55" >Riders - View All Riders</Label>
+
+            <Grid Grid.Row="1" >
+                <DataGrid Visibility="Visible" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderViewTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderApproveTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderReportsTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderRemoveTable"></DataGrid>
+
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverViewTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverApproveTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverReportsTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverRemoveTable"></DataGrid>
+
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentViewTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentAddTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentRemoveTable"></DataGrid>
+
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsViewTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsAddTable"></DataGrid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
