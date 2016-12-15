@@ -5,5 +5,14 @@
   - name: print debug message
     debug: msg="ansible is working"
 
+  - name: copy over revashare nginx config
+    copy:
+      src: ./revashare_site
+      dest: /etc/nginx/sites-enabled/revashare_site
+      owner: root
+      group: root
+      mode: 0644
+
+
   roles:
     - { role: geerlingguy.nginx }

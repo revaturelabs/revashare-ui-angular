@@ -1,0 +1,9 @@
+server {
+    listen 80;
+
+    root /usr/share/nginx/sites/revashare;
+    index.html index.htm;
+
+    server_name 104.236.109.129;
+
+}
