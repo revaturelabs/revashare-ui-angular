@@ -1,5 +1,10 @@
 
+var app = angular.module("revashare", [
+    "ui.router",
+    "ngCookies"
+]);
 
+/*
 var angular = require("angular");
 require("angular-ui-router");
 require("angular-cookies")
@@ -31,3 +36,4 @@ require("Routes/message/message_controller");
 // routing
 require("Src/routing");
 
+*/

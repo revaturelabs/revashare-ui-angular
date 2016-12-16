@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <title>Revashare</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="css/sass/style.css">
-        <link rel="stylesheet" href="css/components/navbar/style.css">
-        <link rel="stylesheet" href="css/components/sidebar/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/sidebar.css">
 
     </head>
     <body ng-app="revashare">
@@ -24,6 +25,31 @@
 
         </section>
         
-	<script src="js/bundle.js"></script>
+
+        <script src="libs/angular/angular.js"></script>
+        <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="libs/angular-cookies/angular-cookies.js"></script>
+
+        <script src="index.js"></script>
+
+        <script src="services/serverDataService.js"></script>
+        <script src="services/displayStateService.js"></script>
+
+        <script src="components/navbar/navbar_controller.js"></script>
+        <script src="components/navbar/navbar_component.js"></script>
+
+        <script src="components/sidebar/sidebar_controller.js"></script>
+        <script src="components/sidebar/sidebar_component.js"></script>
+
+        <script src="routes/welcome/welcome_controller.js"></script>
+        <script src="routes/signup/signup_controller.js"></script>
+        <script src="routes/login/login_controller.js"></script>
+        <script src="routes/profile/profile_controller.js"></script>
+        <script src="routes/schedule/schedule_controller.js"></script>
+        <script src="routes/user/user_controller.js"></script>
+        <script src="routes/message/message_controller.js"></script>
+
+        <script src="routing.js"></script>
+
     </body>
 </html>
