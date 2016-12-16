@@ -27,21 +27,17 @@
                     <MenuItem Header="View All" Click="btnRiders_Click" />
                     <MenuItem Header="Approve" Click="btnRidersApprove_Click" />
                     <MenuItem Header="Reports" Click="btnRidersReports_Click" />
-                    <MenuItem Header="Remove" Click="btnRidersRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Drivers">
                     <MenuItem Header="View All" Click="btnDrivers_Click" />
                     <MenuItem Header="Approve" Click="btnDriversApprove_Click" />
                     <MenuItem Header="Reports" Click="btnDriversReports_Click" />
-                    <MenuItem Header="Remove" Click="btnDriversRemove_Click" />
                 </MenuItem>
                 <MenuItem Header="_Apartments">
-                    <MenuItem Header="View All" Click="btnApartments_Click" />
-                    <MenuItem Header="Remove" Click="btnApartmentsRemove_Click" />
+                    <MenuItem Header="View All" Click="btnLocations_Click" />
                 </MenuItem>
                 <MenuItem Header="_Trips">
                     <MenuItem Header="View All" Click="btnTrips_Click" />
-                    <MenuItem Header="Remove" Click="btnTripsRemove_Click" />
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -50,11 +46,185 @@
 
         <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch" />
 
-        <Grid Grid.Row="3" >
+        <Grid Grid.Row="3" Visibility="Visible" Name="RiderView">
             <Grid.RowDefinitions>
                 <RowDefinition Height="38" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
 
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Riders - View All Riders</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderViewTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+                <Button Grid.Column="3">Save Changes</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="RiderApprove">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Riders - Approve Riders</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderApproveTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+                <Button Grid.Column="3">Approve</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="RiderReports">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Riders - Riders Reports</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderReportsTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="DriverView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Drivers - View All Drivers</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverViewTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+                <Button Grid.Column="3">Save Changes</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="DriverApprove">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Drivers - View All Riders</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverApproveTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+                <Button Grid.Column="3">Approve</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="DriverReports">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Drivers - Drivers Reports</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverReportsTable"></DataGrid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="Location">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Locations</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="LocationTable"></DataGrid>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+                <Button Grid.Column="3">Save Changes</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="Hidden" Name="Trip">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+
+            <Label TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55">Trips</Label>
+            <DataGrid Grid.Row="1" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripTable"></DataGrid>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Delete</Button>
+            </Grid>
+        </Grid>
+
+        <!--<Grid.RowDefinitions>
+                <RowDefinition Height="38" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="26" />
             </Grid.RowDefinitions>
 
             <Label HorizontalAlignment="Left" Name="TableName" TextElement.FontSize="20" TextElement.FontWeight="Bold" Foreground="#474c55" >Riders - View All Riders</Label>
@@ -63,19 +233,35 @@
                 <DataGrid Visibility="Visible" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderViewTable"></DataGrid>
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderApproveTable"></DataGrid>
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderReportsTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="RiderRemoveTable"></DataGrid>
 
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverViewTable"></DataGrid>
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverApproveTable"></DataGrid>
                 <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverReportsTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="DriverRemoveTable"></DataGrid>
 
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentViewTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentRemoveTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="ApartmentTable"></DataGrid>
 
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsViewTable"></DataGrid>
-                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripsRemoveTable"></DataGrid>
+                <DataGrid Visibility="Hidden" CanUserResizeColumns="True" CanUserResizeRows="False" ColumnWidth="*" VerticalScrollBarVisibility="Visible" Name="TripTable"></DataGrid>
             </Grid>
-        </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="1" >Delete</Button>
+                <Button Grid.Column="3" >Save Changes</Button>
+                <Button></Button>
+            </Grid>
+        </Grid>-->
+
+        <!--<Grid>
+            <Label></Label>
+            <DataGrid></DataGrid>
+            <Button></Button>
+            <Button></Button>
+        </Grid>-->
     </Grid>
 </Window>
