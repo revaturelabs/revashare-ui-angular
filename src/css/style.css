@@ -58,6 +58,11 @@ input[type=submit]:hover {
   width: 100%;
   padding: 1rem; }
 
+.table-container {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
 .loading {
   display: none; }
 

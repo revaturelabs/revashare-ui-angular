@@ -4,25 +4,29 @@
 
     <h1>schedules</h1>
 
-    <table class="table table-striped">
-        <tr>
-            <th>#</th>
-            <th>Driver</th>
-            <th>Riders</th>
-            <th>Departure time</th>
-            <th>Currently seated</th>
-            <th>Capacity</th>
-            <th>Vehicle</th>
-        </tr>
-        <tr ng-repeat="schedule in vm.schedules | limitTo:10 track by $index">
-            <td>{{$index}}</td>
-            <td>{{schedule.Name}}</td>
-            <td>{{schedule.phoneNumber}}</td>
-            <td>{{schedule.ApartmentDTO.Name}}</td>
-            <td>{{schedule.Email}}</td>
-            <td>{{schedule.AccountType}}</td>
-            <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
-        </tr>
-    </table>
+    <div class="table-container">
+        <table class="table table-striped">
+            <tr>
+                <th>#</th>
+                <th>Driver</th>
+                <th>Riders</th>
+                <th>Departure time</th>
+                <th>Currently seated</th>
+                <th>Capacity</th>
+                <th>Vehicle</th>
+            </tr>
+            <tr ng-repeat="schedule in vm.schedules | limitTo:10 track by $index">
+                <td>{{$index}}</td>
+                <td>{{schedule.Name}}</td>
+                <td>{{schedule.phoneNumber}}</td>
+                <td>{{schedule.ApartmentDTO.Name}}</td>
+                <td>{{schedule.Email}}</td>
+                <td>{{schedule.AccountType}}</td>
+                <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
+            </tr>
+        </table>
+    </div>
+
+    
 
 </div>
