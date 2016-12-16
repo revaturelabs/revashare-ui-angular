@@ -16,11 +16,11 @@
         </tr>
         <tr ng-repeat="schedule in vm.schedules | limitTo:10 track by $index">
             <td>{{$index}}</td>
-            <td>{{vm.users[$index].Name}}</td>
-            <td>{{vm.users[$index].phoneNumber}}</td>
-            <td>{{vm.users[$index].ApartmentDTO.Name}}</td>
-            <td>{{vm.users[$index].Email}}</td>
-            <td>{{vm.users[$index].AccountType}}</td>
+            <td>{{schedule.Name}}</td>
+            <td>{{schedule.phoneNumber}}</td>
+            <td>{{schedule.ApartmentDTO.Name}}</td>
+            <td>{{schedule.Email}}</td>
+            <td>{{schedule.AccountType}}</td>
             <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
         </tr>
     </table>

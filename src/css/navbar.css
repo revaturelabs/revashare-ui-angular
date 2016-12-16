@@ -5,7 +5,8 @@
   height: 4rem;
   width: 100%;
   z-index: 20;
-  background-color: orange; }
+  background-color: #f26925; 
+  }
 
 #navbar .navbar-button {
   display: inline-flex;
@@ -13,7 +14,8 @@
   justify-content: center;
   height: 3rem;
   margin: 0 .5rem; 
-  cursor: pointer; }
+  cursor: pointer; 
+  }
 
 #navbar .navbar-icon-button {
   display: inline-flex;
@@ -22,15 +24,20 @@
   height: 3rem;
   width: 3rem;
   margin: 0 .5rem; 
-  cursor: pointer; }
+  cursor: pointer; 
+  }
 
 #navbar .navbar-icon {
   height: 2rem;
   width: 2rem;
   font-size: 2rem;
-  line-height: 1; }
+  line-height: 1; 
+  color: white;
+  }
 
 #navbar .navbar-text {
   height: 2rem;
   font-size: 2rem;
-  line-height: 1; }
+  line-height: 1;
+  color: white;
+  }

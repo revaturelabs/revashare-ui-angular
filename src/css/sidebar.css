@@ -39,9 +39,10 @@
   position: relative;
   height: 8rem;
   width: 100%;
-  background: orange;
+  color: white;
+  background: #f26925;
   margin-bottom: 3rem;
-  border-bottom: 3px solid black; 
+  border-bottom: 3px solid #474c55; 
 }
 
 #sidebar-wrapper .sidebar-profile-badge {
@@ -71,7 +72,7 @@
   width: calc(100% - 1rem);
   margin-left: 1rem;
   font-size: 1.5rem;
-  border-bottom: 1px solid black; 
+  border-bottom: 1px solid #474c55; 
 }
 
 #sidebar-wrapper .sidebar-link-container {
@@ -95,7 +96,7 @@
   padding-left: 1rem;
   margin: auto 0;
   text-decoration: none;
-  color: black;
+  color: #474c55;
   transition: color 0.2s ease;
   cursor: pointer; 
 }
@@ -105,7 +106,7 @@
   }
   
   #sidebar-wrapper .sidebar-link.sidebar_selected {
-    border-left: 0.25rem solid orange; 
+    border-left: 0.25rem solid #f26925; 
   }
 
 @media (min-width: 992px) {
