@@ -1,0 +1,43 @@
+#navbar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 4rem;
+  width: 100%;
+  z-index: 20;
+  background-color: #f26925; 
+  }
+
+#navbar .navbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  margin: 0 .5rem; 
+  cursor: pointer; 
+  }
+
+#navbar .navbar-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  margin: 0 .5rem; 
+  cursor: pointer; 
+  }
+
+#navbar .navbar-icon {
+  height: 2rem;
+  width: 2rem;
+  font-size: 2rem;
+  line-height: 1; 
+  color: white;
+  }
+
+#navbar .navbar-text {
+  height: 2rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: white;
+  }
