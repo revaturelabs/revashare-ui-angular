@@ -1,7 +1,7 @@
 
 angular.module("revashare").service("serverDataService", function () {
 
-    // get rides, get 
+    this.getAllUsers = getAllUsers;
 
     function getAllUsers (successCallback, errorCallback) {
 
@@ -15,7 +15,7 @@ angular.module("revashare").service("serverDataService", function () {
                     "Name": "Fairways"
                 },
                 "Email": "asdf@gmail.com",
-                "ApartmentId": 123456
+                "AccountType": "rider"
             },
             {
                 "Name": "Matt O'Brien",
@@ -26,7 +26,11 @@ angular.module("revashare").service("serverDataService", function () {
                     "Name": "Camden"
                 },
                 "Email": "qwerty@asdf.com",
-                "ApartmentId": 123
+                "Vehicle": {
+                    "Color": "blue",
+                    "Brand": "Toyota"
+                },
+                "AccountType": "driver"
             }
         ]);
 
@@ -63,6 +67,36 @@ angular.module("revashare").service("serverDataService", function () {
     }
 
 });
+
+
+
+/*
+["Ride": {
+	"Driver": "User DTO",
+	"Riders": ["User DTO"],
+	"DepartureTime": "time",
+	"Capacity": "capacity",
+	"CurrentlySeated": "number of seats occupied",
+	"Vehicle": "Vehicle DTO"
+},
+
+"User": {
+	"Name": "name",
+	"PhoneNumber": "number",
+	"Apartment": "Apartment DTO",
+	"Email": "email address",
+	"Vehicle": "Vehicle DTO - this is an optional field",
+	"AccountType": "rider or driver"
+},
+
+"Location": {
+	"Latitude": "lat",
+	"Longitude": "long",
+	"ComplexName": "name of the complex"
+}
+]
+*/
+
 
 
 

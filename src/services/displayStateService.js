@@ -15,6 +15,7 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
     this.alert_logged_out = alert_logged_out;
     this.alert_sidebar_visible = alert_sidebar_visible;
     this.alert_sidebar_hidden = alert_sidebar_hidden;
+    this.toggle_sidebar = toggle_sidebar;
 
 
     function sidebar_locked_open_listener (width_query) {
@@ -42,6 +43,10 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
 
     function alert_sidebar_hidden () {
         this.sidebar_visible = false;
+    }
+
+    function toggle_sidebar () {
+        this.sidebar_visible = ! this.sidebar_visible;
     }
 
 });

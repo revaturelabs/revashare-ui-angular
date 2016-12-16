@@ -4,6 +4,7 @@
   position: absolute;
   height: 4rem;
   width: 100%;
+  z-index: 20;
   background-color: orange; }
 
 #navbar .navbar-button {
@@ -11,7 +12,8 @@
   align-items: center;
   justify-content: center;
   height: 3rem;
-  margin: 0 .5rem; }
+  margin: 0 .5rem; 
+  cursor: pointer; }
 
 #navbar .navbar-icon-button {
   display: inline-flex;
@@ -19,7 +21,8 @@
   justify-content: center;
   height: 3rem;
   width: 3rem;
-  margin: 0 .5rem; }
+  margin: 0 .5rem; 
+  cursor: pointer; }
 
 #navbar .navbar-icon {
   height: 2rem;

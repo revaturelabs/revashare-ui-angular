@@ -4,14 +4,17 @@
   position: absolute;
   height: 100%;
   width: 14rem;
-  z-index: 1000;
+  z-index: 20;
   overflow: hidden;
   box-sizing: border-box;
   background: #eee;
   margin-left: -14rem;
-  transition: all 0.5s ease; }
+  transition: all 0.5s ease; 
+}
+  
   #sidebar-wrapper.sidebar-visible {
-    margin-left: 0px; }
+    margin-left: 0px; 
+  }
 
 #sidebar-underlay {
   display: none;
@@ -24,9 +27,12 @@
   width: 100%;
   background-color: black;
   opacity: .5;
-  z-index: 999; }
+  z-index: 19; 
+}
+
   #sidebar-underlay.sidebar-underlay-visible {
-    display: block; }
+    display: block; 
+  }
 
 #sidebar-wrapper .sidebar-profile-container {
   display: inline-block;
@@ -35,7 +41,8 @@
   width: 100%;
   background: orange;
   margin-bottom: 3rem;
-  border-bottom: 3px solid black; }
+  border-bottom: 3px solid black; 
+}
 
 #sidebar-wrapper .sidebar-profile-badge {
   position: absolute;
@@ -45,7 +52,8 @@
   line-height: 3rem;
   font-size: 2rem;
   margin: auto 0;
-  margin-left: 2rem; }
+  margin-left: 2rem; 
+}
 
 #sidebar-wrapper .sidebar-close-arrow {
   position: absolute;
@@ -56,13 +64,15 @@
   height: 3rem;
   width: 3rem;
   font-size: 3rem;
-  cursor: pointer; }
+  cursor: pointer; 
+}
 
 #sidebar-wrapper .sidebar-category-header {
   width: calc(100% - 1rem);
   margin-left: 1rem;
   font-size: 1.5rem;
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid black; 
+}
 
 #sidebar-wrapper .sidebar-link-container {
   display: inline-block;
@@ -70,7 +80,8 @@
   width: calc(100% - 2rem);
   height: 1.5rem;
   margin: .5rem 0;
-  margin-left: 1rem; }
+  margin-left: 1rem; 
+}
 
 #sidebar-wrapper .sidebar-link {
   display: inline-block;
@@ -86,14 +97,24 @@
   text-decoration: none;
   color: black;
   transition: color 0.2s ease;
-  cursor: pointer; }
+  cursor: pointer; 
+}
+  
   #sidebar-wrapper .sidebar-link:active, #sidebar-wrapper .sidebar-link:focus {
-    text-decoration: none; }
+    text-decoration: none; 
+  }
+  
   #sidebar-wrapper .sidebar-link.sidebar_selected {
-    border-left: 0.25rem solid orange; }
+    border-left: 0.25rem solid orange; 
+  }
 
 @media (min-width: 992px) {
   #sidebar-wrapper {
-    margin-left: 0px; }
+    margin-left: 0px; 
+  }
+    
     #sidebar-wrapper .sidebar-close-arrow {
-      display: none; } }
+      display: none; 
+    } 
+  
+}

@@ -2,10 +2,10 @@
 angular.module("revashare").controller("navbar_controller", function (displayStateService) {
     var vm = this;
 
-    vm.toggleSidebar = toggleSidebar;
+    vm.toggle_sidebar = toggle_sidebar;
     
-    function toggleSidebar () {
-        //uiController.toggleSidebar();
+    function toggle_sidebar () {
+        displayStateService.toggle_sidebar();
     };
 
 });
