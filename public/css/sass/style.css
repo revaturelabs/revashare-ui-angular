@@ -1,0 +1,75 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a:hover, a:active, a:focus, a:link, a:visited {
+  outline: none; }
+
+input[type=text], input[type=password], input[type=email], select {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px; }
+
+input[type=submit] {
+  width: 100%;
+  padding: 14px 20px;
+  margin: 8px 0;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; }
+
+input[type=submit]:hover {
+  background-color: #45a049; }
+
+#sidebar-page-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding-top: 4rem;
+  overflow: hidden; }
+
+#page-wrapper {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  transition: padding-left 0.5s ease; }
+
+.page-primary-content {
+  width: 100%;
+  padding: 1rem; }
+
+.loading {
+  display: none; }
+
+@media (min-width: 768px) {
+  .page-primary-content {
+    width: 600px;
+    padding: 0;
+    margin: 2rem auto; } }
+
+@media (min-width: 992px) {
+  #page-wrapper {
+    padding-left: 14rem; } }
+
+@media (min-width: 1200px) {
+  .page-primary-content {
+    width: 720px; } }

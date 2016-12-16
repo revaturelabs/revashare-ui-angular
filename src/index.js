@@ -1,6 +1,4 @@
 
-require("Sass/style.scss");
-
 
 var angular = require("angular");
 require("angular-ui-router");

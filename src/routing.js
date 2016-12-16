@@ -21,7 +21,7 @@ var welcome = {
     url: "/welcome",
     views: {
         "main": {
-            template: require("Routes/welcome/index.html"),
+            templateUrl: "routes/welcome/index.html",
             controller: "welcome_controller",
             controllerAs: "vm"
         }
@@ -33,7 +33,7 @@ var signup = {
     url: "/signup",
     views: {
         "main": {
-            template: require("Routes/signup/index.html"),
+            templateUrl: "routes/signup/index.html",
             controller: "signup_controller",
             controllerAs: "vm"
         }
@@ -45,7 +45,7 @@ var login = {
     url: "/login",
     views: {
         "main": {
-            template: require("Routes/login/index.html"),
+            templateUrl: "routes/login/index.html",
             controller: "login_controller",
             controllerAs: "vm"
         }
@@ -57,7 +57,7 @@ var profile = {
     url: "/profile",
     views: {
         "main": {
-            template: require("Routes/profile/index.html"),
+            templateUrl: "routes/profile/index.html",
             controller: "profile_controller",
             controllerAs: "vm"
         }
@@ -69,7 +69,7 @@ var schedule = {
     url: "/schedule",
     views: {
         "main": {
-            template: require("Routes/schedule/index.html"),
+            templateUrl: "routes/schedule/index.html",
             controller: "schedule_controller",
             controllerAs: "vm"
         }
@@ -81,7 +81,7 @@ var user = {
     url: "/user",
     views: {
         "main": {
-            template: require("Routes/user/index.html"),
+            templateUrl: "routes/user/index.html",
             controller: "user_controller",
             controllerAs: "vm"
         }
@@ -93,7 +93,7 @@ var message = {
     url: "/message",
     views: {
         "main": {
-            template: require("Routes/message/index.html"),
+            templateUrl: "routes/message/index.html",
             controller: "message_controller",
             controllerAs: "vm"
         }

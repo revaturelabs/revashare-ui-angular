@@ -1,0 +1,27 @@
+<div class="page-primary-content">
+
+    <form>
+
+        <div class="form-group">
+            <label for="email-input">email</label>
+            <input type="email" id="email-input" class="form-control" ng-model="vm.signupForm.email" />
+        </div>
+
+        <div class="form-group">
+            <label for="username-input">username</label>
+            <input type="text" id="username-input" class="form-control" ng-model="vm.signupForm.username" />
+        </div>
+
+        <div class="form-group">
+            <label for="password-input">password</label>
+            <input type="password" id="password-input" class="form-control" ng-model="vm.signupForm.password" />
+        </div>
+
+
+        <input type="submit" class="btn btn-default" ng-click="vm.signupRider()" value="signup as rider" />
+        <input type="submit" class="btn btn-default" ng-click="vm.signupDriver()" value="signup as driver" />
+
+
+    </form>
+
+</div>

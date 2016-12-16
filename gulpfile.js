@@ -3,6 +3,8 @@ var gulp = require("gulp");
 var gutil = require("gulp-util");
 var del = require("del");
 
+var sass = require("gulp-sass");
+
 var webpack = require("webpack");
 var webpack_config = require("./webpack.config.js");
 
@@ -46,7 +48,7 @@ gulp.task("build_front_dev", ["clean"], function (done) {
 
 
 var cors = require("cors");
-gulp.task('dev-server', ['build_front_dev'], function () {
+gulp.task('dev-server', ['simple_build'], function () {
     connect.server({
         root: "./public",
         livereload: true,
@@ -56,6 +58,30 @@ gulp.task('dev-server', ['build_front_dev'], function () {
         }
     });
     var watch_list = ['./src/**'];
-    gulp.watch(watch_list, ['build_front_dev']);
+    gulp.watch(watch_list, ['simple_build']);
 });
+
+
+gulp.task("build_javascript", function (done) {
+    build_frontend(webpack_config, done);
+});
+
+
+gulp.task("simple_build", ["clean", "build_javascript"], function () {
+
+    gulp.src("./src/**/*.html", { base: "./src" })
+        .pipe(gulp.dest("./public"));
+
+    gulp.src("./src/**/*.scss").pipe(sass().on("error", sass.logError))
+        .pipe(gulp.dest("./public/css"));
+
+});
+
+
+
+
+
+
+
+
 
