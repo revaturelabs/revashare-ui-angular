@@ -1,0 +1,121 @@
+#sidebar-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 14rem;
+  z-index: 20;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #eee;
+  margin-left: -14rem;
+  transition: all 0.5s ease; 
+}
+  
+  #sidebar-wrapper.sidebar-visible {
+    margin-left: 0px; 
+  }
+
+#sidebar-underlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .5;
+  z-index: 19; 
+}
+
+  #sidebar-underlay.sidebar-underlay-visible {
+    display: block; 
+  }
+
+#sidebar-wrapper .sidebar-profile-container {
+  display: inline-block;
+  position: relative;
+  height: 8rem;
+  width: 100%;
+  color: white;
+  background: #f26925;
+  margin-bottom: 3rem;
+  border-bottom: 3px solid #474c55; 
+}
+
+#sidebar-wrapper .sidebar-profile-badge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 2rem;
+  margin: auto 0;
+  margin-left: 2rem; 
+}
+
+#sidebar-wrapper .sidebar-close-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 3rem;
+  cursor: pointer; 
+}
+
+#sidebar-wrapper .sidebar-category-header {
+  width: calc(100% - 1rem);
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #474c55; 
+}
+
+#sidebar-wrapper .sidebar-link-container {
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 2rem);
+  height: 1.5rem;
+  margin: .5rem 0;
+  margin-left: 1rem; 
+}
+
+#sidebar-wrapper .sidebar-link {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  padding: .25rem 0;
+  padding-left: 1rem;
+  margin: auto 0;
+  text-decoration: none;
+  color: #474c55;
+  transition: color 0.2s ease;
+  cursor: pointer; 
+}
+  
+  #sidebar-wrapper .sidebar-link:active, #sidebar-wrapper .sidebar-link:focus {
+    text-decoration: none; 
+  }
+  
+  #sidebar-wrapper .sidebar-link.sidebar_selected {
+    border-left: 0.25rem solid #f26925; 
+  }
+
+@media (min-width: 992px) {
+  #sidebar-wrapper {
+    margin-left: 0px; 
+  }
+    
+    #sidebar-wrapper .sidebar-close-arrow {
+      display: none; 
+    } 
+  
+}
