@@ -1,0 +1,29 @@
+<div class="primary-page-content">
+
+
+	<h1>
+		my car
+	</h1>
+	
+	<form>
+
+		<div class="form-group">
+			<label for="make-input">make</label>
+			<input type="text" id="make-input" class="form-control" ng-model="vm.carForm.model"/>
+		</div>
+
+		<div class="form-group">
+			<label for="model-input">model</label>
+			<input type="text" id="model-input" class="form-control" ng-model="vm.carForm.model"/>
+		</div>
+
+		<div class="form-group">
+			<label for="license-input">license plate</label>
+			<input type="text" id="license-input" class="form-control" ng-model="vm.carForm.licensePlate"/>
+		</div>
+
+		<input type="submit" ng-click="vm.updateCarInfo()" value="update" />
+
+	</form>
+
+</div>

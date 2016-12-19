@@ -1,0 +1,77 @@
+<div id="sidebar-wrapper" class="sidebar" ng-class="{'sidebar-visible': vm.sidebar_visible}">
+    <div class="sidebar-profile-container" ng-if="!vm.logged_in">
+        <!-- profile icon -->
+        <div class="sidebar-profile-badge">
+            Guest
+        </div>
+        <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
+    </div>
+    <div class="sidebar-profile-container" ng-if="vm.logged_in">
+        <!-- profile icon -->
+        <!-- profile name -->
+        <div class="sidebar-profile-badge">
+            {{vm.username}}
+        </div>
+        <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
+    </div>
+    <div class="sidebar-category-header">
+        Driving
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="welcome" ui-sref-active="sidebar_selected">
+            welcome
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="schedule" ui-sref-active="sidebar_selected">
+            schedules
+        </a>
+    </div>
+    <div class="sidebar-category-header">
+        Users
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
+            user directory
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
+            messages
+        </a>
+    </div>    
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
+            car
+        </a>
+    </div>
+    <div class="sidebar-category-header">
+        Profile
+    </div>
+    <div class="sidebar-link-container" ng-if-start="!vm.logged_in">
+        <a class="sidebar-link" ui-sref="signup" ui-sref-active="sidebar_selected">
+            signup
+        </a>
+    </div>
+    <div class="sidebar-link-container" ng-if-end>
+        <a class="sidebar-link" ui-sref="login" ui-sref-active="sidebar_selected">
+            login
+        </a>
+    </div>
+    <div class="sidebar-link-container" ng-if-start="vm.logged_in">
+        <a class="sidebar-link" ui-sref="profile" ui-sref-active="sidebar_selected">
+            view profile
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="settings" ui-sref-active="nav_selected">
+            Settings
+        </a>
+    </div>
+    <div class="sidebar-link-container" ng-if-end>
+        <a class="sidebar-link" ng-click="vm.logout()">
+            log out
+        </a>
+    </div>
+</div>
+<div id="sidebar-underlay" ng-class="{'sidebar-underlay-visible': vm.sidebar_visible && !vm.sidebar_always_visible }" ng-click="vm.hide_sidebar()"></div>
