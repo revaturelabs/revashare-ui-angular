@@ -15,7 +15,8 @@ angular.module("revashare").config(function ($stateProvider, $urlRouterProvider)
         .state("message", message)
         .state("comment", comment)
         .state("addComment", addComment)
-        .state("apartment", apartment);
+        .state("apartment", apartment)
+        .state("addApartment", addApartment);
 
 });
 
@@ -135,3 +136,14 @@ var apartment = {
         }
     }
 }
+
+// var addComment = {
+//     url: "/addApartment",
+//     views: {
+//         "main": {
+//             templateUrl: "routes/apartment/add.html",
+//             controller: "apartment_controller",
+//             controllerAs: "vm"
+//         }
+//     }
+// }
