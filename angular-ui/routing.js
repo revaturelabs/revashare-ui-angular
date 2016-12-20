@@ -1,17 +1,26 @@
-
 (function(ng) {
     angular.module("revashare").config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/welcome");
 
         $stateProvider
-            .state("driverRideCreate", driverRideCreate)
-            .state("login", login)
-            .state("message", message)
-            .state("profile", profile)
-            .state("schedule", schedule)
+            .state("welcome", welcome)
+
             .state("signup", signup)
+            .state("login", login)
+            .state("profile", profile)
+
+            .state("schedule", schedule)
             .state("user", user)
-            .state("welcome", welcome);
+            .state("message", message)
+      
+            .state("driverRideCreate", driverRideCreate)
+
+            .state("comment", comment)
+            .state("addComment", addComment)
+            .state("apartment", apartment)
+            // .state("addApartment", addApartment);
+
+            .state("car", car);
     });
 
     var driverRideCreate = {
@@ -100,6 +109,62 @@
             "main": {
                 templateUrl: "routes/welcome/index.html",
                 controller: "welcome_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+  
+    var comment = {
+        url: "/comment",
+        views: {
+            "main": {
+                templateUrl: "routes/comment/index.html",
+                controller: "comment_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var addComment = {
+        url: "/addComment",
+        views: {
+            "main": {
+                templateUrl: "routes/comment/add.html",
+                controller: "comment_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var apartment = {
+        url: "/apartment",
+        views: {
+            "main": {
+                templateUrl: "routes/apartment/index.html",
+                controller: "apartment_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    // var addComment = {
+    //     url: "/addApartment",
+    //     views: {
+    //         "main": {
+    //             templateUrl: "routes/apartment/add.html",
+    //             controller: "apartment_controller",
+    //             controllerAs: "vm"
+    //         }
+    //     }
+    // };
+
+
+    var car = {
+        url: "/car",
+        views: {
+            "main": {
+                templateUrl: "routes/car/index.html",
+                controller: "car_controller",
                 controllerAs: "vm"
             }
         }
