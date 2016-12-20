@@ -15,8 +15,8 @@ angular.module("revashare").config(function ($stateProvider, $urlRouterProvider)
         .state("message", message)
         .state("comment", comment)
         .state("addComment", addComment)
-        .state("apartment", apartment)
-        .state("addApartment", addApartment);
+        .state("apartment", apartment);
+        // .state("addApartment", addApartment);
 
 });
 
