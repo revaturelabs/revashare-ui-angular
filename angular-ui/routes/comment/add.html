@@ -1,29 +1,37 @@
 <div class="page-primary-content">
 
-  <form>
+  <div ng-view>            </div>
+        <div>
+            <form action="">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                <option value="0">select a comment type</option>
+                <option value="1">Complaint</option>
+                <option value="2">Praise</option>
+                </select>
 
-    <div class="form-group">
-      <select name="selectedType" ng-options="x for x in types">
-        <option value="complaint">Complaint</option>
-        <option value="commend">Commend</option>     
-      </select>
-    </div>
+                <label for="driver">Driver</label>
+                <select name="driver" id="driver">
+                <option value="0">select a driver</option>
+                <option value="1">Matt O'Brien</option>
+                <option value="2">Ryan Tech</option>
+                </select>
 
-    <div class="form-group">
-      <label for="username-input">username</label>
-      <input type="text" id="username-input" class="form-control" ng-model="vm.signupForm.username" />
-    </div>
+                <label for="rider">Rider</label>
+                <select name="rider" id="rider">
+                <option value="0">select a rider</option>
+                <option value="1">David Towson</option>
+                <option value="2">Harley Wang</option>
+                </select>
 
-    <div class="form-group">
-      <label for="password-input">password</label>
-      <input type="password" id="password-input" class="form-control" ng-model="vm.signupForm.password" />
-    </div>
+                <label for="description">Description</label>
+               <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
+                <button type="reset" class="btn btn-danger btn-large">cancel comment</button>
 
-    <input type="submit" ng-click="vm.signupRider()" value="signup as rider" />
-    <input type="submit" ng-click="vm.signupDriver()" value="signup as driver" />
+                <button type="button" class="btn btn-success btn-large">complete comment</button>
+            </form>
 
-
-  </form>
+        </div>
 
 </div>
