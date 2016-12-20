@@ -108,6 +108,18 @@ angular.module("revashare").service("serverDataService", function ($http) {
 
     }
 
+    function addComment (successCallback, errorCallback) {
+
+    }
+
+    function listApartments(successCallback, errorCallback){
+
+    }
+
+    function addApartment(successCallback, errorCallback){
+
+    }
+
 });
 
 
