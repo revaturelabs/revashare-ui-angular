@@ -16,6 +16,9 @@
 
     var driverRideCreate = {
         url: "/driver/ride/new",
+        params: {
+            toWork: true
+        },
         views: {
             "main": {
                 templateUrl: "routes/driver/ride/new.html",
