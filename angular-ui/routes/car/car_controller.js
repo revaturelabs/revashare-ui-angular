@@ -3,7 +3,6 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 	var vm = this;
 
 	vm.updateCarInfo = updateCarInfo;
-	vm.viewCarInfo = viewCarInfo;
 	
 	function updateCarInfo () {
 		serverDataService.updateCarInfo(
@@ -15,14 +14,12 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 			});
 	}
 
-	function viewCarInfo () {
-		serverDataService.viewCarInfo(
-			function success (response) {
-				console.log("success");
-			},
-			function error () {
-				console.log("error");
-			});
-	}
+	serverDataService.viewCarInfo(
+		function success (response) {
+			console.log("success");
+		},
+		function error () {
+			console.log("error");
+		});
 
 });

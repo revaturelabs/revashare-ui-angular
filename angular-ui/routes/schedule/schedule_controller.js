@@ -3,14 +3,12 @@ angular.module("revashare").controller("schedule_controller", function (serverDa
 	var vm = this;
 	vm.schedules = [];
 
-	vm.viewSchedules = viewSchedules;
-
 	serverDataService.viewSchedules(
-		function success (response) {
-			vm.schedules = response;
+		function success (schedules) {
+			vm.schedules = schedules;
 		},
-		function error (response) {
-
+		function error () {
+			console.log("error");
 		});
 
 });

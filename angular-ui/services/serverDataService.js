@@ -2,6 +2,9 @@
 angular.module("revashare").service("serverDataService", function ($http) {
 
     this.getAllUsers = getAllUsers;
+    this.viewSchedules = viewSchedules;
+    this.viewCarInfo = viewCarInfo;
+    this.updateCarInfo = updateCarInfo;
 
     function getAllUsers (successCallback, errorCallback) {
 
