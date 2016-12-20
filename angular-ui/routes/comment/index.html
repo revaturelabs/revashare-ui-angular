@@ -6,6 +6,7 @@
 
     <div class="table-container">
         <table class="table table-striped">
+            <div class="button" ng-click="vm.addComment">add comment</div>
             <tr>
                 <th>#</th>
                 <th>Driver</th>
@@ -18,8 +19,8 @@
                 <td>{{comment.FlagDTO.Driver}}</td>
                 <td>{{comment.FlagDTO.Rider}}</td>
                 <td>{{comment.FlagDTO.Type}}</td>
-                <td>{{schedule.FlagDTO.Description}}</td>               
-                <!--<td><div class="button" ng-click="vm.comments($index)">view comment</div></td>-->
+                <td>{{comment.FlagDTO.Description}}</td>               
+                <td><div class="button" ng-click="vm.comments($index)">view comment</div></td>
             </tr>
         </table>
     </div>  

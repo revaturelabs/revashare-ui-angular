@@ -1,0 +1,29 @@
+<div class="page-primary-content">
+
+  <form>
+
+    <div class="form-group">
+      <select>
+        <option value="complaint">Complaint</option>
+        <option value="commend">Commend</option>     
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="username-input">username</label>
+      <input type="text" id="username-input" class="form-control" ng-model="vm.signupForm.username" />
+    </div>
+
+    <div class="form-group">
+      <label for="password-input">password</label>
+      <input type="password" id="password-input" class="form-control" ng-model="vm.signupForm.password" />
+    </div>
+
+
+    <input type="submit" ng-click="vm.signupRider()" value="signup as rider" />
+    <input type="submit" ng-click="vm.signupDriver()" value="signup as driver" />
+
+
+  </form>
+
+</div>

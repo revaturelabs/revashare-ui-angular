@@ -2,7 +2,7 @@
 angular.module("revashare").service("serverDataService", function () {
 
     this.getAllUsers = getAllUsers;
-    this.listFlags = listFlags;
+
     function getAllUsers (successCallback, errorCallback) {
 
         successCallback([
@@ -33,10 +33,9 @@ angular.module("revashare").service("serverDataService", function () {
                 "AccountType": "driver"
             }
         ]);
-    } 
 
+    }
 
-     
     // driver only
     function createSchedule (successCallback, errorCallback) {
 
@@ -66,7 +65,11 @@ angular.module("revashare").service("serverDataService", function () {
     function upgradeToDriver (successCallback, errorCallback) {
 
     }
-    
+
+    function addComment (successCallback, errorCallback) {
+
+    }
+
 });
 
 

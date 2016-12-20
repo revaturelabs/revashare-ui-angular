@@ -1,11 +1,11 @@
 
 angular.module("revashare").config(function ($stateProvider, $urlRouterProvider) {
-    
+
     $urlRouterProvider.otherwise("/welcome");
 
     $stateProvider
         .state("welcome", welcome)
-        
+
         .state("signup", signup)
         .state("login", login)
         .state("profile", profile)
@@ -13,7 +13,8 @@ angular.module("revashare").config(function ($stateProvider, $urlRouterProvider)
         .state("schedule", schedule)
         .state("user", user)
         .state("message", message)
-        .state("comment", comment);
+        .state("comment", comment)
+        .state("addComment", addComment);
 
 });
 
@@ -101,11 +102,22 @@ var message = {
     }
 }
 
-    var comment = {
+var comment = {
     url: "/comment",
     views: {
         "main": {
             templateUrl: "routes/comment/index.html",
+            controller: "comment_controller",
+            controllerAs: "vm"
+        }
+    }
+}
+
+var addComment = {
+    url: "/addComment",
+    views: {
+        "main": {
+            templateUrl: "routes/comment/add.html",
             controller: "comment_controller",
             controllerAs: "vm"
         }
