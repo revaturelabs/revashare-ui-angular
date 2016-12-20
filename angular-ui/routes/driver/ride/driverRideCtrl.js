@@ -6,7 +6,7 @@
         vm.data = {};
 
         vm.createRide = function() {
-            var ride = vm.data.ride;
+            var ride = vm.data;
             ride.isToWork = $stateParams.toWork;
 
             if (ride.departureTime === null) {
