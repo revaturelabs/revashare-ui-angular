@@ -66,6 +66,10 @@ angular.module("revashare").service("serverDataService", function () {
 
     }
 
+    function addComment (successCallback, errorCallback) {
+
+    }
+
 });
 
 

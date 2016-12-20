@@ -1,0 +1,30 @@
+
+<div class="page-primary-content">
+
+
+    <h1>comments</h1>
+
+    <div class="table-container">
+        <table class="table table-striped">
+            <div class="button" ng-click="vm.addComment">add comment</div>
+            <tr>
+                <th>#</th>
+                <th>Driver</th>
+                <th>Rider</th>
+                <th>Type</th>
+                <th>Description</th>            
+            </tr>
+            <tr ng-repeat="comment in vm.comments | limitTo:10 track by $index">
+                <td>{{$index}}</td>
+                <td>{{comment.FlagDTO.Driver}}</td>
+                <td>{{comment.FlagDTO.Rider}}</td>
+                <td>{{comment.FlagDTO.Type}}</td>
+                <td>{{comment.FlagDTO.Description}}</td>               
+                <td><div class="button" ng-click="vm.comments($index)">view comment</div></td>
+            </tr>
+        </table>
+    </div>  
+
+ 
+
+</div>
