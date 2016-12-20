@@ -1,6 +1,6 @@
-
-angular.module("revashare").service("serverDataService", function ($http) {
-
+angular.module("revashare")
+.constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
+.service("serverDataService", function ($http) {
     this.getAllUsers = getAllUsers;
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
