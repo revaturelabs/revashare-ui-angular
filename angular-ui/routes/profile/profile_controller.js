@@ -2,6 +2,7 @@
 angular.module("revashare").controller("profile_controller", function (serverDataService) {
     var vm = this;
 
+    vm.updateProfile = updateProfile;
     vm.user = {};
     
     serverDataService.viewProfile(
@@ -13,4 +14,14 @@ angular.module("revashare").controller("profile_controller", function (serverDat
         }
     );  
 
+    function updateProfile() {
+        serverDataService.updateProfile(
+            function success (user) {
+
+            },
+            function error() {
+
+            }
+        )
+    }
 });

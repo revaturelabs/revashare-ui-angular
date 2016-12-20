@@ -107,11 +107,26 @@ angular.module("revashare").service("serverDataService", function ($http) {
     function upgradeToDriver (successCallback, errorCallback) {
 
     }
-    
+
     function viewProfile (successCallback, errorCallback) {
       $http({
         method: "GET",
         url: "/rider/viewprofile",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
+
+    function updateProfile (successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: "/rider/updateprofile",
+        params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
         cache: true
       })
         .then(function success(response) {
