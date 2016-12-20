@@ -1,5 +1,5 @@
 
-angular.module("revashare").service("serverDataService", function () {
+angular.module("revashare").service("serverDataService", function ($http) {
 
     this.getAllUsers = getAllUsers;
 
@@ -38,7 +38,7 @@ angular.module("revashare").service("serverDataService", function () {
 
     // driver only
     function createSchedule (successCallback, errorCallback) {
-
+      
     }
 
     // driver only
@@ -46,8 +46,19 @@ angular.module("revashare").service("serverDataService", function () {
 
     }
 
-    function updateCarInfo (successCallback, errorCallback) {
-
+    function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: updateCarUrl,
+        params: { make: make, model: model, licensePlate: licensePlate, color: color, capacity: capacity },
+        cache: true
+      })
+        .then(function success(reponse) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("an error has occurred");
+        });
     }
 
     function subscribeSchedule (successCallback, errorCallback) {
