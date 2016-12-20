@@ -1,5 +1,7 @@
 
-angular.module("revashare").service("displayStateService", function ($cookies) {
+angular
+.constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
+.module("revashare").service("displayStateService", function ($cookies) {
 
     // sidebar is always visible at min-width: 992px
     var sidebar_query = window.matchMedia("(min-width: 992px)");
