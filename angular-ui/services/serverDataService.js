@@ -5,6 +5,8 @@ angular.module("revashare").service("serverDataService", function ($http) {
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
+    // this.listApartments = listApartments;
+    // this.listFlags = listFlags;
 
     function getAllUsers (successCallback, errorCallback) {
 
@@ -119,6 +121,10 @@ angular.module("revashare").service("serverDataService", function ($http) {
     function addApartment(successCallback, errorCallback){
 
     }
+
+    // function listFlags(successCallback,errorCallback){
+
+    // }
 
 });
 
