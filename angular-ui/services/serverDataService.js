@@ -1,6 +1,6 @@
-
-angular.module("revashare").service("serverDataService", function ($http) {
-
+angular.module("revashare")
+.constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
+.service("serverDataService", function ($http) {
     this.getAllUsers = getAllUsers;
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
@@ -108,6 +108,35 @@ angular.module("revashare").service("serverDataService", function ($http) {
 
     function upgradeToDriver (successCallback, errorCallback) {
 
+    }
+
+    function viewProfile (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: "/rider/viewprofile",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
+
+    function updateProfile (successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: "/rider/updateprofile",
+        params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
     function addComment (successCallback, errorCallback) {

@@ -2,21 +2,26 @@
 angular.module("revashare").controller("profile_controller", function (serverDataService) {
     var vm = this;
 
-    vm.flightBookings = [];
+    vm.updateProfile = updateProfile;
+    vm.user = {};
+    
+    serverDataService.viewProfile(
+        function success (user) {
+            vm.user = user;
+        },
+        function error () {
+            console.log("error");
+        }
+    );  
 
-    init();
+    function updateProfile() {
+        serverDataService.updateProfile(
+            function success (user) {
 
-    function init () {
-
-        serverDataService.getMyFlights(
-            function success (response) {
-                console.log("response is: " + JSON.stringify(repsonse));
             },
-            function error (error) {
-                console.log("error was: " + error);
+            function error() {
+
             }
-        );
-
-    }    
-
+        )
+    }
 });
