@@ -3,6 +3,7 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 	var vm = this;
 
 	vm.updateCarInfo = updateCarInfo;
+	vm.viewCarInfo = viewCarInfo;
 	
 	function updateCarInfo () {
 		serverDataService.updateCarInfo(
