@@ -4,43 +4,22 @@
         $urlRouterProvider.otherwise("/welcome");
 
         $stateProvider
-            .state("welcome", welcome)
-            .state("signup", signup)
+            .state("driverRideCreate", driverRideCreate)
             .state("login", login)
+            .state("message", message)
             .state("profile", profile)
             .state("schedule", schedule)
+            .state("signup", signup)
             .state("user", user)
-            .state("message", message);
+            .state("welcome", welcome);
     });
 
-    var driverSchedule = {
-        url: "/driver/schedule/new",
+    var driverRideCreate = {
+        url: "/driver/ride/new",
         views: {
             "main": {
-                templateUrl: "routes/driver/schedule/new.html",
-                controller: "driverCtrl",
-                controllerAs: "vm"
-            }
-        }
-    }
-
-    var welcome = {
-        url: "/welcome",
-        views: {
-            "main": {
-                templateUrl: "routes/welcome/index.html",
-                controller: "welcome_controller",
-                controllerAs: "vm"
-            }
-        }
-    };
-
-    var signup = {
-        url: "/signup",
-        views: {
-            "main": {
-                templateUrl: "routes/signup/index.html",
-                controller: "signup_controller",
+                templateUrl: "routes/driver/ride/new.html",
+                controller: "driverRideCtrl",
                 controllerAs: "vm"
             }
         }
@@ -52,6 +31,17 @@
             "main": {
                 templateUrl: "routes/login/index.html",
                 controller: "login_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var message = {
+        url: "/message",
+        views: {
+            "main": {
+                templateUrl: "routes/message/index.html",
+                controller: "message_controller",
                 controllerAs: "vm"
             }
         }
@@ -79,6 +69,17 @@
         }
     };
 
+    var signup = {
+        url: "/signup",
+        views: {
+            "main": {
+                templateUrl: "routes/signup/index.html",
+                controller: "signup_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
+
     var user = {
         url: "/user",
         views: {
@@ -90,12 +91,12 @@
         }
     };
 
-    var message = {
-        url: "/message",
+    var welcome = {
+        url: "/welcome",
         views: {
             "main": {
-                templateUrl: "routes/message/index.html",
-                controller: "message_controller",
+                templateUrl: "routes/welcome/index.html",
+                controller: "welcome_controller",
                 controllerAs: "vm"
             }
         }
