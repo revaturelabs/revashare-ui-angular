@@ -3,10 +3,29 @@
 <div class="primary-page-content">
 
 
-    <h1>
-        my profile page
-    </h1>
+	<h1>
+		my profile page
+	</h1>
 
-
+	<div class="table-container" ng-model="vm.user">
+		<table class="table table-striped">
+			<tr>
+				<td>Name</td>
+				<td>{{user.Name}}</td>
+			</tr>
+			<tr>
+				<td>E-Mail</td>
+				<td>{{user.Email}}</td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td>{{user.Phone}}</td>
+			</tr>
+			<<tr>
+			<td>Apartment</td>
+			<td>{{user.Apartment.Name}}</td>
+		</tr>
+		</table>
+	</div>
 </div>
 
