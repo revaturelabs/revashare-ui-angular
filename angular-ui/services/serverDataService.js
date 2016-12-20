@@ -49,7 +49,7 @@ angular.module("revashare").service("serverDataService", function ($http) {
     function viewSchedules (successCallback, errorCallback) {
       $http({
         method: "GET",
-        url: "/admin/viewschedules"
+        url: "/admin/viewschedules",
         cache: true
       })
         .then(function success(response) {
