@@ -1,7 +1,10 @@
 
-angular.module("revashare").service("serverDataService", function () {
+angular.module("revashare").service("serverDataService", function ($http) {
 
     this.getAllUsers = getAllUsers;
+    this.viewSchedules = viewSchedules;
+    this.viewCarInfo = viewCarInfo;
+    this.updateCarInfo = updateCarInfo;
 
     function getAllUsers (successCallback, errorCallback) {
 
@@ -46,8 +49,47 @@ angular.module("revashare").service("serverDataService", function () {
 
     }
 
-    function updateCarInfo (successCallback, errorCallback) {
+    function viewSchedules (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: "/admin/viewschedules",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
 
+    function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: "/driver/updatevehicle",
+        params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(reponse) {
+          errorCallback("error");
+        });
+    }
+
+    function viewCarInfo (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: "/driver/viewvehicle",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
     function subscribeSchedule (successCallback, errorCallback) {
