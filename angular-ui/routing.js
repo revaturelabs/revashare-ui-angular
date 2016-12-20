@@ -1,4 +1,5 @@
 (function(ng) {
+    var driverSchedule;
     var login;
     var message;
     var profile;
@@ -8,19 +9,30 @@
     var welcome;
 
     ng.module("revashare").config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-
         $urlRouterProvider.otherwise("/welcome");
 
         $stateProvider
-            .state("welcome", welcome)
-            .state("signup", signup)
+            .state("driverSchedule", driverSchedule)
             .state("login", login)
+            .state("message", message)
             .state("profile", profile)
             .state("schedule", schedule)
+            .state("signup", signup)
             .state("user", user)
-            .state("message", message);
+            .state("welcome", welcome);
 
     }]);
+
+    driverSchedule = {
+        url: "/driver/schedule",
+        views: {
+            "main": {
+                templateUrl: "routes/driver/schedule/index.html",
+                controller: "driverScheduleCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     welcome = {
         url: "/welcome",
