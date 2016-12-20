@@ -1,0 +1,27 @@
+
+<div class="page-primary-content">
+
+
+    <h1>apartments</h1>
+
+    <div class="table-container">
+        <table class="table table-striped">           
+            <tr>
+                
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>                     
+            </tr>
+            <tr ng-repeat="apartment in vm.apartments | limitTo:10 track by $index">
+                
+                <td>{{apartment.ApartmentDTO.Name}}</td>
+                <td>{{apartment.ApartmentDTO.Latitude}}</td>
+                <td>{{apartment.ApartmentDTO.Longitude}}</td>                              
+                <!--<td><div class="button" ng-click="vm.comments($index)">view comment</div></td>-->
+            </tr>
+        </table>
+    </div>  
+
+ 
+
+</div>

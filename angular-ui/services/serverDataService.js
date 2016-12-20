@@ -70,6 +70,14 @@ angular.module("revashare").service("serverDataService", function () {
 
     }
 
+    function listApartments(successCallback, errorCallback){
+
+    }
+
+    function addApartment(successCallback, errorCallback){
+
+    }
+
 });
 
 
