@@ -2,6 +2,8 @@
 angular.module("revashare").controller("car_controller", function (serverDataService) {
 	var vm = this;
 
+	vm.updateCarInfo = updateCarInfo;
+	
 	function updateCarInfo () {
 		serverDataService.updateCarInfo(
 			function success (response) {
