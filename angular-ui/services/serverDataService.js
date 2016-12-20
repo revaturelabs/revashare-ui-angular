@@ -46,6 +46,20 @@ angular.module("revashare").service("serverDataService", function ($http) {
 
     }
 
+    function viewSchedules (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: "/admin/viewschedules"
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
+
     function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
       $http({
         method: "POST",
