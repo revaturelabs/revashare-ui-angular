@@ -12,4 +12,14 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 			});
 	}
 
+	function viewCarInfo () {
+		serverDataService.viewCarInfo(
+			function success (response) {
+				console.log("success");
+			},
+			function error () {
+				console.log("error");
+			});
+	}
+
 });

@@ -61,6 +61,20 @@ angular.module("revashare").service("serverDataService", function ($http) {
         });
     }
 
+    function viewCarInfo (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: "/driver/viewvehicle",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
+
     function subscribeSchedule (successCallback, errorCallback) {
 
     }
