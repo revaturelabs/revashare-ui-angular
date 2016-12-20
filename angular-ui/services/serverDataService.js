@@ -46,7 +46,7 @@ angular.module("revashare").service("serverDataService", function ($http) {
 
     }
 
-    function updateCarInfo (successCallback, errorCallback) {
+    function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
       $http({
         method: "POST",
         url: "/driver/updatevehicle",
