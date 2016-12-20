@@ -7,13 +7,13 @@
     <div class="table-container">
         <table class="table table-striped">           
             <tr>
-                
+                <th>#</th>
                 <th>Name</th>
                 <th>Latitude</th>
                 <th>Longitude</th>                     
             </tr>
-            <tr ng-repeat="apartment in vm.apartments | limitTo:10 track by $Name">
-                
+            <tr ng-repeat="apartment in vm.apartments | limitTo:10 track by $index">
+                <td>{{$index}}</td>
                 <td>{{apartment.ApartmentDTO.Name}}</td>
                 <td>{{apartment.ApartmentDTO.Latitude}}</td>
                 <td>{{apartment.ApartmentDTO.Longitude}}</td>                              

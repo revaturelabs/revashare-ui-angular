@@ -18,7 +18,7 @@
             .state("comment", comment)
             .state("addComment", addComment)
             .state("apartment", apartment)
-            // .state("addApartment", addApartment);
+            .state("addApartment", addApartment)
 
             .state("car", car);
     });
