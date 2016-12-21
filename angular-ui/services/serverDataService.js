@@ -5,6 +5,7 @@ angular.module("revashare")
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
+    this.upgradeToDriver = upgradeToDriver;
     // this.listApartments = listApartments;
     // this.listFlags = listFlags;
 
@@ -106,11 +107,11 @@ angular.module("revashare")
 
     }
 
-    function upgradeToDriver (successCallback, errorCallback) {
+    function upgradeToDriver (user, successCallback, errorCallback) {
       $http({
         method: "POST",
         url: "/admin/upgradedriver",
-        params: { user: user },
+        data: { 'key': user },
         cache: true
       })
         .then(function success(response) {

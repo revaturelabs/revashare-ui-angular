@@ -18,10 +18,10 @@ angular.module("revashare").controller("user_controller", function (serverDataSe
         }
     )
 
-    function upgradeToDriver() {
-        serverDataService.upgradeToDriver(vm.upgrade,
+    function upgradeToDriver(index) {
+        serverDataService.upgradeToDriver(vm.users[index],
             function success (response) {
-
+                console.log("works");
             },
             function error () {
 
