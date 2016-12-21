@@ -6,10 +6,22 @@
         var getRiders;
         var approveRider;
 
-        createRide = function(ride, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "ride", ride)
+        createRide = function(username, startOfWeekDate, departureTime, isAmRide, successCallback, failureCallback) {
+            var ride = {
+                StartOfWeekDate: startOfWeekDate,
+                DepartureTime: departureTime,
+                IsOnTime: true,
+                Vehicle: {
+                    Owner: {
+                        UserName: username
+                    }
+                },
+                IsAMRide: isAmRide
+            };
+
+            $http.post(REVASHARE_API_URL + "driver/scheduleride", ride)
             .then(function(data) {
-                successCallback();
+                successCallback(data);
             },
             function(data) {
                 failureCallback();
