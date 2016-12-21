@@ -17,6 +17,8 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
+            .state("riderRideRequest", riderRideRequest)
+
             .state("comment", comment)
             .state("addComment", addComment)
             .state("apartment", apartment)
@@ -56,6 +58,21 @@
         }
     };
 
+
+    var riderRideRequest = {
+        url: "/rider/ride/index",
+        params: {
+            toWork: true
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/rider/ride/index.html",
+                controller: "riderRideController",
+                controllerAs: "vm"
+            }
+        }
+    }
+
     var driverRideShow = {
         url: "/driver/ride/show",
         params: {
@@ -68,10 +85,15 @@
             "main": {
                 templateUrl: "routes/driver/ride/show.html",
                 controller: "driverRideCtrl",
+
                 controllerAs: "vm"
             }
         }
     };
+
+    
+
+
 
     var login = {
         url: "/login",
