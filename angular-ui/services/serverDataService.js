@@ -6,6 +6,7 @@
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
+    this.upgradeToDriver = upgradeToDriver;
     // this.listApartments = listApartments;
     // this.listFlags = listFlags;
 
@@ -107,8 +108,19 @@
 
     }
 
-    function upgradeToDriver (successCallback, errorCallback) {
-
+    function upgradeToDriver (user, successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: "/admin/upgradedriver",
+        data: { 'key': user },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(respondate.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
     function viewProfile (successCallback, errorCallback) {
