@@ -13,7 +13,9 @@
             .state("user", user)
             .state("message", message)
       
+            .state("driverRideIndex", driverRideIndex)
             .state("driverRideCreate", driverRideCreate)
+            .state("driverRideShow", driverRideShow)
 
             .state("comment", comment)
             .state("addComment", addComment)
@@ -23,14 +25,48 @@
             .state("car", car);
     });
 
+    var driverRideIndex = {
+        url: "/driver/ride",
+        data: {
+            action: "index"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/driver/ride/index.html",
+                controller: "driverRideCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
     var driverRideCreate = {
         url: "/driver/ride/new",
         params: {
             toWork: true
         },
+        data: {
+            action: "create"
+        },
         views: {
             "main": {
                 templateUrl: "routes/driver/ride/new.html",
+                controller: "driverRideCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var driverRideShow = {
+        url: "/driver/ride/show",
+        params: {
+            toWork: true
+        },
+        data: {
+            action: "show"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/driver/ride/show.html",
                 controller: "driverRideCtrl",
                 controllerAs: "vm"
             }
