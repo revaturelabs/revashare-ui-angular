@@ -4,6 +4,7 @@
         var createRide;
         var getRide;
         var getRiders;
+        var approveRider;
 
         createRide = function(ride, successCallback, failureCallback) {
             $http.post(REVASHARE_API_URL + "ride", ride)
@@ -56,5 +57,7 @@
 
         this.createRide = createRide;
         this.getRide = getRide;
+        this.getRiders = getRiders;
+        this.approveRider = approveRider;
     }]);
 })(angular);
