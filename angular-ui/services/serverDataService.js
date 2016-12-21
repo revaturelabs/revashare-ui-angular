@@ -6,7 +6,7 @@ angular.module("revashare")
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
     // this.listApartments = listApartments;
-    this.listComments = listComments;
+    //this.listComments = listComments;
 
     function getAllUsers (successCallback, errorCallback) {
 

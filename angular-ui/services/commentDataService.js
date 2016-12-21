@@ -12,8 +12,9 @@
                 failureCallback();
             });
         };
-      
-      function listComments(successCallback,errorCallback){
+      var listComments;
+
+        listComments = function(successCallback,errorCallback){
       $http({
         method: "GET",
         url: "/flag/",
@@ -27,6 +28,7 @@
         });
     }
 
-        this.addComment = addComment;        
+        this.addComment = addComment; 
+        this.listComments = listComments;       
     }]);
 })(angular);
