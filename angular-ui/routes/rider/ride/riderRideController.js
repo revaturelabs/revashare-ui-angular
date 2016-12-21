@@ -20,10 +20,16 @@
                 return "Departure time cannot be empty.";
             }
 
+            rideDataService.getRide(ride,  function() {
+                // TODO: handle success
+                console.log("Ride request sent.");
+            }, function() {
+                // TODO: handle failure
+                console.log("Ride request not sent.");
+            });
             function riderRideRequest(rider, ride){
-                    // much more to do but I'm getting stuck
+
             }
-            
         };
 
         vm.toWorkRideExists = function() {

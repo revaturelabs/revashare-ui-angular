@@ -3,7 +3,7 @@
     .service("rideRiderDataService", ["$http", "REVASHARE_API_URL", function($http, REVASHARE_API_URL) {
                 
         var getRiders;
-        var approveRider;
+        var requestRide;
 
                
 
@@ -17,7 +17,7 @@
             });
         };
 
-        requestRider = function(driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
+        requestRide = function(driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
             var rideRider = {
                 ride: {
                     driver: driver,
@@ -34,11 +34,9 @@
             function(data) {
                 failureCallback();
             });
-        }
-
-        this.createRide = createRide;
-        this.getRide = getRide;
+        }        
+        
         this.getRiders = getRiders;
-        this.approveRider = approveRider;
+        this.requestRide = requestRide;
     }]);
 })(angular);
