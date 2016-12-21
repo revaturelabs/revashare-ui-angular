@@ -1,194 +1,156 @@
-(function() {
+(function () {
   angular.module("revashare")
-  .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/")
-  .service("serverDataService", function ($http) {
-    this.getAllUsers = getAllUsers;
-    this.viewSchedules = viewSchedules;
-    this.viewCarInfo = viewCarInfo;
-    this.updateCarInfo = updateCarInfo;
-    this.upgradeToDriver = upgradeToDriver;
-    // this.listApartments = listApartments;
-    //this.listComments = listComments;
+    .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/")
+    .service("serverDataService", function ($http) {
+      this.getAllUsers = getAllUsers;
+      this.viewSchedules = viewSchedules;
+      this.viewCarInfo = viewCarInfo;
+      this.updateCarInfo = updateCarInfo;
+      this.upgradeToDriver = upgradeToDriver;    
 
-    function getAllUsers (successCallback, errorCallback) {
+      function getAllUsers(successCallback, errorCallback) {
 
-      successCallback([
-      {
-        "Name": "David Towson",
-        "PhoneNumber":"123-123-1234",
-        "ApartmentDTO": {
-          "Latitude": "234.234",
-          "Longitude": "9845.34",
-          "Name": "Fairways"
-        },
-        "Email": "asdf@gmail.com",
-        "AccountType": "rider"
-      },
-      {
-        "Name": "Matt O'Brien",
-        "PhoneNumber":"777-777-7777",
-        "ApartmentDTO": {
-          "Latitude": "333.244",
-          "Longitude": "155.24",
-          "Name": "Camden"
-        },
-        "Email": "qwerty@asdf.com",
-        "Vehicle": {
-          "Color": "blue",
-          "Brand": "Toyota"
-        },
-        "AccountType": "driver"
+        successCallback([
+          {
+            "Name": "David Towson",
+            "PhoneNumber": "123-123-1234",
+            "ApartmentDTO": {
+              "Latitude": "234.234",
+              "Longitude": "9845.34",
+              "Name": "Fairways"
+            },
+            "Email": "asdf@gmail.com",
+            "AccountType": "rider"
+          },
+          {
+            "Name": "Matt O'Brien",
+            "PhoneNumber": "777-777-7777",
+            "ApartmentDTO": {
+              "Latitude": "333.244",
+              "Longitude": "155.24",
+              "Name": "Camden"
+            },
+            "Email": "qwerty@asdf.com",
+            "Vehicle": {
+              "Color": "blue",
+              "Brand": "Toyota"
+            },
+            "AccountType": "driver"
+          }
+        ]);
+
       }
-      ]);
 
-    }
+      // driver only
+      function createSchedule(successCallback, errorCallback) {
 
-    // driver only
-    function createSchedule (successCallback, errorCallback) {
+      }
 
-    }
+      // driver only
+      function deleteSchedule(successCallback, errorCallback) {
 
-    // driver only
-    function deleteSchedule (successCallback, errorCallback) {
+      }
 
-    }
+      function viewSchedules(successCallback, errorCallback) {
+        $http({
+          method: "GET",
+          url: "/admin/viewschedules",
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(response.data);
+          },
+          function error(response) {
+            errorCallback("error");
+          });
+      }
 
-    function viewSchedules (successCallback, errorCallback) {
-      $http({
-        method: "GET",
-        url: "/admin/viewschedules",
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
+      function updateCarInfo(make, model, licensePlate, color, capacity, successCallback, errorCallback) {
+        $http({
+          method: "POST",
+          url: "/driver/updatevehicle",
+          params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(response.data);
+          },
+          function error(reponse) {
+            errorCallback("error");
+          });
+      }
 
-    function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: "/driver/updatevehicle",
-        params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(reponse) {
-        errorCallback("error");
-      });
-    }
+      function viewCarInfo(successCallback, errorCallback) {
+        $http({
+          method: "GET",
+          url: "/driver/viewvehicle",
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(response.data);
+          },
+          function error(response) {
+            errorCallback("error");
+          });
+      }
 
-    function viewCarInfo (successCallback, errorCallback) {
-      $http({
-        method: "GET",
-        url: "/driver/viewvehicle",
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
+      function subscribeSchedule(successCallback, errorCallback) {
 
-    function subscribeSchedule (successCallback, errorCallback) {
+      }
 
-    }
+      function quitSchedule(successCallback, errorCallback) {
 
-    function quitSchedule (successCallback, errorCallback) {
+      }
 
-    }
+      function getMySchedules(successCallback, errorCallback) {
 
-    function getMySchedules (successCallback, errorCallback) {
+      }
 
-    }
+      function upgradeToDriver(user, successCallback, errorCallback) {
+        $http({
+          method: "POST",
+          url: "/admin/upgradedriver",
+          data: { 'key': user },
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(respondate.data);
+          },
+          function error(response) {
+            errorCallback("error");
+          });
+      }
 
-    function upgradeToDriver (user, successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: "/admin/upgradedriver",
-        data: { 'key': user },
-        cache: true
-      })
-        .then(function success(response) {
-          successCallback(respondate.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
-    }
+      function viewProfile(successCallback, errorCallback) {
+        $http({
+          method: "GET",
+          url: "/rider/viewprofile",
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(response.data);
+          },
+          function error(response) {
+            errorCallback("error");
+          });
+      }
 
-    function viewProfile (successCallback, errorCallback) {
-      $http({
-        method: "GET",
-        url: "/rider/viewprofile",
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
+      function updateProfile(successCallback, errorCallback) {
+        $http({
+          method: "POST",
+          url: "/rider/updateprofile",
+          params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
+          cache: true
+        })
+          .then(function success(response) {
+            successCallback(response.data);
+          },
+          function error(response) {
+            errorCallback("error");
+          });
+      }
 
-    function updateProfile (successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: "/rider/updateprofile",
-        params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
-
-    // function addComment (successCallback, errorCallback) {
-    //    $http({
-    //     method: "POST",
-    //     url: "/flag",
-    //     params: { driver: driver, rider: rider, type: type, comment: comment },
-    //     cache: true
-    //   })
-    //     .then(function success(response) {
-    //       successCallback(response.data);
-    //     },
-    //     function error(response) {
-    //       errorCallback("error");
-    //     });
-    // }
-
-    
-    // function addApartment(successCallback, errorCallback){
-    //    $http({
-    //     method: "POST",
-    //     url: "/apartment",
-    //     params: { name: name, lat: lat, long: long },
-    //     cache: true
-    //   })
-    //     .then(function success(response) {
-    //       successCallback(response.data);
-    //     },
-    //     function error(response) {
-    //       errorCallback("error");
-    //     });
-    // }
-
-
-    
-
-});
-
-
+    });
 })();
 
 
