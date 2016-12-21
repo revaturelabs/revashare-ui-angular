@@ -107,7 +107,18 @@ angular.module("revashare")
     }
 
     function upgradeToDriver (successCallback, errorCallback) {
-
+      $http({
+        method: "POST",
+        url: "/admin/upgradedriver",
+        params: { user: user },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(respondate.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
     function viewProfile (successCallback, errorCallback) {
