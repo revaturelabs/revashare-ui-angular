@@ -4,7 +4,7 @@
         var addApartment;
         
         addApartment = function(apartment, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "apartment", apartment)
+            $http.post(REVASHARE_API_URL + "api/apartment", apartment)
             .then(function(data) {
                 successCallback();
             },

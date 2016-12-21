@@ -20,8 +20,9 @@
                     return "Departure time cannot be empty.";
                 }
 
-                rideDataService.getRide(ride, function () {
+                rideDataService.requestRide(ride, function () {
                     // TODO: handle success
+                    
                     console.log("Ride request sent.");
                 }, function () {
                     // TODO: handle failure

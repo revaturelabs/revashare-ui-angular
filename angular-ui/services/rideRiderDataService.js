@@ -8,7 +8,7 @@
                
 
         getRiders = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
-            $http.get(REVASHARE_API_URL + "rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
+            $http.get(REVASHARE_API_URL + "api/rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
             .then(function(data) {
                 successCallback(data);
             },
@@ -27,9 +27,9 @@
                 rider: rider
             };
 
-            $http.put(REVASHARE_API_URL + "rider", rideRider)
+            $http.post(REVASHARE_API_URL + "api/rider/add-ride", rideRider)
             .then(function(data) {
-                successCallback();
+                successCallback(data);
             },
             function(data) {
                 failureCallback();
