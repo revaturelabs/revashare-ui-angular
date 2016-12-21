@@ -62,4 +62,68 @@ describe("driverRideCtrl", function() {
             expect(ride.isOnTime).toEqual(true);
         });
     });
+
+    describe("vm.toWorkRideExists", function() {
+        var $stateParams;
+        var $cookies;
+        var rideDataService;
+        var dateService;
+        var driverRideCtrl;
+
+        beforeEach(function() {
+            $stateParams = {};
+            $cookies = {};
+            rideDataService = {};
+            dateService = {};
+
+            driverRideCtrl = $controller("driverRideCtrl", {
+                $stateParams: $stateParams,
+                $cookies: $cookies,
+                rideDataService: rideDataService,
+                dateService: dateService
+            });
+        });
+
+        it("should return true if the toWorkRide object exists.", function() {
+            driverRideCtrl.data.toWorkRide = {};
+
+            expect(driverRideCtrl.toWorkRideExists()).toEqual(true);
+        });
+
+        it("should return false if the toWorkRide object does not exist.", function() {
+            expect(driverRideCtrl.toWorkRideExists()).toEqual(false);
+        });
+    });
+
+    describe("vm.fromWorkRideExists", function() {
+        var $stateParams;
+        var $cookies;
+        var rideDataService;
+        var dateService;
+        var driverRideCtrl;
+
+        beforeEach(function() {
+            $stateParams = {};
+            $cookies = {};
+            rideDataService = {};
+            dateService = {};
+
+            driverRideCtrl = $controller("driverRideCtrl", {
+                $stateParams: $stateParams,
+                $cookies: $cookies,
+                rideDataService: rideDataService,
+                dateService: dateService
+            });
+        });
+
+        it("should return true if the fromWorkRide object exists.", function() {
+            driverRideCtrl.data.fromWorkRide = {};
+
+            expect(driverRideCtrl.fromWorkRideExists()).toEqual(true);
+        });
+
+        it("should return false if the fromWorkRide object does not exist.", function() {
+            expect(driverRideCtrl.fromWorkRideExists()).toEqual(false);
+        });
+    });
 });
