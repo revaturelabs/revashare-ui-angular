@@ -1,0 +1,28 @@
+<div class="page-primary-content">
+    <h1>Driver Rides - Week of {{ vm.startOfWeekDate }}</h1>
+    <div class="row">
+        <div class="medium-2 columns">
+            <h2>To Work</h2>
+
+            <div ng-show="vm.toWorkRideExists()">
+                
+            </div>
+
+            <div ng-hide="vm.toWorkRideExists()">
+
+            </div>
+        </div>
+
+        <div class="medium-2 columns">
+            <h2>From Work</h2>
+            
+            <div ng-show="vm.fromWorkRideExists()">
+                
+            </div>
+
+            <div ng-hide="vm.fromWorkRideExists()">
+
+            </div>
+        </div>
+    </div>
+</div>

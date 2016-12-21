@@ -25,5 +25,13 @@
                 console.log("Ride not created.");
             });
         };
+
+        vm.toWorkRideExists = function() {
+            return vm.data.toWorkRide !== undefined;
+        };
+
+        vm.fromWorkRideExists = function() {
+            return vm.data.fromWorkRide !== undefined;
+        };
     }]);
 })(angular);
