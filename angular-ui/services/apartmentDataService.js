@@ -28,6 +28,7 @@
     }
 
 
-        this.addApartment = addApartment;        
+        this.addApartment = addApartment;    
+        this.listApartments = listApartments;    
     }]);
 })(angular);
