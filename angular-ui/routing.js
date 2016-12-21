@@ -13,6 +13,7 @@
             .state("user", user)
             .state("message", message)
       
+            .state("driverRideIndex", driverRideIndex)
             .state("driverRideCreate", driverRideCreate)
 
             .state("comment", comment)
@@ -23,10 +24,27 @@
             .state("car", car);
     });
 
+    var driverRideIndex = {
+        url: "/driver/ride",
+        data: {
+            action: "index"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/driver/ride/index.html",
+                controller: "driverRideCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
     var driverRideCreate = {
         url: "/driver/ride/new",
         params: {
             toWork: true
+        },
+        data: {
+            action: "create"
         },
         views: {
             "main": {
