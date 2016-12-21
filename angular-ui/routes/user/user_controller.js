@@ -16,4 +16,34 @@ angular.module("revashare").controller("user_controller", function (serverDataSe
         }
     )
 
+    function addUser () {
+        serverDataService.addUser(user,
+            function success (response) {
+
+            },
+            function error () {
+
+            });
+    }
+
+    function modifyUser () {
+        serverDataService.addUser(user,
+            function success (response) {
+
+            },
+            function error () {
+
+            });
+    }
+
+    function removeUser () {
+        serverDataService.addUser(user,
+            function success (response) {
+
+            },
+            function error () {
+
+            });
+    }
+
 });
