@@ -4,7 +4,7 @@
         var addComment;
         
         addComment = function(comment, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "flag", comment)
+            $http.post("http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/api/" + "driver/reportrider", comment)
             .then(function(data) {
                 successCallback();
             },
@@ -17,7 +17,7 @@
         listComments = function(successCallback,errorCallback){
       $http({
         method: "GET",
-        url: "/flag/",
+        url: "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/api/driver/reportrider",
         cache: true
       })
         .then(function success(response) {
