@@ -52,21 +52,17 @@ angular.module("revashare").controller("comment_controller", function (serverDat
     function listFlags(successCallback, errorCallback) {
 
         successCallback([
-            {
-               
+            {               
                     "driver": "Matt O'Brien",
                     "rider": "David Towson",
                     "type": "Complaint",
-                    "description": "Always late and drives like a grandma!"
-                   
+                    "description": "Always late and drives like a grandma!"                   
             },
-            {
-                
+            {                
                     "driver": "Matt O'Brien",
                     "rider": "David Towson",
                     "type": "Complaint",
-                    "description": "Extremely late and ran over my grandma!"
-               
+                    "description": "Extremely late and ran over my grandma!"               
             }
         ]);
     }
