@@ -147,16 +147,16 @@
         }
     };
 
-    // var addComment = {
-    //     url: "/addApartment",
-    //     views: {
-    //         "main": {
-    //             templateUrl: "routes/apartment/add.html",
-    //             controller: "apartment_controller",
-    //             controllerAs: "vm"
-    //         }
-    //     }
-    // };
+    var addApartment = {
+        url: "/addApartment",
+        views: {
+            "main": {
+                templateUrl: "routes/apartment/add.html",
+                controller: "apartment_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
 
 
     var car = {

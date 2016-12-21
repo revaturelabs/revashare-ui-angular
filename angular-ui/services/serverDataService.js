@@ -5,6 +5,8 @@ angular.module("revashare")
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
+    // this.listApartments = listApartments;
+    // this.listFlags = listFlags;
 
     function getAllUsers (successCallback, errorCallback) {
 
@@ -148,6 +150,10 @@ angular.module("revashare")
     function addApartment(successCallback, errorCallback){
 
     }
+
+    // function listFlags(successCallback,errorCallback){
+
+    // }
 
 });
 
