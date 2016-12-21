@@ -8,17 +8,17 @@
         <table class="table table-striped">           
             <tr>
                 <th>#</th>
-                <th>Driver</th>
-                <th>Rider</th>
-                <th>Type</th>
-                <th>Description</th>            
+                <th>driver</th>
+                <th>rider</th>
+                <th>type</th>
+                <th>description</th>            
             </tr>
             <tr ng-repeat="comment in vm.comments | limitTo:10 track by $index">
                  <td>{{$index}}</td>
-                <td>{{comment.FlagDTO.Driver}}</td>
-                <td>{{comment.FlagDTO.Rider}}</td>
-                <td>{{comment.FlagDTO.Type}}</td>
-                <td>{{comment.FlagDTO.Description}}</td>               
+                <td>{{comment.driver}}</td>
+                <td>{{comment.rider}}</td>
+                <td>{{comment.type}}</td>
+                <td>{{comment.description}}</td>               
                 <!--<td><div class="button" ng-click="vm.comments($index)">view comment</div></td>-->
             </tr>
         </table>

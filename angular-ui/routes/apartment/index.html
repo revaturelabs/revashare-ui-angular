@@ -8,16 +8,16 @@
         <table class="table table-striped">           
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Latitude</th>
-                <th>Longitude</th>                     
+                <th>name</th>
+                <th>latitude</th>
+                <th>longitude</th>                     
             </tr>
             <tr ng-repeat="apartment in vm.apartments | limitTo:10 track by $index">
                 <td>{{$index}}</td>
-                <td>{{apartment.ApartmentDTO.Name}}</td>
-                <td>{{apartment.ApartmentDTO.Latitude}}</td>
-                <td>{{apartment.ApartmentDTO.Longitude}}</td>                              
-                <td><div class="button" ng-click="vm.apartments($Name)">Delete</div></td>
+                <td>{{apartment.name}}</td>
+                <td>{{apartment.latitude}}</td>
+                <td>{{apartment.longitude}}</td>                              
+                <td><div class="button" ng-click="vm.apartments($index)">Delete</div></td>
             </tr>
         </table>
     </div>  

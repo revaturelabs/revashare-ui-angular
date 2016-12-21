@@ -6,18 +6,18 @@ angular.module("revashare").controller("apartment_controller", function () {
 
         successCallback([
             {
-             "ApartmentDTO":{   
-                    "Name": "The Townes",
-                    "Latitude": "38.9661",
-                    "Longitude": "77.3877",                    
-                    }
+              
+                    "name": "The Townes",
+                    "latitude": "38.9661",
+                    "longitude": "77.3877",                    
+                   
             },
             {
-                "ApartmentDTO":{ 
-                    "Name": "Camden",
-                    "Latitude": "38.9583",
-                    "Longitude": "77.4176",
-                }
+                
+                    "name": "Camden",
+                    "latitude": "38.9583",
+                    "longitude": "77.4176",
+                
             }
         ]);
     }

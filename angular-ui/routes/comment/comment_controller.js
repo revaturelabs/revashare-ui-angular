@@ -1,3 +1,31 @@
+// (function(ng) {
+//     ng.module("revashare")
+//     .controller("comment_controller", ["$stateParams", "$cookies", "commentDataService", function($stateParams, $cookies, commentDataService) {
+//         var vm = this;
+
+//         vm.title = "Create Comment - " + ($stateParams.type ? "Complaint" : "Praise");
+//         vm.data = {};
+
+//         vm.createRide = function() {
+//             var comment = vm.data;
+//             comment.rider = $cookies.get("username");
+//             comment.type = $stateParams.type;
+//             comment.driver = commentDataService.driver();            
+
+//             if (comment.Description === null) {
+//                 return "Description cannot be empty.";
+//             }
+
+//             commentDataService.addComment(comment, function() {
+//                 // TODO: handle success
+//                 console.log("Comment created.");
+//             }, function() {
+//                 // TODO: handle failure
+//                 console.log("Comment not created.");
+//             });
+//         };
+//     }]);
+// })(angular);
 
 
 
@@ -6,7 +34,7 @@
 angular.module("revashare").controller("comment_controller", function (serverDataService) {
     var vm = this;
     
-    vm.addComment = addComment;
+    // vm.addComment = addComment;
 
     function addComment () {
         this.addComment = addComment;
@@ -25,20 +53,20 @@ angular.module("revashare").controller("comment_controller", function (serverDat
 
         successCallback([
             {
-             "FlagDTO":{   
-                    "Driver": "Matt O'Brien",
-                    "Rider": "David Towson",
-                    "Type": "Complaint",
-                    "Description": "Always late and drives like a grandma!"
-                    }
+               
+                    "driver": "Matt O'Brien",
+                    "rider": "David Towson",
+                    "type": "Complaint",
+                    "description": "Always late and drives like a grandma!"
+                   
             },
             {
-                "FlagDTO":{ 
-                    "Driver": "Matt O'Brien",
-                    "Rider": "David Towson",
-                    "Type": "Complaint",
-                    "Description": "Extremely late and ran over my grandma!"
-                }
+                
+                    "driver": "Matt O'Brien",
+                    "rider": "David Towson",
+                    "type": "Complaint",
+                    "description": "Extremely late and ran over my grandma!"
+               
             }
         ]);
     }
