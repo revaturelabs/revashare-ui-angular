@@ -6,7 +6,7 @@
 
             <div ng-show="vm.toWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.toWorkRide.departureTime }}</div>
-                <div><a ui-sref="" class="button">View Riders</a></div>
+                <div><a ui-sref="driverRideShow({toWork: true})" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.toWorkRideExists()">
@@ -19,11 +19,11 @@
             
             <div ng-show="vm.fromWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.fromWorkRide.departureTime }}</div>
-                <div><a ui-sref="" class="button">View Riders</a></div>
+                <div><a ui-sref="driverRideShow({toWork: false})" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.fromWorkRideExists()">
-                <a ui-sref="driverRideCreate({toWork: false})" class="button">Create To Work Ride</a>
+                <a ui-sref="driverRideCreate({toWork: false})" class="button">Create From Work Ride</a>
             </div>
         </div>
     </div>

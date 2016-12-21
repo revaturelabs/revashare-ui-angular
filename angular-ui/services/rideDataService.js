@@ -20,30 +20,30 @@
             };
 
             $http.post(REVASHARE_API_URL + "driver/scheduleride", ride)
-            .then(function(data) {
-                successCallback(data);
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         };
 
         getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
             $http.get(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
-            .then(function(data) {
-                successCallback(data);
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         };
 
         getRiders = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
             $http.get(REVASHARE_API_URL + "rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
-            .then(function(data) {
-                successCallback(data);
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         };
@@ -59,10 +59,10 @@
             };
 
             $http.put(REVASHARE_API_URL + "rider", rideRider)
-            .then(function(data) {
+            .then(function(response) {
                 successCallback();
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         }
