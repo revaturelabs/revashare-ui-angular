@@ -1,6 +1,7 @@
-angular.module("revashare")
-.constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
-.service("serverDataService", function ($http) {
+(function() {
+  angular.module("revashare")
+  .constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
+  .service("serverDataService", function ($http) {
     this.getAllUsers = getAllUsers;
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
@@ -10,34 +11,34 @@ angular.module("revashare")
 
     function getAllUsers (successCallback, errorCallback) {
 
-        successCallback([
-            {
-                "Name": "David Towson",
-                "PhoneNumber":"123-123-1234",
-                "ApartmentDTO": {
-                    "Latitude": "234.234",
-                    "Longitude": "9845.34",
-                    "Name": "Fairways"
-                },
-                "Email": "asdf@gmail.com",
-                "AccountType": "rider"
-            },
-            {
-                "Name": "Matt O'Brien",
-                "PhoneNumber":"777-777-7777",
-                "ApartmentDTO": {
-                    "Latitude": "333.244",
-                    "Longitude": "155.24",
-                    "Name": "Camden"
-                },
-                "Email": "qwerty@asdf.com",
-                "Vehicle": {
-                    "Color": "blue",
-                    "Brand": "Toyota"
-                },
-                "AccountType": "driver"
-            }
-        ]);
+      successCallback([
+      {
+        "Name": "David Towson",
+        "PhoneNumber":"123-123-1234",
+        "ApartmentDTO": {
+          "Latitude": "234.234",
+          "Longitude": "9845.34",
+          "Name": "Fairways"
+        },
+        "Email": "asdf@gmail.com",
+        "AccountType": "rider"
+      },
+      {
+        "Name": "Matt O'Brien",
+        "PhoneNumber":"777-777-7777",
+        "ApartmentDTO": {
+          "Latitude": "333.244",
+          "Longitude": "155.24",
+          "Name": "Camden"
+        },
+        "Email": "qwerty@asdf.com",
+        "Vehicle": {
+          "Color": "blue",
+          "Brand": "Toyota"
+        },
+        "AccountType": "driver"
+      }
+      ]);
 
     }
 
@@ -48,12 +49,12 @@ angular.module("revashare")
         data: { 'key': user },
         cache: false
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function modifyUser (successCallback, errorCallback) {
@@ -63,12 +64,12 @@ angular.module("revashare")
         data: { 'key': user },
         cache: false
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function removeUser (successCallback, errorCallback) {
@@ -78,12 +79,12 @@ angular.module("revashare")
         data: { 'key': user },
         cache: false
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback
+      });
     }
 
     // driver only
@@ -102,12 +103,12 @@ angular.module("revashare")
         url: "/admin/viewschedules",
         cache: true
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
@@ -117,12 +118,12 @@ angular.module("revashare")
         params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
         cache: true
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(reponse) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(reponse) {
+        errorCallback("error");
+      });
     }
 
     function viewCarInfo (successCallback, errorCallback) {
@@ -131,12 +132,12 @@ angular.module("revashare")
         url: "/driver/viewvehicle",
         cache: true
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function subscribeSchedule (successCallback, errorCallback) {
@@ -161,12 +162,12 @@ angular.module("revashare")
         url: "/rider/viewprofile",
         cache: true
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function updateProfile (successCallback, errorCallback) {
@@ -176,12 +177,12 @@ angular.module("revashare")
         params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
         cache: true
       })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     function addComment (successCallback, errorCallback) {
@@ -200,7 +201,8 @@ angular.module("revashare")
 
     // }
 
-});
+  });
+})();
 
 
 
