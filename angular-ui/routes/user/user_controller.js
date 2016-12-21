@@ -7,6 +7,8 @@ angular.module("revashare").controller("user_controller", function (serverDataSe
     var vm = this;
     vm.users = [];
 
+    vm.upgradeToDriver = upgradeToDriver;
+
     serverDataService.getAllUsers(
         function success (users) {
             vm.users = users;
@@ -15,5 +17,15 @@ angular.module("revashare").controller("user_controller", function (serverDataSe
             toastr.error("there was an error retrieving user information");
         }
     )
+
+    function upgradeToDriver(index) {
+        serverDataService.upgradeToDriver(vm.users[index],
+            function success (response) {
+                console.log("works");
+            },
+            function error () {
+
+            });
+    }
 
 });
