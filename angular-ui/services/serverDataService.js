@@ -6,7 +6,7 @@ angular.module("revashare")
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
     // this.listApartments = listApartments;
-    // this.listFlags = listFlags;
+    this.listComments = listComments;
 
     function getAllUsers (successCallback, errorCallback) {
 
@@ -140,20 +140,37 @@ angular.module("revashare")
     }
 
     function addComment (successCallback, errorCallback) {
-
+       $http({
+        method: "POST",
+        url: "/flag",
+        params: { driver: driver, rider: rider, type: type, comment: comment },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
-    function listApartments(successCallback, errorCallback){
-
-    }
-
+    
     function addApartment(successCallback, errorCallback){
-
+       $http({
+        method: "POST",
+        url: "/apartment",
+        params: { name: name, lat: lat, long: long },
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
     }
 
-    // function listFlags(successCallback,errorCallback){
-
-    // }
+    
 
 });
 

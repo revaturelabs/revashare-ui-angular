@@ -13,6 +13,19 @@
             });
         };
       
+      function listComments(successCallback,errorCallback){
+      $http({
+        method: "GET",
+        url: "/flag/",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
 
         this.addComment = addComment;        
     }]);

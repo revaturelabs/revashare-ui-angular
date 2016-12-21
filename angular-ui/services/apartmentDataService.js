@@ -13,6 +13,20 @@
             });
         };
       
+      function listApartments(successCallback, errorCallback){
+      $http({
+        method: "GET",
+        url: "/apartment/",
+        cache: true
+      })
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
+    }
+
 
         this.addApartment = addApartment;        
     }]);
