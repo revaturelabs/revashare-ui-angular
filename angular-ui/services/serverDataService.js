@@ -1,20 +1,6 @@
 
-angular.module("revashare")
-.constant("REVASHARE_API_URL", "http://34.192.6.56/RevaShareAPI/")
-.service("serverDataService", function ($http) {
-    this.getAllUsers = getAllUsers;
-    this.viewSchedules = viewSchedules;
-    this.viewCarInfo = viewCarInfo;
-    this.updateCarInfo = updateCarInfo;
-    this.upgradeToDriver = upgradeToDriver;
-    // this.listApartments = listApartments;
-    // this.listFlags = listFlags;
-
-    function getAllUsers (successCallback, errorCallback) {
-
 (function () {
   angular.module("revashare")
-
     .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/")
     .service("serverDataService", function ($http) {
       this.getAllUsers = getAllUsers;
