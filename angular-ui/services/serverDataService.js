@@ -1,12 +1,14 @@
 (function () {
   angular.module("revashare")
+
     .constant("REVASHARE_API_URL", "http://34.192.6.56/RevaShareAPI/")
+
     .service("serverDataService", function ($http) {
       this.getAllUsers = getAllUsers;
       this.viewSchedules = viewSchedules;
       this.viewCarInfo = viewCarInfo;
       this.updateCarInfo = updateCarInfo;
-      this.upgradeToDriver = upgradeToDriver;    
+      this.upgradeToDriver = upgradeToDriver;
 
       function getAllUsers(successCallback, errorCallback) {
 
@@ -38,6 +40,7 @@
             "AccountType": "driver"
           }
         ]);
+
 
       }
 

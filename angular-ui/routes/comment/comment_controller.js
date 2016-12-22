@@ -18,6 +18,7 @@
                     return "Description cannot be empty.";
                 }
 
+
                 commentDataService.addComment(comment, function () {
                     // TODO: handle success
                     console.log("Comment created.");
@@ -26,6 +27,7 @@
                     console.log("Comment not created.");
                 });
             };
+
 
             commentDataService.listComments(
                 function success(comments) {
@@ -38,5 +40,4 @@
 
         }]);
 })(angular);
-
 
