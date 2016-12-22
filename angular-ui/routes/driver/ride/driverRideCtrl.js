@@ -30,16 +30,18 @@
         }
 
         if ($state.current.data.action == "show") {
-            vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate();
+            vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.data.ride = {};
             vm.data.riders = [];
 
-            rideDataService.getRide($cookies.get("username"), dateService.getThisWeeksDate(), $stateParams.toWork, function(data) {
+            var date = dateService.dateToString(dateService.getThisWeeksDate());
+
+            rideDataService.getRide($cookies.get("username"), date, $stateParams.toWork, function(data) {
                 console.log("Ride gotten!");
                 console.log(data);
                 vm.data.ride = data;
 
-                rideDataService.getRiders($cookies.get("username"), dateService.getThisWeeksDate(), $stateParams.toWork, function(data) {
+                rideDataService.getRiders($cookies.get("username"), date, $stateParams.toWork, function(data) {
                     console.log("Riders gotten!");
                     console.log(data);
                     vm.data.riders = data;
