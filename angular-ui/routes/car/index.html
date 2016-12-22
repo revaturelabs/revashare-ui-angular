@@ -4,4 +4,16 @@
         my car
     </h1>
     
+    <form>
+    	Make
+    	<input type="text" name="make-input" ng-model="vm.car.Make"/>
+    	Model
+    	<input type="text" name="model-input" ng-model="vm.car.Model"/>
+    	Color
+    	<input type="text" name="color-input" ng-model="vm.car.Color"/>
+    	Capacity
+    	<input type="text" name="capacity-input" ng-model="vm.car.Capacity"/>
+    	<p>License Plate: {{vm.car.LicensePlate}}</p>
+    	<input type="submit" ng-click="vm.updateCarInfo(vm.car)" value="update"/>
+    </form>
 </div>
