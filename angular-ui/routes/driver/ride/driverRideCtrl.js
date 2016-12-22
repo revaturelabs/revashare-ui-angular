@@ -8,19 +8,10 @@
             vm.title = "Create Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
 
             vm.createRide = function() {
-                var ride = vm.data;
-                ride.username = $cookies.get("username");
-                ride.isToWork = $stateParams.toWork;
-                ride.startOfWeekDate = dateService.getThisWeeksDate();
-                ride.isOnTime = true;
-
-                if (ride.departureTime === null) {
-                    return "Departure time cannot be empty.";
-                }
-
-                rideDataService.createRide(ride, function() {
+                rideDataService.createRide($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()), vm.data.departureTime, $stateParams.toWork, function(data) {
                     // TODO: handle success
                     console.log("Ride created.");
+                    $state.go("driverRideIndex");
                 }, function() {
                     // TODO: handle failure
                     console.log("Ride not created.");
