@@ -1,4 +1,4 @@
-angular.module("revashare").controller("car_controller", function (carDataService) {
+angular.module("revashare").controller("car_controller", ['$cookies', 'carDataService', function ($cookies, carDataService) {
 	var vm = this;
 
 	vm.addCar = addCar;
@@ -24,18 +24,21 @@ angular.module("revashare").controller("car_controller", function (carDataServic
 
 			},
 			function error () {
-				console.log("error");
+				window.toastr.error('the car was not able to be added');
 			});
 	}
 	
 	function viewCarInfo () {
-		carDataService.viewCarInfo('kimbob',
+		carDataService.viewCarInfo($cookies.getObject('username'),
 			function success (response) {
 				vm.car = response;
+				if(!response) {
+					window.toastr.error('no info was found');
+				}
 			},
 			function error (response) {
-				console.log("error");
+				window.toastr.error('an error has occurred');
 			});
 	}
 
-});
+}]);
