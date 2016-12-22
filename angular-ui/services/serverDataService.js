@@ -2,7 +2,7 @@
   angular.module("revashare")
 
     .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/")
-    .service("serverDataService", function ($http) {
+    .service("serverDataService", function (REVASHARE_API_URL, $http) {
       this.getAllUsers = getAllUsers;
       this.viewSchedules = viewSchedules;
       this.viewCarInfo = viewCarInfo;
@@ -85,7 +85,8 @@
       function viewCarInfo(successCallback, errorCallback) {
         $http({
           method: "GET",
-          url: "/driver/viewvehicle",
+          url: REVASHARE_API_URL + "api/driver/viewvehicle",
+          params: { 'driver': "kimbob"},
           cache: true
         })
           .then(function success(response) {
@@ -97,13 +98,6 @@
       }
 
       function subscribeSchedule(successCallback, errorCallback) {
-
-      }
-    
-
-});
-
-  
 
       }
 

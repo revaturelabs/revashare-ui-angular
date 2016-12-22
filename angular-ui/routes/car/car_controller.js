@@ -16,7 +16,8 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 
 	serverDataService.viewCarInfo(
 		function success (response) {
-			console.log("success");
+			vm.car = response || 'help';
+			console.log(response);
 		},
 		function error () {
 			console.log("error");
