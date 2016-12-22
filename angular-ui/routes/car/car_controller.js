@@ -1,36 +1,41 @@
-
-angular.module("revashare").controller("car_controller", function (serverDataService) {
+angular.module("revashare").controller("car_controller", function (carDataService) {
 	var vm = this;
 
-	vm.updateCarInfo = updateCarInfo;
 	vm.addCar = addCar;
-	vm.car = {};
+	vm.updateCarInfo = updateCarInfo;
+
+	viewCarInfo();
 	
 	function updateCarInfo () {
-		serverDataService.updateCarInfo(vm.car,
+		carDataService.updateCarInfo(vm.car,
 			function success (response) {
+				if(response) {
+					window.toastr.success('update success');
+				}
+			},
+			function error () {
+				window.toastr.error('an error has occurred')
+			});
+	}
+
+	function addCar () {
+		carDataService.addCar(vm.newCar,
+			function success (response) {
+
 			},
 			function error () {
 				console.log("error");
 			});
 	}
-
-	function addCar () {
-		serverDataService.addCar(car,
+	
+	function viewCarInfo () {
+		carDataService.viewCarInfo('kimbob',
 			function success (response) {
-
+				vm.car = response;
 			},
-			function error () {
-
+			function error (response) {
+				console.log("error");
 			});
 	}
-	
-	serverDataService.viewCarInfo(
-		function success (response) {
-			vm.car = response;
-		},
-		function error () {
-			console.log("error");
-		});
 
 });
