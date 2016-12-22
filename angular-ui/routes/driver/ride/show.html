@@ -10,7 +10,7 @@
     <div ng-hide="vm.isLoadingData">
         <div class="row">
             <div class="medium-6 columns"><strong>Departure Time</strong></div>
-            <div class="medium-6 columns">{{ vm.data.ride.DepartureTime }}</div>
+            <div class="medium-6 columns">{{ vm.data.ride.DepartureTime | rsTime }}</div>
         </div>
 
         <br />

@@ -1,5 +1,10 @@
 (function(ng) {
     ng.module("revashare")
+    .filter("rsTime", function() {
+        return function(input) {
+            return (new Date("2016-12-31T" + input)).toLocaleTimeString();
+        }
+    })
     .service("dateService", [function() {
         var getThisWeeksDate;
         var dateToString;
