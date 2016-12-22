@@ -3,6 +3,8 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
 
     // sidebar is always visible at min-width: 992px
     var sidebar_query = window.matchMedia("(min-width: 992px)");
+
+    $cookies.putObject("username", "kimbob");
     
     sidebar_query.addListener(sidebar_locked_open_listener);
     

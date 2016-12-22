@@ -30,6 +30,14 @@
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="viewRides" ui-sref-active="sidebar_selected">
             approved rides
+
+        <a class="sidebar-link" ui-sref="driverRideIndex" ui-sref-active="sidebar_selected">
+            Driver Rides
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="riderRideRequest" ui-sref-active="sidebar_selected">
+            find a ride
         </a>
     </div>
     <div class="sidebar-category-header">
@@ -58,7 +66,6 @@
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
                 add apartment
-
         </a>
     </div>    
     <div class="sidebar-category-header">
@@ -69,7 +76,7 @@
             signup
         </a>
     </div>
-    <div class="sidebar-link-container" ng-if-end>
+    <div class="sidebar-link-container" ng-if-end="">
         <a class="sidebar-link" ui-sref="login" ui-sref-active="sidebar_selected">
             login
         </a>
@@ -94,7 +101,7 @@
             Settings
         </a>
     </div>
-    <div class="sidebar-link-container" ng-if-end>
+    <div class="sidebar-link-container" ng-if-end="">
         <a class="sidebar-link" ng-click="vm.logout()">
             log out
         </a>

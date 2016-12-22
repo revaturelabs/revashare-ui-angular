@@ -10,7 +10,7 @@
             </div>
 
             <div ng-hide="vm.toWorkRideExists()">
-                <a ui-sref="riderRideRequest({toWork: true})" class="button">Get Ride To Work</a>
+                <a ui-sref="requestRide({toWork: true})" class="button">Get Ride To Work</a>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
             </div>
 
             <div ng-hide="vm.fromWorkRideExists()">
-                <a ui-sref="riderRideRequest({toWork: false})" class="button">Get Ride Home</a>
+                <a ui-sref="requestRide({toWork: false})" class="button">Get Ride Home</a>
             </div>
         </div>
     </div>
