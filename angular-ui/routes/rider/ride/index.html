@@ -1,29 +1,29 @@
 <div class="page-primary-content">
-    <h1>Driver Rides - Week of {{ vm.startOfWeekDate }}</h1>
+    <h1>Rider Rides - Week of {{ vm.startOfWeekDate }}</h1>
     <div class="row">
-        <div class="medium-6 columns">
+        <div class="medium-2 columns">
             <h2>To Work</h2>
 
             <div ng-show="vm.toWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.toWorkRide.departureTime }}</div>
-                <div><a ui-sref="driverRideShow({toWork: true})" class="button">View Riders</a></div>
+                <div><a ui-sref="" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.toWorkRideExists()">
-                <a ui-sref="driverRideCreate({toWork: true})" class="button">Create To Work Ride</a>
+                <a ui-sref="riderRideRequest({toWork: true})" class="button">Get Ride To Work</a>
             </div>
         </div>
 
-        <div class="medium-6 columns">
+        <div class="medium-2 columns">
             <h2>From Work</h2>
             
             <div ng-show="vm.fromWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.fromWorkRide.departureTime }}</div>
-                <div><a ui-sref="driverRideShow({toWork: false})" class="button">View Riders</a></div>
+                <div><a ui-sref="" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.fromWorkRideExists()">
-                <a ui-sref="driverRideCreate({toWork: false})" class="button">Create From Work Ride</a>
+                <a ui-sref="riderRideRequest({toWork: false})" class="button">Get Ride Home</a>
             </div>
         </div>
     </div>

@@ -6,12 +6,27 @@
         var getRiders;
         var approveRider;
 
-        createRide = function(ride, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "ride", ride)
-            .then(function(data) {
-                successCallback();
+        createRide = function(username, startOfWeekDate, departureTime, isAmRide, successCallback, failureCallback) {
+            var ride = {
+                StartOfWeekDate: startOfWeekDate,
+                DepartureTime: departureTime,
+                IsOnTime: true,
+                Vehicle: {
+                    Owner: {
+                        UserName: username
+                    }
+                },
+                IsAMRide: isAmRide
+            };
+
+            console.log(ride);
+
+            $http.post(REVASHARE_API_URL + "api/driver/scheduleride", ride)
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
+                console.log(response);
                 failureCallback();
             });
         };
@@ -38,10 +53,10 @@
 
         getRiders = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
             $http.get(REVASHARE_API_URL + "rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
-            .then(function(data) {
-                successCallback(data);
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         };
@@ -57,10 +72,10 @@
             };
 
             $http.put(REVASHARE_API_URL + "rider", rideRider)
-            .then(function(data) {
+            .then(function(response) {
                 successCallback();
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         }

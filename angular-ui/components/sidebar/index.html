@@ -27,17 +27,22 @@
             schedules
         </a>
     </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="driverRideIndex" ui-sref-active="sidebar_selected">
+            Driver Rides
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="riderRideRequest" ui-sref-active="sidebar_selected">
+            find a ride
+        </a>
+    </div>
     <div class="sidebar-category-header">
         Users
     </div>
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
             user directory
-        </a>
-    </div>
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
-            messages
         </a>
     </div>
     <div class="sidebar-link-container">
@@ -58,13 +63,9 @@
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
                 add apartment
-                </a>
-    </div>
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
-            car
+
         </a>
-    </div>
+    </div>    
     <div class="sidebar-category-header">
         Profile
     </div>
@@ -73,7 +74,7 @@
             signup
         </a>
     </div>
-    <div class="sidebar-link-container" ng-if-end>
+    <div class="sidebar-link-container" ng-if-end="">
         <a class="sidebar-link" ui-sref="login" ui-sref-active="sidebar_selected">
             login
         </a>
@@ -82,13 +83,23 @@
         <a class="sidebar-link" ui-sref="profile" ui-sref-active="sidebar_selected">
             view profile
         </a>
+    </div>    
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
+            messages
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
+            car
+        </a>
     </div>
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="settings" ui-sref-active="nav_selected">
             Settings
         </a>
     </div>
-    <div class="sidebar-link-container" ng-if-end>
+    <div class="sidebar-link-container" ng-if-end="">
         <a class="sidebar-link" ng-click="vm.logout()">
             log out
         </a>
