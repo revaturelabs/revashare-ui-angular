@@ -31,8 +31,20 @@
             });
         };
 
-        getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
-            $http.get(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
+        getRide = function(username, startOfWeekDate, isAmRide, successCallback, failureCallback) {
+            var ride = {
+                StartOfWeekDate: startOfWeekDate,
+                Vehicle: {
+                    Owner: {
+                        UserName: username
+                    }
+                },
+                IsAMRide: isAmRide
+            };
+
+            console.log(ride);
+
+            $http.post(REVASHARE_API_URL + "api/driver/getRide", ride)
             .then(function(response) {
                 successCallback(response.data);
             },
