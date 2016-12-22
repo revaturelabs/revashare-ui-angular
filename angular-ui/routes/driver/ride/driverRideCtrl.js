@@ -20,13 +20,7 @@
         }
 
         if ($state.current.data.action == "index") {
-            var date = "";
-            date += dateService.getThisWeeksDate().getUTCFullYear();
-            date += "-";
-            date += dateService.getThisWeeksDate().getUTCMonth();
-            date += "-";
-            date += dateService.getThisWeeksDate().getUTCDate();
-            date ++ "T00:00:00";
+            var date = dateService.dateToString(dateService.getThisWeeksDate());
 
             rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
                 console.log("Got to work ride!");

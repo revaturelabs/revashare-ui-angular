@@ -100,13 +100,6 @@
       function subscribeSchedule(successCallback, errorCallback) {
 
       }
-    
-
-});
-
-  
-
-      }
 
       function quitSchedule(successCallback, errorCallback) {
 
