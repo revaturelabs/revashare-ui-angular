@@ -5,19 +5,17 @@ angular.module("revashare").controller("car_controller", function (serverDataSer
 	vm.updateCarInfo = updateCarInfo;
 	
 	function updateCarInfo () {
-		serverDataService.updateCarInfo(
+		serverDataService.updateCarInfo(vm.car,
 			function success (response) {
-				window.toastr.success("car successfully updated");
 			},
 			function error () {
-				window.toastr.error("error updating car");
+				console.log("error");
 			});
 	}
 
 	serverDataService.viewCarInfo(
 		function success (response) {
-			vm.car = response || 'help';
-			console.log(response);
+			vm.car = response;
 		},
 		function error () {
 			console.log("error");

@@ -10,37 +10,17 @@
       this.upgradeToDriver = upgradeToDriver;    
 
       function getAllUsers(successCallback, errorCallback) {
-
-        successCallback([
-          {
-            "Name": "David Towson",
-            "PhoneNumber": "123-123-1234",
-            "ApartmentDTO": {
-              "Latitude": "234.234",
-              "Longitude": "9845.34",
-              "Name": "Fairways"
-            },
-            "Email": "asdf@gmail.com",
-            "AccountType": "rider"
-          },
-          {
-            "Name": "Matt O'Brien",
-            "PhoneNumber": "777-777-7777",
-            "ApartmentDTO": {
-              "Latitude": "333.244",
-              "Longitude": "155.24",
-              "Name": "Camden"
-            },
-            "Email": "qwerty@asdf.com",
-            "Vehicle": {
-              "Color": "blue",
-              "Brand": "Toyota"
-            },
-            "AccountType": "driver"
-          }
-        ]);
-
-
+        $http({
+        method: "GET",
+        url: REVASHARE_API_URL + "api/admin/get-drivers",
+        cache: true
+      })
+      .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
       }
 
       // driver only
@@ -67,11 +47,11 @@
           });
       }
 
-      function updateCarInfo(make, model, licensePlate, color, capacity, successCallback, errorCallback) {
+      function updateCarInfo(car, successCallback, errorCallback) {
         $http({
           method: "POST",
-          url: "/driver/updatevehicle",
-          params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
+          url: REVASHARE_API_URL + "api/driver/updatevehicle",
+          data: car,
           cache: true
         })
           .then(function success(response) {
@@ -86,7 +66,7 @@
         $http({
           method: "GET",
           url: REVASHARE_API_URL + "api/driver/viewvehicle",
-          params: { 'driver': "kimbob"},
+          params: { 'driver': "abbybob"},
           cache: true
         })
           .then(function success(response) {
@@ -113,7 +93,7 @@
         $http({
           method: "POST",
           url: "/admin/upgradedriver",
-          data: { 'key': user },
+          data: user,
           cache: true
         })
           .then(function success(response) {
