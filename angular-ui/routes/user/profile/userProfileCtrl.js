@@ -1,6 +1,8 @@
 (function(ng) {
     ng.module("revashare")
-    .controller("userProfileCtrl", ["$http", "$cookies", function($http, $cookies) {
+    .controller("userProfileCtrl", ["$state", "$cookies", "userDataService", function($state, $cookies, userDateService) {
         var vm = this;
+
+        
     }]);
 })(angular);

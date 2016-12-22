@@ -7,6 +7,15 @@
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
 
+    function getUser(username, successCallback, failureCallback) {
+      $http.get(REVASHARE_API_URL + "api/user/get-user?username=" + username)
+      .then(function(response) {
+        successCallback(response.data);
+      }, function(response) {
+        failureCallback();
+      });
+    }
+
     function addUser (user, successCallback, errorCallback) {
       $http({
         method: "POST",
