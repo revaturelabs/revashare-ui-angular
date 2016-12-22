@@ -10,8 +10,8 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
     
     this.sidebar_always_visible = sidebar_query.matches;
     this.sidebar_visible = sidebar_query.matches;
-    this.logged_in = $cookies.getObject("logged_in") ? $cookies.getObject("logged_in").status : false;
-    this.username = $cookies.getObject("username") ? $cookies.getObject("username").username : false;
+    this.logged_in = $cookies.getObject("logged_in") ? $cookies.getObject("logged_in").status : true;
+    this.username = $cookies.getObject("username") ? $cookies.getObject("username") : false;
     this.role = $cookies.getObject("role") ? $cookies.getObject("role").role : "user";
     
     this.alert_logged_in = alert_logged_in;
