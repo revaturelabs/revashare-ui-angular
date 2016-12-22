@@ -154,6 +154,10 @@
 
       }
 
+      function quitSchedule(successCallback, errorCallback) {
+        
+      }
+      
       function listApartments(successCallback, errorCallback){
 
       }
