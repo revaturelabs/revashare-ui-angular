@@ -103,9 +103,27 @@
                     }
                 };
                 $stateParams = {};
-                $cookies = {};
-                rideDataService = {};
-                dateService = {};
+
+                var $cookies = {
+                    getObject: function(_) {
+                        return "fred";
+                    }
+                };
+
+                rideDataService = {
+                    getRide: function() {
+                        return undefined;
+                    }
+                };
+
+                var dateService = {
+                    getThisWeeksDate: function() {
+                        return new Date(2016, 12, 18);
+                    },
+                    dateToString: function() {
+                        return "2016-12-18T00:00:00";
+                    }
+                };
 
                 driverRideCtrl = $controller("driverRideCtrl", {
                     $state: $state,
@@ -144,9 +162,27 @@
                     }
                 };
                 $stateParams = {};
-                $cookies = {};
-                rideDataService = {};
-                dateService = {};
+
+                var $cookies = {
+                    getObject: function(_) {
+                        return "fred";
+                    }
+                };
+
+                rideDataService = {
+                    getRide: function() {
+                        return undefined;
+                    }
+                };
+
+                var dateService = {
+                    getThisWeeksDate: function() {
+                        return new Date(2016, 12, 18);
+                    },
+                    dateToString: function() {
+                        return "2016-12-18T00:00:00";
+                    }
+                };
 
                 driverRideCtrl = $controller("driverRideCtrl", {
                     $state: $state,
@@ -223,7 +259,7 @@
                 };
 
                 var $cookies = {
-                    get: function(_) {
+                    getObject: function(_) {
                         return "fred";
                     }
                 };
@@ -246,6 +282,9 @@
                 var dateService = {
                     getThisWeeksDate: function() {
                         return new Date(2016, 12, 18);
+                    },
+                    dateToString: function() {
+                        return "2016-12-18T00:00:00";
                     }
                 };
 
