@@ -4,28 +4,40 @@
         <div class="medium-6 columns">
             <h2>To Work</h2>
 
-            <div ng-show="vm.toWorkRideExists()">
-                <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.toWorkRide.DepartureTime }}</div></div>
-                <br />
-                <div><a ui-sref="driverRideShow({toWork: true})" class="button">View Riders</a></div>
+            <div ng-show="vm.isLoadingToWorkRide">
+                Checking status...
             </div>
 
-            <div ng-hide="vm.toWorkRideExists()">
-                <a ui-sref="driverRideCreate({toWork: true})" class="button">Create To Work Ride</a>
+            <div ng-hide="vm.isLoadingToWorkRide">
+                <div ng-show="vm.toWorkRideExists()">
+                    <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.toWorkRide.DepartureTime }}</div></div>
+                    <br />
+                    <div><a ui-sref="driverRideShow({toWork: true})" class="button">View Riders</a></div>
+                </div>
+
+                <div ng-hide="vm.toWorkRideExists()">
+                    <a ui-sref="driverRideCreate({toWork: true})" class="button">Create To Work Ride</a>
+                </div>
             </div>
         </div>
 
         <div class="medium-6 columns">
             <h2>From Work</h2>
-            
-            <div ng-show="vm.fromWorkRideExists()">
-                <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.fromWorkRide.DepartureTime }}</div></div>
-                <br />
-                <div><a ui-sref="driverRideShow({toWork: false})" class="button">View Riders</a></div>
-            </div>
 
-            <div ng-hide="vm.fromWorkRideExists()">
-                <a ui-sref="driverRideCreate({toWork: false})" class="button">Create From Work Ride</a>
+            <div ng-show="vm.isLoadingFromWorkRide">
+                Checking status...
+            </div>
+            
+            <div ng-hide="vm.isLoadingFromWorkRide">
+                <div ng-show="vm.fromWorkRideExists()">
+                    <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.fromWorkRide.DepartureTime }}</div></div>
+                    <br />
+                    <div><a ui-sref="driverRideShow({toWork: false})" class="button">View Riders</a></div>
+                </div>
+
+                <div ng-hide="vm.fromWorkRideExists()">
+                    <a ui-sref="driverRideCreate({toWork: false})" class="button">Create From Work Ride</a>
+                </div>
             </div>
         </div>
     </div>
