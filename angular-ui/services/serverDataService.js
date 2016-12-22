@@ -1,46 +1,43 @@
 (function() {
   angular.module("revashare")
-  .constant("REVASHARE_API_URL", "http://34.193.163.157/revashare-api/")
-  .service("serverDataService", function ($http) {
+  .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/RevaShare-Logic/")
+  .service("serverDataService", function (REVASHARE_API_URL, $http) {
     this.getAllUsers = getAllUsers;
     this.viewSchedules = viewSchedules;
     this.viewCarInfo = viewCarInfo;
     this.updateCarInfo = updateCarInfo;
     this.upgradeToDriver = upgradeToDriver;
+    this.addCar = addCar;
     // this.listApartments = listApartments;
     // this.listFlags = listFlags;
 
     function getAllUsers (successCallback, errorCallback) {
-
-      successCallback([
-      {
-        "Name": "David Towson",
-        "PhoneNumber":"123-123-1234",
-        "ApartmentDTO": {
-          "Latitude": "234.234",
-          "Longitude": "9845.34",
-          "Name": "Fairways"
-        },
-        "Email": "asdf@gmail.com",
-        "AccountType": "rider"
+      $http({
+        method: "GET",
+        url: REVASHARE_API_URL + "api/admin/get-drivers",
+        cache: true
+      })
+      .then(function success(response) {
+        successCallback(response.data);
       },
-      {
-        "Name": "Matt O'Brien",
-        "PhoneNumber":"777-777-7777",
-        "ApartmentDTO": {
-          "Latitude": "333.244",
-          "Longitude": "155.24",
-          "Name": "Camden"
-        },
-        "Email": "qwerty@asdf.com",
-        "Vehicle": {
-          "Color": "blue",
-          "Brand": "Toyota"
-        },
-        "AccountType": "driver"
-      }
-      ]);
+      function error(response) {
+        errorCallback("error");
+      });
+    }
 
+    function addCar (car, successCallback, errorCallback) {
+      $http({
+        method: "POST",
+        url: REVASHARE_API_URL + "driver/addvehicle",
+        data: { 'key': car },
+        cache: true
+      })
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
     }
 
     // driver only
@@ -70,7 +67,7 @@
     function updateCarInfo (make, model, licensePlate, color, capacity, successCallback, errorCallback) {
       $http({
         method: "POST",
-        url: "/driver/updatevehicle",
+        url: "driver/updatevehicle",
         params: { make: make, mode: model, licensePlate: licensePlate, color: color, capacity: capacity },
         cache: true
       })
@@ -85,7 +82,8 @@
     function viewCarInfo (successCallback, errorCallback) {
       $http({
         method: "GET",
-        url: "/driver/viewvehicle",
+        url: REVASHARE_API_URL + "driver/viewvehicle",
+        params: { 'driver': "kimbob"},
         cache: true
       })
       .then(function success(response) {
