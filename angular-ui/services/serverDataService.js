@@ -120,6 +120,7 @@
       function error(response) {
         errorCallback("error");
       });
+    }
 
       function viewProfile(successCallback, errorCallback) {
         $http({

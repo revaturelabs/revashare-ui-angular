@@ -1,13 +1,33 @@
 <div class="page-primary-content">
     <h1>{{ vm.title }}</h1>
-    <h2>Departure Time: {{ vm.data.ride.DepartureTime }}</h2>
 
-    <div class="row" ng-repeat="rider in vm.data.riders">
-        <div class="medium-9 columns"><strong>Name:</strong> {{ rider.Name }}</div>
-        <div class="medium-3 columns">
-            <strong>Approved:</strong>
-            <span ng-show="rider.approved" class="button">&#10003;</span>
-            <button ng-hide="rider.approved" ng-click="vm.approveRider($index)" class="button">&#10007;</button>
+    <div class="row" ng-show="vm.isLoadingData">
+        <div class="medium-12 columns">
+            Checking status...
+        </div>
+    </div>
+
+    <div ng-hide="vm.isLoadingData">
+        <div class="row">
+            <div class="medium-6 columns"><strong>Departure Time</strong></div>
+            <div class="medium-6 columns">{{ vm.data.ride.DepartureTime }}</div>
+        </div>
+
+        <br />
+
+        <div class="row" ng-hide="vm.data.riders.length > 0">
+            <div class="medium-12 columns">
+                <em>There are no riders signed up for your ride.</em>
+            </div>
+        </div>
+
+        <div class="row" ng-show="vm.data.riders.length > 0" ng-repeat="rider in vm.data.riders">
+            <div class="medium-9 columns"><strong>Name:</strong> {{ rider.Name }}</div>
+            <div class="medium-3 columns">
+                <strong>Approved:</strong>
+                <span ng-show="rider.approved" class="button">&#10003;</span>
+                <button ng-hide="rider.approved" ng-click="vm.approveRider($index)" class="button">&#10007;</button>
+            </div>
         </div>
     </div>
 </div>

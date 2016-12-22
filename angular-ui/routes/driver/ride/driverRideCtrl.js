@@ -63,21 +63,24 @@
             vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.data.ride = {};
             vm.data.riders = [];
+            vm.isLoadingData = true;
 
             var date = dateService.dateToString(dateService.getThisWeeksDate());
 
-            rideDataService.getRide($cookies.get("username"), date, $stateParams.toWork, function(data) {
+            rideDataService.getRide($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
                 console.log("Ride gotten!");
                 console.log(data);
                 vm.data.ride = data;
 
-                rideDataService.getRiders($cookies.get("username"), date, $stateParams.toWork, function(data) {
+                rideDataService.getRiders($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
                     console.log("Riders gotten!");
                     console.log(data);
                     vm.data.riders = data;
+                    vm.isLoadingData = false;
                 }, function() {
                     // TODO: handle failure.
                     console.log("Riders not gotten...");
+                    vm.isLoadingData = false;
                 });
             }, function() {
                 // TODO: handle failure.
