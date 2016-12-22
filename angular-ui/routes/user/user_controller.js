@@ -1,13 +1,15 @@
 angular.module("revashare").controller("user_controller", function (userDataService) {
   var vm = this;
-  vm.users = [];
+  vm.drivers = [];
+  vm.riders = [];
 
   vm.addUser = addUser;
   vm.modifyUser = modifyUser;
   vm.removeUser = removeUser;
   vm.upgradeToDriver = upgradeToDriver;
 
-  getAllUsers();
+  getDrivers();
+  getRiders();
 
   function addUser () {
     userDataService.addUser(user,
@@ -19,13 +21,23 @@ angular.module("revashare").controller("user_controller", function (userDataServ
       });
   }
   
-  function getAllUsers() {
-    userDataService.getAllUsers(
+  function getDrivers() {
+    userDataService.getDrivers(
       function success (response) {
-        vm.users = reponse;
+        vm.drivers = reponse;
       },
       function error () {
-        toastr.error("there was an error retrieving user information");
+        toastr.error("could not retrieve drivers");
+      });
+  }
+
+  function getRiders() {
+    userDataService.getRiders(
+      function success (response) {
+        vm.riders = response;
+      },
+      function error () {
+        toastr.error("could not retrieve riders");
       });
   }
 
