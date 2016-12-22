@@ -61,19 +61,25 @@
             });
         };
 
-        approveRider = function(driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
+        approveRider = function(driver, startOfWeekDate, isAmRide, rider, successCallback, failureCallback) {
             var rideRider = {
-                ride: {
-                    driver: driver,
-                    startOfWeekDate: startOfWeekDate,
-                    isToWork: isToWork
+                Ride: {
+                    StartOfWeekDate: startOfWeekDate,
+                    Vehicle: {
+                        Owner: {
+                            UserName: driver
+                        }
+                    },
+                    IsAMRide: isAmRide
                 },
-                rider: rider
+                Rider: {
+                    UserName: rider
+                }
             };
 
-            $http.put(REVASHARE_API_URL + "rider", rideRider)
+            $http.put(REVASHARE_API_URL + "api/driver/acceptpassenger", rideRider)
             .then(function(response) {
-                successCallback();
+                successCallback(response.data);
             },
             function(response) {
                 failureCallback();
