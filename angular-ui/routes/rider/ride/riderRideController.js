@@ -45,7 +45,7 @@
             };
         }
 
-        if ($state.current.data.action == "create") {
+        if ($state.current.data.action == "show") {
             vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate();
             vm.data.ride = {};
             vm.data.riders = [];

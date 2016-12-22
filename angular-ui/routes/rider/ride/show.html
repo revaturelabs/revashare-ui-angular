@@ -15,7 +15,7 @@
                 <td>{{ride.RideDTO.DriverDTO.PhoneNumber}}</td>
                 <td>{{ride.RideDTO.DriverDTO.ApartmentDTO.Name}}</td>
                 <td>{{ride.RideDTO.CurrentlySeated}}</td>
-                <td data-ng-repeat="rider in vm.riders">{{ride.RideDTO.RideRiderDTO.Name}}</td>
+                <td>{{ride.RideDTO.RideRiderDTO.Name}}</td>
                 <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
                 <td><div class="button" ng-click="vm.upgradeToDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
             </tr>
