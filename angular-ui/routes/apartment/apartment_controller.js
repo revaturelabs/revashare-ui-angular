@@ -16,6 +16,7 @@
 
                 if (apartment.name === null) {
                     return "Name cannot be empty.";
+
                 }
 
                 apartmentDataService.addApartment(apartment, function () {
@@ -38,5 +39,3 @@
 
         }]);
 })(angular);
-
-
