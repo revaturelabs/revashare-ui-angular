@@ -1,15 +1,17 @@
 (function() {
 	angular.module('revashare')
 	.service('userDataService', ['$http', 'REVASHARE_API_URL', function($http, REVASHARE_API_URL) {
-		this.addUser = adduser;
+		this.addUser = addUser;
+    this.getDrivers = getDrivers;
+    this.getRiders = getRiders;
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
 
     function addUser (user, successCallback, errorCallback) {
       $http({
         method: "POST",
-        url: "/admin/adduser",
-        data: { 'key': user },
+        url: REVASHARE_API_URL + "api/admin/adduser",
+        data: user,
         cache: false
       })
       .then(function success(response) {
@@ -20,11 +22,39 @@
       });
     }
 
-    function modifyUser (successCallback, errorCallback) {
+    function getDrivers (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: REVASHARE_API_URL + "api/admin/get-drivers",
+        cache: true
+      })
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
+    }
+
+    function getRiders (successCallback, errorCallback) {
+      $http({
+        method: "GET",
+        url: REVASHARE_API_URL + "api/admin/get-riders",
+        cache: true
+      })
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
+    }
+
+    function modifyUser (user, successCallback, errorCallback) {
       $http({
         method: "POST",
-        url: "/admin/modifyuser",
-        data: { 'key': user },
+        url: REVASHARE_API_URL + "api/admin/modifyuser",
+        data: user,
         cache: false
       })
       .then(function success(response) {
@@ -35,18 +65,18 @@
       });
     }
 
-    function removeUser (successCallback, errorCallback) {
+    function removeUser (user, successCallback, errorCallback) {
       $http({
         method: "POST",
-        url: "/admin/removeuser",
-        data: { 'key': user },
+        url: REVASHARE_API_URL + "api/admin/removeuser",
+        data: user,
         cache: false
       })
       .then(function success(response) {
         successCallback(response.data);
       },
       function error(response) {
-        errorCallback
+        errorCallback("error");
       });
     }
 

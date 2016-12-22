@@ -1,30 +1,49 @@
 
 <div class="page-primary-content">
 
-    <h1>user information</h1>
+  <h1>user information</h1>
 
-    <div class="table-container">
-        <table class="table table-striped">
-            <tr>
-                <th>#</th>
-                <th>name</th>
-                <th>phone number</th>
-                <th>appartment complex</th>
-                <th>email</th>
-                <th>role</th>
-            </tr>
-            <tr ng-repeat="user in vm.users | limitTo:10 track by $index">
-                <td>{{$index}}</td>
-                <td>{{user.Name}}</td>
-                <td>{{user.PhoneNumber}}</td>
-                <td>{{user.ApartmentDTO.Name}}</td>
-                <td>{{user.Email}}</td>
-                <td>{{user.AccountType}}</td>
-                <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
-                <td><div class="button" ng-click="vm.upgradeToDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
-            </tr>
-        </table>
-    </div>
-    
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>phone number</th>
+        <th>appartment complex</th>
+        <th>email</th>
+        <th>role</th>
+      </tr>
+      <tr ng-repeat="rider in vm.riders | limitTo:10 track by $index">
+        <td>{{$index}}</td>
+        <td>{{rider.Name}}</td>
+        <td>{{rider.PhoneNumber}}</td>
+        <td>{{rider.ApartmentDTO.Name}}</td>
+        <td>{{rider.Email}}</td>
+        <td>{{rider.AccountType}}</td>
+        <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
+      </tr>      
+    </table>
+    <table class="table table-striped">
+      <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>phone number</th>
+        <th>appartment complex</th>
+        <th>email</th>
+        <th>role</th>
+      </tr>
+      <tr ng-repeat="driver in vm.drivers | limitTo:10 track by $index">
+        <td>{{$index}}</td>
+        <td>{{driver.Name}}</td>
+        <td>{{driver.PhoneNumber}}</td>
+        <td>{{driver.ApartmentDTO.Name}}</td>
+        <td>{{driver.Email}}</td>
+        <td>{{driver.AccountType}}</td>
+        <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
+        <td><div class="button" ng-click="vm.upgradeToDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
+      </tr>
+    </table>
+  </div>
+  
 
 </div>

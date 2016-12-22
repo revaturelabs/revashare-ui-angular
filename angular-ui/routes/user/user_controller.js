@@ -1,57 +1,74 @@
+angular.module("revashare").controller("user_controller", function (userDataService) {
+  var vm = this;
+  vm.drivers = [];
+  vm.riders = [];
 
-angular.module("revashare").controller("user_controller", function (serverDataService) {
-    var vm = this;
-    vm.users = [];
+  vm.addUser = addUser;
+  vm.modifyUser = modifyUser;
+  vm.removeUser = removeUser;
+  vm.upgradeToDriver = upgradeToDriver;
 
-    vm.upgradeToDriver = upgradeToDriver;
+  getDrivers();
+  getRiders();
 
-    serverDataService.getAllUsers(
-        function success (users) {
-            vm.users = users;
-        },
-        function error () {
-            toastr.error("there was an error retrieving user information");
-        }
-    )
+  function addUser () {
+    userDataService.addUser(user,
+      function success (response) {
 
-    function addUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+      },
+      function error () {
 
-            },
-            function error () {
+      });
+  }
+  
+  function getDrivers() {
+    userDataService.getDrivers(
+      function success (response) {
+        vm.drivers = reponse;
+      },
+      function error () {
+        toastr.error("could not retrieve drivers");
+      });
+  }
 
-            });
-    }
+  function getRiders() {
+    userDataService.getRiders(
+      function success (response) {
+        vm.riders = response;
+      },
+      function error () {
+        toastr.error("could not retrieve riders");
+      });
+  }
 
-    function modifyUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+  function modifyUser () {
+    userDataService.modifyUser(user,
+      function success (response) {
 
-            },
-            function error () {
+      },
+      function error () {
 
-            });
-    }
+      });
+  }
 
-    function removeUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+  function removeUser () {
+    userDataService.removeUser(user,
+      function success (response) {
 
-            },
-            function error() {
+      },
+      function error() {
 
-            });
-    }
+      });
+  }
 
-    function upgradeToDriver(index) {
-        serverDataService.upgradeToDriver(vm.users[index],
-            function success (response) {
-                console.log("works");
-            },
-            function error () {
+  function upgradeToDriver(index) {
+    userDataService.upgradeToDriver(vm.users[index],
+      function success (response) {
+        console.log("works");
+      },
+      function error () {
 
-            });
-    }
+      });
+  }
 
 });

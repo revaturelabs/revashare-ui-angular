@@ -1,36 +1,44 @@
-
-angular.module("revashare").controller("car_controller", function (serverDataService) {
+angular.module("revashare").controller("car_controller", ['$cookies', 'carDataService', function ($cookies, carDataService) {
 	var vm = this;
 
-	vm.updateCarInfo = updateCarInfo;
 	vm.addCar = addCar;
-	vm.car = {};
+	vm.updateCarInfo = updateCarInfo;
+
+	viewCarInfo();
 	
 	function updateCarInfo () {
-		serverDataService.updateCarInfo(vm.car,
+		carDataService.updateCarInfo(vm.car,
 			function success (response) {
+				if(response) {
+					window.toastr.success('update success');
+				}
 			},
 			function error () {
-				console.log("error");
+				window.toastr.error('an error has occurred')
 			});
 	}
 
 	function addCar () {
-		serverDataService.addCar(car,
+		carDataService.addCar(vm.newCar,
 			function success (response) {
 
 			},
 			function error () {
-
+				window.toastr.error('the car was not able to be added');
 			});
 	}
 	
-	serverDataService.viewCarInfo(
-		function success (response) {
-			vm.car = response;
-		},
-		function error () {
-			console.log("error");
-		});
+	function viewCarInfo () {
+		carDataService.viewCarInfo($cookies.getObject('username'),
+			function success (response) {
+				vm.car = response;
+				if(!response) {
+					window.toastr.error('no info was found');
+				}
+			},
+			function error (response) {
+				window.toastr.error('an error has occurred');
+			});
+	}
 
-});
+}]);
