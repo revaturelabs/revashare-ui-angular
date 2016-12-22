@@ -1,11 +1,12 @@
 <div class="page-primary-content">
-    <h1>Driver Rides - Week of {{ vm.startOfWeekDate }}</h1>
+    <h1>Driver Rides - Week of {{ vm.StartOfWeekDate }}</h1>
     <div class="row">
         <div class="medium-6 columns">
             <h2>To Work</h2>
 
             <div ng-show="vm.toWorkRideExists()">
-                <div><strong>Departure Time</strong> {{ vm.data.toWorkRide.departureTime }}</div>
+                <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.toWorkRide.DepartureTime }}</div></div>
+                <br />
                 <div><a ui-sref="driverRideShow({toWork: true})" class="button">View Riders</a></div>
             </div>
 
@@ -18,7 +19,8 @@
             <h2>From Work</h2>
             
             <div ng-show="vm.fromWorkRideExists()">
-                <div><strong>Departure Time</strong> {{ vm.data.fromWorkRide.departureTime }}</div>
+                <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.fromWorkRide.DepartureTime }}</div></div>
+                <br />
                 <div><a ui-sref="driverRideShow({toWork: false})" class="button">View Riders</a></div>
             </div>
 

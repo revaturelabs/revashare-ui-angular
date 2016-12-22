@@ -21,6 +21,7 @@
 
         if ($state.current.data.action == "index") {
             var date = dateService.dateToString(dateService.getThisWeeksDate());
+            vm.StartOfWeekDate = dateService.getThisWeeksDate().toLocaleDateString();
 
             rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
                 console.log("Got to work ride!");

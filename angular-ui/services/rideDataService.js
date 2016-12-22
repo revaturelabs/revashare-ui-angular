@@ -31,7 +31,7 @@
             });
         };
 
-        getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
+        getRide = function(username, startOfWeekDate, isAmRide, successCallback, failureCallback) {
             var ride = {
                 StartOfWeekDate: startOfWeekDate,
                 Vehicle: {
@@ -39,7 +39,7 @@
                         UserName: username
                     }
                 },
-                IsAMRide: isToWork
+                IsAMRide: isAmRide
             };
 
             $http.post(REVASHARE_API_URL + "api/driver/getRide", ride)
