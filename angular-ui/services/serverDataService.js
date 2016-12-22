@@ -49,6 +49,5 @@
         errorCallback("error");
       });
     }
-
   });
 })();
