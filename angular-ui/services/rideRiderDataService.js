@@ -83,7 +83,7 @@
             failureCallback();
           });
       }
-
+      this.viewRides = viewRides;
       this.getRiders = getRiders;
       this.requestRide = requestRide;
     }]);

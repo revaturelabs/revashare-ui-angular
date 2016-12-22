@@ -18,6 +18,7 @@
             .state("driverRideShow", driverRideShow)
 
             .state("viewRides", viewRides)
+            .state("requestRide", requestRide)
 
             .state("comment", comment)
             .state("addComment", addComment)
@@ -58,6 +59,16 @@
         }
     };
 
+    var requestRide = {
+        url: "/requestRide",
+        views: {
+            "main": {
+                templateUrl: "routes/rider/ride/index.html",
+                controller: "riderRideController",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     var viewRides = {
         url: "/rider/ride/approved",
@@ -90,10 +101,6 @@
             }
         }
     };
-
-    
-
-
 
     var login = {
         url: "/login",

@@ -1,12 +1,12 @@
 
-angular.module("revashare").controller("riderRideController", function (serverDataService) {
+angular.module("revashare").controller("riderRideController", function (rideRiderDataService) {
     var vm = this;
     vm.ride = [];
     vm.rides = [];
     vm.rider = [];
     vm.riders = [];
 
-    serverDataService.viewRides(
+    rideRiderDataService.viewRides(
         function success(rides) {
             vm.rides = rides;
         },
@@ -14,7 +14,7 @@ angular.module("revashare").controller("riderRideController", function (serverDa
             console.log("error");
         });
 
-    serverDataService.requestRide(
+    rideRiderDataService.requestRide(
         function success(ride, rider) {
             vm.ride = ride;
         },
