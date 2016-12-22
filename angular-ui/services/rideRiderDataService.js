@@ -7,10 +7,21 @@
       var getRiders
       var viewRides
       var requestRide;
+      var getRideByApartment;
 
      
+      getRideByApartment = function(apartment, successCallback, failureCallback){
+        $http.post(REVASHARE_API_URL + "api/rider/get-rides?location=" + apartment )
+        .then(function(response) {
+                successCallback(response.data);
+            },
+            function(response) {
+                failureCallback();
+            });
+      };
+
       getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
-            $http.get(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
+            $http.post(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
             .then(function(response) {
                 successCallback(response.data);
             },
@@ -30,7 +41,7 @@
       }
 
       getRiders = function (username, startOfWeekDate, isToWork, successCallback, failureCallback) {
-        $http.get(REVASHARE_API_URL + "api/rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
+        $http.post(REVASHARE_API_URL + "api/rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
           .then(function (data) {
             successCallback(data);
           },
@@ -83,21 +94,27 @@
         ]);
       }
 
-      requestRide = function (ride, driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
+      requestRide = function (driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
         var rideRider = {
           ride: {
-            driver: driver,
-            startOfWeekDate: startOfWeekDate,
-            isToWork: isToWork
+            Vehicle: {
+              Owner: {
+                UserName: driver
+              },
+            },
+            StartOfWeekDate: startOfWeekDate,
+            IsAMRide: isToWork
           },
-          rider: rider
+          rider: {
+            UserName: rider
+          } 
         };
 
         $http.post(REVASHARE_API_URL + "api/rider/add-ride", rideRider)
-          .then(function (data) {
-            successCallback(data);
+          .then(function (response) {
+            successCallback(response.data);
           },
-          function (data) {
+          function (response) {
             failureCallback();
           });
       }
