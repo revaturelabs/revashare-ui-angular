@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
 
-        <title>Revashare</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="libs/foundation/foundation.css">
-        <link rel="stylesheet" href="libs/toastr/toastr.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/navbar.css">
-        <link rel="stylesheet" href="css/sidebar.css">
+<head>
 
-    </head>
-    <body ng-app="revashare">
-    
-        <navbar></navbar>
+  <title>Revashare</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <section id="sidebar-page-wrapper">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="libs/foundation/foundation.css">
+  <link rel="stylesheet" href="libs/toastr/toastr.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/sidebar.css">
 
-            <sidebar></sidebar>
+</head>
 
-            <div id="page-wrapper" ui-view="main"></div>
+<body ng-app="revashare">
 
-        </section>
-        
+  <navbar></navbar>
 
-        <script src="libs/angular/angular.js"></script>
-        <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="libs/angular-cookies/angular-cookies.js"></script>
-        <script src="libs/toastr/toastr.js"></script>
+  <section id="sidebar-page-wrapper">
 
-        <script src="index.js"></script>
+    <sidebar></sidebar>
 
-        <script src="services/serverDataService.js"></script>
-        <script src="services/displayStateService.js"></script>
-        <script src="services/dateService.js"></script>
-        <script src="services/rideDataService.js"></script>
-        <script src="services/commentDataService.js"></script>
-        <script src="services/apartmentDataService.js"></script>
-        <script src="services/rideRiderDataService.js"></script>
+    <div id="page-wrapper" ui-view="main"></div>
 
-        <script src="components/navbar/navbar_controller.js"></script>
-        <script src="components/navbar/navbar_component.js"></script>
-
-        <script src="components/sidebar/sidebar_controller.js"></script>
-        <script src="components/sidebar/sidebar_component.js"></script>
-
-        <script src="routes/welcome/welcome_controller.js"></script>
-        <script src="routes/signup/signup_controller.js"></script>
-        <script src="routes/login/login_controller.js"></script>
-        <script src="routes/profile/profile_controller.js"></script>
-        <script src="routes/schedule/schedule_controller.js"></script>
-        <script src="routes/user/user_controller.js"></script>
-        <script src="routes/message/message_controller.js"></script>
-
-        <script src="routes/driver/ride/driverRideCtrl.js"></script>
-
-        <script src="routes/comment/comment_controller.js"></script>
-        <script src="routes/apartment/apartment_controller.js"></script>
-        <script src="routes/rider/ride/riderRideController.js"></script>
-        
-
-        <script src="routes/car/car_controller.js"></script>
+  </section>
 
 
-        <script src="routing.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/angular-cookies/angular-cookies.js"></script>
+  <script src="libs/toastr/toastr.js"></script>
 
-    </body>
+  <script src="index.js"></script>
+
+  <script src="services/serverDataService.js"></script>
+  <script src="services/displayStateService.js"></script>
+  <script src="services/dateService.js"></script>
+  <script src="services/rideDataService.js"></script>
+  <script src="services/commentDataService.js"></script>
+  <script src="services/apartmentDataService.js"></script>
+  <script src="services/carDataService.js"></script>
+  <script src="services/userDataService.js"></script>
+
+  <script src="components/navbar/navbar_controller.js"></script>
+  <script src="components/navbar/navbar_component.js"></script>
+
+  <script src="components/sidebar/sidebar_controller.js"></script>
+  <script src="components/sidebar/sidebar_component.js"></script>
+
+  <script src="routes/welcome/welcome_controller.js"></script>
+  <script src="routes/signup/signup_controller.js"></script>
+  <script src="routes/login/login_controller.js"></script>
+  <script src="routes/profile/profile_controller.js"></script>
+  <script src="routes/schedule/schedule_controller.js"></script>
+  <script src="routes/user/user_controller.js"></script>
+  <script src="routes/message/message_controller.js"></script>
+
+  <script src="routes/driver/ride/driverRideCtrl.js"></script>
+
+  <script src="routes/comment/comment_controller.js"></script>
+  <script src="routes/apartment/apartment_controller.js"></script>
+  <script src="routes/rider/ride/riderRideController.js"></script>
+
+
+  <script src="routes/car/car_controller.js"></script>
+
+
+  <script src="routing.js"></script>
+
+</body>
+
 </html>
