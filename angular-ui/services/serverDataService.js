@@ -1,6 +1,6 @@
+
 (function () {
   angular.module("revashare")
-
     .constant("REVASHARE_API_URL", "http://ec2-34-193-194-23.compute-1.amazonaws.com/revashare-logic/")
     .service("serverDataService", function ($http) {
       this.getAllUsers = getAllUsers;
@@ -10,6 +10,7 @@
       this.upgradeToDriver = upgradeToDriver;    
 
       function getAllUsers(successCallback, errorCallback) {
+
 
         successCallback([
           {

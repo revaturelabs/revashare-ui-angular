@@ -33,20 +33,33 @@
                 };
 
                 var $cookies = {
-                    get: function(_) {
+                    getObject: function(_) {
                         return "fred";
                     }
                 };
 
                 var rideDataService = {
-                    createRide: function(ride) {
-                        rides.push(ride);
+                    createRide: function(username, startOfWeekDate, departureTime, isAmRide) {
+                        rides.push({
+                            StartOfWeekDate: startOfWeekDate,
+                            DepartureTime: departureTime,
+                            IsOnTime: true,
+                            Vehicle: {
+                                Owner: {
+                                    UserName: username
+                                }
+                            },
+                            IsAMRide: isAmRide
+                        });
                     }
                 };
 
                 var dateService = {
                     getThisWeeksDate: function() {
                         return new Date(2016, 12, 18);
+                    },
+                    dateToString: function() {
+                        return "2016-12-18T00:00:00";
                     }
                 };
 
@@ -65,11 +78,11 @@
 
                 var ride = rides[0];
 
-                expect(ride.username).toEqual("fred");
-                expect(ride.isToWork).toEqual(true);
-                expect(ride.departureTime).toEqual("08:15:00");
-                expect(ride.startOfWeekDate.getTime()).toEqual((new Date(2016, 12, 18)).getTime());
-                expect(ride.isOnTime).toEqual(true);
+                expect(ride.Vehicle.Owner.UserName).toEqual("fred");
+                expect(ride.IsAMRide).toEqual(true);
+                expect(ride.DepartureTime).toEqual("08:15:00");
+                expect(ride.StartOfWeekDate).toEqual("2016-12-18T00:00:00");
+                expect(ride.IsOnTime).toEqual(true);
             });
         });
 
