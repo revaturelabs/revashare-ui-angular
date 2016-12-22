@@ -28,8 +28,12 @@
         </a>
     </div>
     <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="driverRideIndex" ui-sref-active="sidebar_selected">
+
             Driver Rides
+
+        <a class="sidebar-link" ui-sref="riderRideRequest" ui-sref-active="sidebar_selected">
+            find a ride
+
         </a>
     </div>
     <div class="sidebar-category-header">
@@ -38,11 +42,6 @@
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
             user directory
-        </a>
-    </div>
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
-            messages
         </a>
     </div>
     <div class="sidebar-link-container">
@@ -63,13 +62,9 @@
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
                 add apartment
-                </a>
-    </div>
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
-            car
+
         </a>
-    </div>
+    </div>    
     <div class="sidebar-category-header">
         Profile
     </div>
@@ -86,6 +81,16 @@
     <div class="sidebar-link-container" ng-if-start="vm.logged_in">
         <a class="sidebar-link" ui-sref="profile" ui-sref-active="sidebar_selected">
             view profile
+        </a>
+    </div>    
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
+            messages
+        </a>
+    </div>
+    <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
+            car
         </a>
     </div>
     <div class="sidebar-link-container">
