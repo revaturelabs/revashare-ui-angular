@@ -8,7 +8,7 @@
             vm.title = "Create Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
 
             vm.createRide = function() {
-                rideDataService.createRide($cookies.getObject("username"), dateService.getThisWeeksDate(), vm.data.departureTime, $stateParams.toWork, function(data) {
+                rideDataService.createRide($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()), vm.data.departureTime, $stateParams.toWork, function(data) {
                     // TODO: handle success
                     console.log("Ride created.");
                     $state.go("driverRideIndex");
