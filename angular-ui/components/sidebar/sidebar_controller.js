@@ -8,6 +8,7 @@ angular.module("revashare").controller("sidebar_controller", function ($scope, d
     vm.username = displayStateService.username;
     vm.show_sidebar = displayStateService.alert_sidebar_visible;
     vm.hide_sidebar = displayStateService.alert_sidebar_hidden;
+    vm.logged_in = displayStateService.logged_in;
     vm.logout = logout;
     
 
