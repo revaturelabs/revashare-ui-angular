@@ -17,7 +17,7 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
-            .state("riderRideRequest", riderRideRequest)
+            .state("viewRides", viewRides)
 
             .state("comment", comment)
             .state("addComment", addComment)
@@ -59,14 +59,14 @@
     };
 
 
-    var riderRideRequest = {
-        url: "/rider/ride/index",
+    var viewRides = {
+        url: "/rider/ride/approved",
         params: {
             toWork: true
         },
         views: {
             "main": {
-                templateUrl: "routes/rider/ride/index.html",
+                templateUrl: "routes/rider/ride/approved.html",
                 controller: "riderRideController",
                 controllerAs: "vm"
             }
