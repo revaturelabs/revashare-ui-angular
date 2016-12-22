@@ -1,57 +1,62 @@
+angular.module("revashare").controller("user_controller", function (userDataService) {
+  var vm = this;
+  vm.users = [];
 
-angular.module("revashare").controller("user_controller", function (serverDataService) {
-    var vm = this;
-    vm.users = [];
+  vm.addUser = addUser;
+  vm.modifyUser = modifyUser;
+  vm.removeUser = removeUser;
+  vm.upgradeToDriver = upgradeToDriver;
 
-    vm.upgradeToDriver = upgradeToDriver;
+  getAllUsers();
 
-    serverDataService.getAllUsers(
-        function success (users) {
-            vm.users = users;
-        },
-        function error () {
-            toastr.error("there was an error retrieving user information");
-        }
-    )
+  function addUser () {
+    userDataService.addUser(user,
+      function success (response) {
 
-    function addUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+      },
+      function error () {
 
-            },
-            function error () {
+      });
+  }
+  
+  function getAllUsers() {
+    userDataService.getAllUsers(
+      function success (response) {
+        vm.users = reponse;
+      },
+      function error () {
+        toastr.error("there was an error retrieving user information");
+      });
+  }
 
-            });
-    }
+  function modifyUser () {
+    userDataService.modifyUser(user,
+      function success (response) {
 
-    function modifyUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+      },
+      function error () {
 
-            },
-            function error () {
+      });
+  }
 
-            });
-    }
+  function removeUser () {
+    userDataService.removeUser(user,
+      function success (response) {
 
-    function removeUser () {
-        serverDataService.addUser(user,
-            function success (response) {
+      },
+      function error() {
 
-            },
-            function error() {
+      });
+  }
 
-            });
-    }
+  function upgradeToDriver(index) {
+    userDataService.upgradeToDriver(vm.users[index],
+      function success (response) {
+        console.log("works");
+      },
+      function error () {
 
-    function upgradeToDriver(index) {
-        serverDataService.upgradeToDriver(vm.users[index],
-            function success (response) {
-                console.log("works");
-            },
-            function error () {
-
-            });
-    }
+      });
+  }
 
 });
