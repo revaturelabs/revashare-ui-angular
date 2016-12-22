@@ -23,20 +23,24 @@
             var date = dateService.dateToString(dateService.getThisWeeksDate());
             vm.StartOfWeekDate = dateService.getThisWeeksDate().toLocaleDateString();
 
+            function getFromWorkRide() {
+                rideDataService.getRide($cookies.getObject("username"), date, false, function(ride) {
+                    console.log("Got from work ride!");
+                    vm.data.fromWorkRide = ride;
+                },
+                function() {
+                    console.log("Cannot get from work ride.");
+                }); 
+            }
+
             rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
                 console.log("Got to work ride!");
+                getFromWorkRide();
                 vm.data.toWorkRide = ride;
             },
             function() {
                 console.log("Cannot get to work ride.");
-            });
-
-            rideDataService.getRide($cookies.getObject("username"), date, false, function(ride) {
-                console.log("Got from work ride!");
-                vm.data.fromWorkRide = ride;
-            },
-            function() {
-                console.log("Cannot get from work ride.");
+                getFromWorkRide();
             });
 
             vm.toWorkRideExists = function() {
