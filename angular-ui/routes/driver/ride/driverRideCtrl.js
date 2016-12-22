@@ -19,6 +19,36 @@
         }
 
         if ($state.current.data.action == "index") {
+            vm.StartOfWeekDate = dateService.getThisWeeksDate().toLocaleDateString();
+            vm.isLoadingToWorkRide = true;
+            vm.isLoadingFromWorkRide = true;
+
+            var date = dateService.dateToString(dateService.getThisWeeksDate());
+
+            function getFromWorkRide() {
+                rideDataService.getRide($cookies.getObject("username"), date, false, function(ride) {
+                    console.log("Got from work ride!");
+                    vm.data.fromWorkRide = ride;
+                    vm.isLoadingFromWorkRide = false;
+                },
+                function() {
+                    console.log("Cannot get from work ride.");
+                    vm.isLoadingFromWorkRide = false;
+                }); 
+            }
+
+            rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
+                console.log("Got to work ride!");
+                getFromWorkRide();
+                vm.data.toWorkRide = ride;
+                vm.isLoadingToWorkRide = false;
+            },
+            function() {
+                console.log("Cannot get to work ride.");
+                getFromWorkRide();
+                vm.isLoadingToWorkRide = false;
+            });
+
             vm.toWorkRideExists = function() {
                 return vm.data.toWorkRide !== undefined;
             };

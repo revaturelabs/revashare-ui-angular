@@ -20,7 +20,7 @@
 
             s += date.getUTCFullYear();
             s += "-";
-            s += date.getUTCMonth();
+            s += date.getUTCMonth() + 1;
             s += "-";
             s += date.getUTCDate();
             s += "T00:00:00";
