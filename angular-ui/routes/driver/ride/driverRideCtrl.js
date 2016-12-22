@@ -29,6 +29,30 @@
         }
 
         if ($state.current.data.action == "index") {
+            var date = "";
+            date += dateService.getThisWeeksDate().getUTCFullYear();
+            date += "-";
+            date += dateService.getThisWeeksDate().getUTCMonth();
+            date += "-";
+            date += dateService.getThisWeeksDate().getUTCDate();
+            date ++ "T00:00:00";
+
+            rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
+                console.log("Got to work ride!");
+                vm.data.toWorkRide = ride;
+            },
+            function() {
+                console.log("Cannot get to work ride.");
+            });
+
+            rideDataService.getRide($cookies.getObject("username"), date, false, function(ride) {
+                console.log("Got from work ride!");
+                vm.data.fromWorkRide = ride;
+            },
+            function() {
+                console.log("Cannot get from work ride.");
+            });
+
             vm.toWorkRideExists = function() {
                 return vm.data.toWorkRide !== undefined;
             };
