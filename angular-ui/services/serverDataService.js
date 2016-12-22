@@ -114,96 +114,12 @@
         data: { 'key': user },
         cache: true
       })
-        .then(function success(response) {
-          successCallback(respondate.data);
->>>>>>> master
-        },
-        function error(response) {
-          errorCallback("error");
-        });
-<<<<<<< HEAD
-      }
-
-      // driver only
-      function createSchedule(successCallback, errorCallback) {
-
-      }
-
-      // driver only
-      function deleteSchedule(successCallback, errorCallback) {
-
-      }
-
-      function viewSchedules(successCallback, errorCallback) {
-        $http({
-          method: "GET",
-          url: "/admin/viewschedules",
-          cache: true
-        })
-          .then(function success(response) {
-            successCallback(response.data);
-          },
-          function error(response) {
-            errorCallback("error");
-          });
-      }
-
-      function updateCarInfo(car, successCallback, errorCallback) {
-        $http({
-          method: "POST",
-          url: REVASHARE_API_URL + "api/driver/updatevehicle",
-          data: car,
-          cache: true
-        })
-          .then(function success(response) {
-            successCallback(response.data);
-          },
-          function error(reponse) {
-            errorCallback("error");
-          });
-      }
-
-      function viewCarInfo(successCallback, errorCallback) {
-        $http({
-          method: "GET",
-          url: REVASHARE_API_URL + "api/driver/viewvehicle",
-          params: { 'driver': "abbybob"},
-          cache: true
-        })
-          .then(function success(response) {
-            successCallback(response.data);
-          },
-          function error(response) {
-            errorCallback("error");
-          });
-      }
-
-      function subscribeSchedule(successCallback, errorCallback) {
-
-      }
-
-      function quitSchedule(successCallback, errorCallback) {
-
-      }
-
-      function getMySchedules(successCallback, errorCallback) {
-
-      }
-
-      function upgradeToDriver(user, successCallback, errorCallback) {
-        $http({
-          method: "POST",
-          url: "/admin/upgradedriver",
-          data: user,
-          cache: true
-        })
-          .then(function success(response) {
-            successCallback(respondate.data);
-          },
-          function error(response) {
-            errorCallback("error");
-          });
-      }
+      .then(function success(response) {
+        successCallback(respondate.data);
+      },
+      function error(response) {
+        errorCallback("error");
+      });
 
       function viewProfile(successCallback, errorCallback) {
         $http({
@@ -211,12 +127,12 @@
           url: "/rider/viewprofile",
           cache: true
         })
-          .then(function success(response) {
-            successCallback(response.data);
-          },
-          function error(response) {
-            errorCallback("error");
-          });
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
       }
 
       function updateProfile(successCallback, errorCallback) {
@@ -226,65 +142,31 @@
           params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
           cache: true
         })
-          .then(function success(response) {
-            successCallback(response.data);
-          },
-          function error(response) {
-            errorCallback("error");
-          });
+        .then(function success(response) {
+          successCallback(response.data);
+        },
+        function error(response) {
+          errorCallback("error");
+        });
       }
 
-    });
-=======
-    }
+      function addComment (successCallback, errorCallback) {
 
-    function viewProfile (successCallback, errorCallback) {
-      $http({
-        method: "GET",
-        url: "/rider/viewprofile",
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
+      }
 
-    function updateProfile (successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: "/rider/updateprofile",
-        params: { name: name, number: number, apartment: apartment, email: email, vehicle: vehicle, accounttype: "rider" },
-        cache: true
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
-      });
-    }
+      function listApartments(successCallback, errorCallback){
 
-    function addComment (successCallback, errorCallback) {
+      }
 
-    }
+      function addApartment(successCallback, errorCallback){
 
-    function listApartments(successCallback, errorCallback){
-
-    }
-
-    function addApartment(successCallback, errorCallback){
-
-    }
+      }
 
     // function listFlags(successCallback,errorCallback){
 
     // }
 
   });
->>>>>>> master
 
 })();
 
@@ -293,27 +175,27 @@
 
 /*
 ["Ride": {
-	"Driver": "User DTO",
-	"Riders": ["User DTO"],
-	"DepartureTime": "time",
-	"Capacity": "capacity",
-	"CurrentlySeated": "number of seats occupied",
-	"Vehicle": "Vehicle DTO"
+"Driver": "User DTO",
+"Riders": ["User DTO"],
+"DepartureTime": "time",
+"Capacity": "capacity",
+"CurrentlySeated": "number of seats occupied",
+"Vehicle": "Vehicle DTO"
 },
 
 "User": {
-	"Name": "name",
-	"PhoneNumber": "number",
-	"Apartment": "Apartment DTO",
-	"Email": "email address",
-	"Vehicle": "Vehicle DTO - this is an optional field",
-	"AccountType": "rider or driver"
+"Name": "name",
+"PhoneNumber": "number",
+"Apartment": "Apartment DTO",
+"Email": "email address",
+"Vehicle": "Vehicle DTO - this is an optional field",
+"AccountType": "rider or driver"
 },
 
 "Location": {
-	"Latitude": "lat",
-	"Longitude": "long",
-	"ComplexName": "name of the complex"
+"Latitude": "lat",
+"Longitude": "long",
+"ComplexName": "name of the complex"
 }
 ]
 */
@@ -323,63 +205,63 @@
 
 /*
 public class ApartmentDTO{
-      public string Latitude { get; set; }
-      public string Longitude { get; set; }
-      public string Name { get; set; }
+    public string Latitude { get; set; }
+    public string Longitude { get; set; }
+    public string Name { get; set; }
 }
 public class FlagDTO{
-    public string Type { get; set; }
-    public string Message { get; set; }
-    public string DriverId { get; set; }
-    public string RiderId { get; set; }
-    public UserDTO Driver { get; set; }
-    public UserDTO Rider { get; set; }
+  public string Type { get; set; }
+  public string Message { get; set; }
+  public string DriverId { get; set; }
+  public string RiderId { get; set; }
+  public UserDTO Driver { get; set; }
+  public UserDTO Rider { get; set; }
 }
 public class RideDTO{      
-      public DateTime StartOfWeekDate { get; set; }
-      public TimeSpan DepartureTime { get; set; }
-      public bool IsOnTime { get; set; }
-      public virtual VehicleDTO Vehicle { get; set; }
-      public int VehicleId { get; set; }
+    public DateTime StartOfWeekDate { get; set; }
+    public TimeSpan DepartureTime { get; set; }
+    public bool IsOnTime { get; set; }
+    public virtual VehicleDTO Vehicle { get; set; }
+    public int VehicleId { get; set; }
 }
- public class RideRiderDTO{
-      public int RideId { get; set; }
-      public int RiderId { get; set; }
-      public bool Accepted { get; set; }
-      public virtual RideDTO Ride { get; set; }
-      public virtual UserDTO Rider { get; set; }
+public class RideRiderDTO{
+    public int RideId { get; set; }
+    public int RiderId { get; set; }
+    public bool Accepted { get; set; }
+    public virtual RideDTO Ride { get; set; }
+    public virtual UserDTO Rider { get; set; }
 }
 public class RoleDTO{
-      public string Type { get; set; }
+    public string Type { get; set; }
 }
 public class SeatDTO{
-      public RideDTO ride { get; set; }
-      public UserDTO rider { get; set; }
-      public bool Accepted { get; set; }
+    public RideDTO ride { get; set; }
+    public UserDTO rider { get; set; }
+    public bool Accepted { get; set; }
 }
 public class UserDTO{
+    public string Name { get; set; }
+    public string PhoneNumber { get; set; }      
+    public ApartmentDTO Apartment { get; set; }
+    public string Email { get; set; }
+    public int ApartmentId { get; set; }
+}
+public class UserInfoDTO{
+      public string UserId { get; set; }
+      public string ApartmentId { get; set; }
       public string Name { get; set; }
-      public string PhoneNumber { get; set; }      
-      public ApartmentDTO Apartment { get; set; }
       public string Email { get; set; }
-      public int ApartmentId { get; set; }
+      public string Phone { get; set; }
+      public UserDTO User { get; set; }
+      public ApartmentDTO Apartment { get; set; }
 }
- public class UserInfoDTO{
-        public string UserId { get; set; }
-        public string ApartmentId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public UserDTO User { get; set; }
-        public ApartmentDTO Apartment { get; set; }
-}
- public class VehicleDTO{
-       public string Make { get; set; }
-       public string Model { get; set; }
-       public string LicensePlate { get; set; }
-       public string Color { get; set; }
-       public int Capacity { get; set; }
-       public UserDTO Owner { get; set; }
-       public int OwnerId { get; set; }
+public class VehicleDTO{
+     public string Make { get; set; }
+     public string Model { get; set; }
+     public string LicensePlate { get; set; }
+     public string Color { get; set; }
+     public int Capacity { get; set; }
+     public UserDTO Owner { get; set; }
+     public int OwnerId { get; set; }
 }
 */
