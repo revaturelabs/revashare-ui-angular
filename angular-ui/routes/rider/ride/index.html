@@ -1,16 +1,16 @@
-<!--<div class="page-primary-content">
-    <h1>Rider Rides - Week of {{ vm.startOfWeekDate }}</h1>
+<div class="page-primary-content">
+    <h1>Rides - Week of {{ vm.startOfWeekDate }}</h1>
     <div class="row">
         <div class="medium-2 columns">
             <h2>To Work</h2>
 
             <div ng-show="vm.toWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.toWorkRide.departureTime }}</div>
-                <div><a ui-sref="" class="button">View Riders</a></div>
+                <div><a ui-sref="viewRides" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.toWorkRideExists()">
-                <a ui-sref="listOpenRides({toWork: true})" class="button">Get Ride To Work</a>
+                <a ui-sref="requestRide({toWork: true})" class="button">Get Ride To Work</a>
             </div>
         </div>
 
@@ -19,12 +19,12 @@
             
             <div ng-show="vm.fromWorkRideExists()">
                 <div><strong>Departure Time</strong> {{ vm.data.fromWorkRide.departureTime }}</div>
-                <div><a ui-sref="" class="button">View Riders</a></div>
+                <div><a ui-sref="viewRides" class="button">View Riders</a></div>
             </div>
 
             <div ng-hide="vm.fromWorkRideExists()">
-                <a ui-sref="listOpenRides({toWork: false})" class="button">Get Ride Home</a>
+                <a ui-sref="requestRide({toWork: false})" class="button">Get Ride Home</a>
             </div>
         </div>
     </div>
-</div>-->
+</div>
