@@ -1,9 +1,9 @@
 <div class="page-primary-content">
     <h1>{{ vm.title }}</h1>
-    <h2>Departure Time: {{ vm.data.ride.departureTime }}</h2>
+    <h2>Departure Time: {{ vm.data.ride.DepartureTime }}</h2>
 
     <div class="row" ng-repeat="rider in vm.data.riders">
-        <div class="medium-9 columns"><strong>Name:</strong> {{ rider.name }}</div>
+        <div class="medium-9 columns"><strong>Name:</strong> {{ rider.Name }}</div>
         <div class="medium-3 columns">
             <strong>Approved:</strong>
             <span ng-show="rider.approved" class="button">&#10003;</span>

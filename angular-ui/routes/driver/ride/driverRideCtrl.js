@@ -57,7 +57,7 @@
             vm.approveRider = function(index) {
                 rideDataService.approveRider($cookies.get("username"), dateService.getThisWeeksDate(), $stateParams.toWork, vm.data.riders[index].username, function() {
                     console.log("Approved rider!");
-                    vm.data.riders[index].approved = true;
+                    vm.data.riders[index].Approved = true;
                 }, function() {
                     // TODO: handle failure
                     console.log("Could not approve rider...");
