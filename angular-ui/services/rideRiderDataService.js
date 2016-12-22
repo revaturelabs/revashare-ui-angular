@@ -2,13 +2,31 @@
   ng.module("revashare")
     .service("rideRiderDataService", ["$http", "REVASHARE_API_URL", function ($http, REVASHARE_API_URL) {
 
-      var getRides;
+      var getRide;
+      var createRide;
+      var getRiders
       var viewRides
       var requestRide;
 
-      getRides = function (successCallback, failureCallback) {
-        $http.post(REVASHARE_API_URL + "api/rider/get-rides")
+     
+      getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
+            $http.get(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
+            .then(function(response) {
+                successCallback(response.data);
+            },
+            function(response) {
+                failureCallback();
+            });
+        };
 
+      createRide = function (successCallback, failureCallback) {
+        $http.post(REVASHARE_API_URL + "api/rider/get-rides")
+          .then(function (data) {
+            successCallback(data);
+          },
+          function (data) {
+            failureCallback();
+          });
       }
 
       getRiders = function (username, startOfWeekDate, isToWork, successCallback, failureCallback) {
@@ -65,7 +83,7 @@
         ]);
       }
 
-      requestRide = function (driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
+      requestRide = function (ride, driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
         var rideRider = {
           ride: {
             driver: driver,
@@ -83,6 +101,8 @@
             failureCallback();
           });
       }
+      this.getRide = getRide;
+      this.createRide = createRide;
       this.viewRides = viewRides;
       this.getRiders = getRiders;
       this.requestRide = requestRide;
