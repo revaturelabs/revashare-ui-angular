@@ -1,4 +1,4 @@
-angular.module("revashare").controller("user_controller", function (userDataService) {
+angular.module("revashare").controller("user_controller", ['userDataService', function (userDataService) {
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
@@ -24,7 +24,7 @@ angular.module("revashare").controller("user_controller", function (userDataServ
   function getDrivers() {
     userDataService.getDrivers(
       function success (response) {
-        vm.drivers = reponse;
+        vm.drivers = response;
       },
       function error () {
         toastr.error("could not retrieve drivers");
@@ -71,4 +71,4 @@ angular.module("revashare").controller("user_controller", function (userDataServ
       });
   }
 
-});
+}]);

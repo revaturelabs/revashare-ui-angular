@@ -33,5 +33,20 @@
 			});
 		}
 
+		function recoverPassword(username, successfulCallback, errorCallback) {
+			$http({
+				method: 'POST',
+				url: REVASHARE_API_URL + 'api/account/recover',
+				data: username,
+				cache: true
+			})
+			.then(function success(response) {
+				successfulCallback(response.data);
+			},
+			function error() {
+				errorCallback('error');
+			});
+		}
+
 	}]);
 })();
