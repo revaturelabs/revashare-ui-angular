@@ -1,5 +1,5 @@
 
-angular.module("revashare").service("displayStateService", function ($cookies) {
+angular.module("revashare").service("displayStateService", function ($cookies, $state, userDataService) {
 
     // sidebar is always visible at min-width: 992px
     var sidebar_query = window.matchMedia("(min-width: 992px)");
@@ -15,6 +15,7 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
     this.role = $cookies.getObject("role") ? $cookies.getObject("role").role : "user";
     
     this.addLoginListener = addLoginListener;
+    this.callIfIsInGroup = callIfIsInGroup;
     this.alert_logged_in = alert_logged_in;
     this.alert_logged_out = alert_logged_out;
     this.alert_sidebar_visible = alert_sidebar_visible;
@@ -41,6 +42,26 @@ angular.module("revashare").service("displayStateService", function ($cookies) {
 
         angular.forEach(removeListeners, function(i) {
             loginListeners.splice(i, 1);
+        });
+    }
+
+
+    function callIfIsInGroup(groups, callback, redirectState, redirectParams) {
+        if (redirectState === undefined) {
+            redirectState = "welcome";
+        }
+
+        if (redirectParams === undefined) {
+            redirectParams = {};
+        }
+
+        userDataService.isInGroup(this.username, groups, function(isIn) {
+            if (isIn) {
+                callback();
+            }
+            else {
+                $state.go(redirectState, redirectParams);
+            }
         });
     }
 

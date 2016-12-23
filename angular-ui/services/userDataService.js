@@ -7,51 +7,50 @@
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
     this.isInGroup = isInGroup;
-    this.redirectIfNotInGroup = redirectIfNotInGroup;
     this.getUser = getUser;
 
-    function isInGroup(username, groups) {
+    var cache = {};
+
+    function isInGroup(username, groups, callback) {
       var isIn = false;
       var userRole = "Guest";
 
+      function check() {
+        angular.forEach(groups, function(group) {
+          if (group === userRole) {
+            isIn = true;
+          }
+        });
+
+        callback(isIn);
+      }
+
       if (username !== false) {
-        userRole = getUser(username).Roles[0].Type;
+        getUser(username, function(user) {
+          userRole = user.Roles[0].Type;
+          check();
+        }, function() {
+          check();
+        });
       }
-
-      angular.forEach(groups, function(group) {
-        console.log(group + " === " + userRole);
-        if (group === userRole) {
-          isIn = true;
-        }
-      });
-
-      return isIn;
-    }
-
-    function redirectIfNotInGroup(username, groups, redirectState, redirectParams) {
-      if (redirectState === undefined) {
-        redirectState = "welcome";
+      else {
+        check();
       }
-
-      if (redirectParams === undefined) {
-        redirectParams = {};
-      }
-
-      if (!isInGroup(username, groups)) {
-        $state.go(redirectState, redirectParams);
-        return true;
-      }
-
-      return false;
     }
 
     function getUser(username, successCallback, failureCallback) {
-      $http.get(REVASHARE_API_URL + "api/user/get-user?username=" + username)
-      .then(function(response) {
-        successCallback(response.data);
-      }, function(response) {
-        failureCallback();
-      });
+      if (cache[username] === undefined) {
+        $http.get(REVASHARE_API_URL + "api/user/get-user?username=" + username)
+        .then(function(response) {
+          cache[username] == response.data;
+          successCallback(response.data);
+        }, function(response) {
+          failureCallback();
+        });
+      }
+      else {
+        successCallback(cache[username]);
+      }
     }
 
     function addUser (user, successCallback, errorCallback) {
