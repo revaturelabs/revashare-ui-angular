@@ -1,7 +1,7 @@
 (function(ng) {
     ng.module("revashare")
-    .controller("driverRideCtrl", ["$state", "$stateParams", "$cookies", "rideDataService", "dateService", "displayStateService", function($state, $stateParams, $cookies, rideDataService, dateService, displayStateService) {
-        displayStateService.callIfIsInGroup(["Driver"], function() {
+    .controller("driverRideCtrl", ["$state", "$stateParams", "$cookies", "rideDataService", "dateService", function($state, $stateParams, $cookies, rideDataService, dateService) {
+        //displayStateService.callIfIsInGroup(["Driver"], function() {
             var vm = this;
             vm.data = {};
 
@@ -98,6 +98,6 @@
                     });
                 }
             }
-        });
+        //});
     }]);
 })(angular);

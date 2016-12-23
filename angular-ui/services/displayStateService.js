@@ -12,7 +12,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     this.sidebar_visible = sidebar_query.matches;
     this.logged_in = $cookies.getObject("logged_in") ? $cookies.getObject("logged_in").status : true;
     this.username = $cookies.getObject("username") ? $cookies.getObject("username") : false;
-    this.role = $cookies.getObject("role") ? $cookies.getObject("role").role : "user";
+    this.role = $cookies.getObject("role") ? $cookies.getObject("role").role : "Guest";
     
     this.addLoginListener = addLoginListener;
     this.callIfIsInGroup = callIfIsInGroup;
@@ -55,14 +55,12 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
             redirectParams = {};
         }
 
-        userDataService.isInGroup(this.username, groups, function(isIn) {
-            if (isIn) {
-                callback();
-            }
-            else {
-                $state.go(redirectState, redirectParams);
-            }
-        });
+        if (isInGroup(this.role, groups)) {
+            callback();
+        }
+        else {
+            $state.go(redirectState, redirectParams);
+        }
     }
 
     function sidebar_locked_open_listener (width_query) {
@@ -74,7 +72,14 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         this.logged_in = true; 
         this.username = username;
         $cookies.putObject("logged_in", {status: true});  
-        $cookies.putObject("username", {username: username});  
+        $cookies.putObject("username", {username: username});
+
+        userDataService.getUser(this.username, function(user) {
+            this.role = user.Roles[0].Type;
+            $cookies.putObject("role", {role: user.Roles[0].Type});
+        }, function() {
+            console.log("Could not get user.");
+        });
 
         alertLoggedInUserChange();
     }
@@ -82,8 +87,10 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     function alert_logged_out () {
         this.logged_in = false; 
         this.username = false;
+        this.role = "Guest";
         $cookies.putObject("logged_in", {status: false});
         $cookies.putObject("username", {username: false});
+        $cookies.putObject("role", {role: "Guest"});
 
         alertLoggedInUserChange();
     }

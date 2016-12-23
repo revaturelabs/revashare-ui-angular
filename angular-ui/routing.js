@@ -1,6 +1,20 @@
 (function(ng) {
-    angular.module("revashare").config(function ($stateProvider, $urlRouterProvider) {
+    angular.module("revashare").config(function ($stateProvider, $state, $urlRouterProvider, $rootScope, displayStateService, userDataService) {
         $urlRouterProvider.otherwise("/welcome");
+
+        $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams){
+            var roles = toState.current.data.allowedRoles;
+
+            if (roles === undefined) {
+                roles = [ "Guest", "Unassigned", "Rider", "Driver", "Admin" ];
+            }
+
+            if (userDataService.isInRole(displayStateService.role, roles)) {
+                event.preventDefault();
+                $state.go("welcome");
+            }
+        });
 
         $stateProvider
             .state("welcome", welcome)
@@ -35,7 +49,8 @@
     var driverRideIndex = {
         url: "/driver/ride",
         data: {
-            action: "index"
+            action: "index",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -52,7 +67,8 @@
             toWork: true
         },
         data: {
-            action: "create"
+            action: "create",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -69,7 +85,8 @@
             toWork: true
         },
         data: {
-            action: "show"
+            action: "show",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -86,7 +103,8 @@
         url: "/user/profile",
 
         data: {
-            action: "index"
+            action: "index",
+            allowedRoles: [ "Unassigned", "Rider", "Driver", "Admin" ]
         },
         views: {
             "main": {                
@@ -100,7 +118,8 @@
     var userProfileEdit = {
         url: "/user/profile/edit",
         data: {
-            action: "edit"
+            action: "edit",
+            allowedRoles: [ "Unassigned", "Rider", "Driver", "Admin" ]
         },
         views: {
             "main": {

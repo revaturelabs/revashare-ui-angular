@@ -11,36 +11,16 @@
 
     var cache = {};
 
-    function isInGroup(username, groups, callback) {
+    function isInGroup(role, groups, callback) {
       var isIn = false;
-      var userRole = "Guest";
 
-      function check() {
-        angular.forEach(groups, function(group) {
-          if (group === userRole) {
-            isIn = true;
-          }
-        });
+      angular.forEach(groups, function(group) {
+        if (group === role) {
+          isIn = true;
+        }
+      });
 
-        callback(isIn);
-      }
-
-      if (username !== false) {
-        getUser(username, function(user) {
-          userRole = user.Roles[0].Type;
-
-          if (userRole == "RequestDriver") {
-            userRole = "Rider";
-          }
-
-          check();
-        }, function() {
-          check();
-        });
-      }
-      else {
-        check();
-      }
+      return role;
     }
 
     function getUser(username, successCallback, failureCallback) {

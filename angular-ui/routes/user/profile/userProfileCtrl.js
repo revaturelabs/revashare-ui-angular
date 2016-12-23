@@ -1,7 +1,7 @@
 (function(ng) {
     ng.module("revashare")
     .controller("userProfileCtrl", ["$state", "$cookies", "userDataService", "apartmentDataService", "displayStateService", function($state, $cookies, userDataService, apartmentDataService, displayStateService) {
-        displayStateService.callIfIsInGroup(["Unassigned", "Rider", "Driver", "Admin"], function() {
+        //displayStateService.callIfIsInGroup(["Unassigned", "Rider", "Driver", "Admin"], function() {
             var vm = this;
             vm.data = {};
             
@@ -50,6 +50,6 @@
                     });
                 };
             }
-        });
+        //});
     }]);
 })(angular);
