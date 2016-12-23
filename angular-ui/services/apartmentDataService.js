@@ -16,7 +16,7 @@
       function listApartments(successCallback, errorCallback){
       $http({
         method: "GET",
-        url: "/apartment/",
+        url: "/api/user/get-apartment/",
         cache: true
       })
         .then(function success(response) {

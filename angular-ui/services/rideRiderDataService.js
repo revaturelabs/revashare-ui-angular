@@ -11,7 +11,7 @@
 
      
       getRideByApartment = function(apartment, successCallback, failureCallback){
-        $http.post(REVASHARE_API_URL + "api/rider/get-rides?location=" + apartment )
+        $http.post(REVASHARE_API_URL + "api/user/get-rides-by-apartment?name=" + apartment )
         .then(function(response) {
                 successCallback(response.data);
             },

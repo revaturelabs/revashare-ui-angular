@@ -11,7 +11,7 @@
             vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
 
             vm.getRideByApartment = function () {
-                rideRiderDataService.getRideByApartment("abc",
+                rideRiderDataService.getRideByApartment("The Townes",
                     function (data) {
                         // TODO: handle success
                         console.log("Ride request submitted.");
