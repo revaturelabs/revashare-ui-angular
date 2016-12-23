@@ -17,10 +17,12 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
+            .state("viewRides", viewRides)
+            .state("requestRide", requestRide)
+            .state("riderRideShow", riderRideShow)
+
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
-
-            .state("riderRideRequest", riderRideRequest)
 
             .state("comment", comment)
             .state("addComment", addComment)
@@ -59,15 +61,35 @@
                 controllerAs: "vm"
             }
         }
+    };         
+
+    var driverRideShow = {
+        url: "/driver/ride/show",
+        params: {
+            toWork: true
+        },
+        data: {
+            action: "show"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/driver/ride/show.html",
+                controller: "driverRideCtrl",
+
+                controllerAs: "vm"
+            }
+        }
     };
+   
 
     var userProfileIndex = {
         url: "/user/profile",
+
         data: {
             action: "index"
         },
         views: {
-            "main": {
+            "main": {                
                 templateUrl: "routes/user/profile/index.html",
                 controller: "userProfileCtrl",
                 controllerAs: "vm"
@@ -89,22 +111,40 @@
         }
     };
 
-    var riderRideRequest = {
-        url: "/rider/ride/index",
-        params: {
-            toWork: true
+    var viewRides = {
+        url:  "/rider/ride/index",
+         data: {
+            action: "index"
         },
         views: {
             "main": {
+
                 templateUrl: "routes/rider/ride/index.html",
                 controller: "riderRideController",
                 controllerAs: "vm"
             }
         }
-    }
+    };
 
-    var driverRideShow = {
-        url: "/driver/ride/show",
+    var requestRide = {
+        url: "/rider/ride/listOpen",
+        params: {
+            toWork: true
+        },
+        data: {
+            action: "create"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/rider/ride/listOpen.html",
+                controller: "riderRideController",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var riderRideShow = {
+        url: "/rider/ride/show",
         params: {
             toWork: true
         },
@@ -113,17 +153,12 @@
         },
         views: {
             "main": {
-                templateUrl: "routes/driver/ride/show.html",
-                controller: "driverRideCtrl",
-
+                templateUrl: "routes/rider/ride/show.html",
+                controller: "riderRideController",
                 controllerAs: "vm"
             }
         }
     };
-
-    
-
-
 
     var login = {
         url: "/login",
