@@ -41,7 +41,12 @@
             });
 
             vm.updateProfile = function() {
-                // TODO
+                userDataService.modifyUser("testdriver", vm.data.user.Name, vm.data.user.Email, vm.data.user.PhoneNumber, vm.data.apartment.Name, function(data) {
+                    console.log("Updated user!");
+                    $state.go("userProfileIndex");
+                }, function() {
+                    console.log("Could not update user.");
+                });
             };
         }
     }]);

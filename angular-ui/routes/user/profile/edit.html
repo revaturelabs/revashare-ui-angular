@@ -2,7 +2,7 @@
     <h1>My Profile</h1>
 
     <div ng-hide="vm.apartmentsLoading">
-        <form ng-submit="">
+        <form ng-submit="vm.updateProfile()">
             <div class="row">
                 <div class="medium-6 columns"><strong><label for="name">Name</label></strong></div>
                 <div class="medium-6 columns"><input type="text" id="name" ng-model="vm.data.user.Name" /></div>

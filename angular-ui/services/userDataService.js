@@ -60,18 +60,22 @@
       });
     }
 
-    function modifyUser (user, successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: REVASHARE_API_URL + "api/admin/modifyuser",
-        data: user,
-        cache: false
-      })
-      .then(function success(response) {
+    function modifyUser (username, name, email, phoneNumber, apartmentName, successCallback, errorCallback) {
+      var user = {
+        UserName: username,
+        Name: name,
+        Email: email,
+        PhoneNumber: phoneNumber,
+        Apartment: {
+          Name: apartmentName
+        }
+      };
+
+      $http.post(REVASHARE_API_URL + "api/rider/save-user", user)
+      .then(function(response) {
         successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
+      }, function(response) {
+        failureCallback();
       });
     }
 
