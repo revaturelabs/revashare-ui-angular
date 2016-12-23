@@ -11,6 +11,16 @@
 
      
       getRideByApartment = function(apartment, successCallback, failureCallback){
+        var ride = {                
+                Vehicle: {
+                    Owner: {
+                        UserName: username,
+                        Apartment: {
+                          Name: apartment
+                        },
+                    },
+                },               
+            };
         $http.post(REVASHARE_API_URL + "api/user/get-rides-by-apartment?name=" + apartment )
         .then(function(response) {
                 successCallback(response.data);
@@ -21,6 +31,17 @@
       };
 
       getRide = function(username, startOfWeekDate, isToWork, successCallback, failureCallback) {
+        var rideRider = {
+          ride: {
+            Vehicle: {
+              Owner: {
+                UserName: username
+              },
+            },
+            StartOfWeekDate: startOfWeekDate,
+            IsAMRide: isToWork
+          } 
+        };
             $http.post(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
             .then(function(response) {
                 successCallback(response.data);
@@ -41,6 +62,20 @@
       }
 
       getRiders = function (username, startOfWeekDate, isToWork, successCallback, failureCallback) {
+         var rideRider = {
+          ride: {
+            Vehicle: {
+              Owner: {
+                UserName: driver
+              },
+            },
+            StartOfWeekDate: startOfWeekDate,
+            IsAMRide: isToWork
+          },
+          rider: {
+            UserName: username
+          } 
+        };
         $http.post(REVASHARE_API_URL + "api/rider?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
           .then(function (data) {
             successCallback(data);
@@ -50,8 +85,7 @@
           });
       };
 
-      function viewRides(successCallback, errorCallback) {
-
+      viewRides = function(successCallback, errorCallback) {
         $http.post(REVASHARE_API_URL + "api/driver/getRide")
           .then(function (data) {
             successCallback(data);
