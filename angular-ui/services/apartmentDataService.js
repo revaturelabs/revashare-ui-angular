@@ -5,11 +5,11 @@
         var listApartments;
         
         addApartment = function(apartment, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "api/apartment", apartment)
-            .then(function(data) {
-                successCallback();
+            $http.post(REVASHARE_API_URL + "api/admin/add-apartment", apartment)
+            .then(function(response) {
+                successCallback(response.data);
             },
-            function(data) {
+            function(response) {
                 failureCallback();
             });
         };      
