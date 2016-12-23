@@ -6,6 +6,7 @@
     this.getRiders = getRiders;
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
+    this.getUser = getUser;
 
     function getUser(username, successCallback, failureCallback) {
       $http.get(REVASHARE_API_URL + "api/user/get-user?username=" + username)

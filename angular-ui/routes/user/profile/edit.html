@@ -1,0 +1,45 @@
+<div class="page-primary-content">
+    <h1>My Profile</h1>
+
+    <div ng-hide="vm.apartmentsLoading">
+        <form ng-submit="">
+            <div class="row">
+                <div class="medium-6 columns"><strong><label for="name">Name</label></strong></div>
+                <div class="medium-6 columns"><input type="text" id="name" ng-model="vm.data.user.Name" /></div>
+            </div>
+            
+            <br />
+
+            <div class="row">
+                <div class="medium-6 columns"><strong><label for="email">Email</label></strong></div>
+                <div class="medium-6 columns"><input type="text" id="email" ng-model="vm.data.user.Email" /></div>
+            </div>
+            
+            <br />
+
+            <div class="row">
+                <div class="medium-6 columns"><strong><label for="phone-number">Phone Number</label></strong></div>
+                <div class="medium-6 columns"><input type="text" id="phone-number" ng-model="vm.data.user.PhoneNumber" /></div>
+            </div>
+            
+            <br />
+
+            <div class="row">
+                <div class="medium-6 columns"><strong><label for="apartment">Apartment</label></strong></div>
+                <div class="medium-6 columns"><select ng-model="vm.data.apartment" ng-options="apartment.Name for apartment in vm.apartments"></select></div>
+            </div>
+            
+            <br />
+
+            <div class="row">
+                <div class="medium-12 columns"><input type="submit" value="Save Changes" /></div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row" ng-show="vm.apartmentsLoading">
+        <div class="medium-12 columns">
+            Loading...
+        </div>
+    </div>
+</div>
