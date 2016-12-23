@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <title>Revashare</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="libs/foundation/foundation.css">
@@ -15,8 +18,9 @@
   <link rel="stylesheet" href="css/sidebar.css">
 
 </head>
+
 <body ng-app="revashare">
-  
+
   <navbar></navbar>
 
   <section id="sidebar-page-wrapper">
@@ -25,7 +29,7 @@
     <div id="page-wrapper" ui-view="main"></div>
 
   </section>
-  
+
 
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script src="libs/angular/angular.js"></script>
@@ -43,8 +47,14 @@
   <script src="services/apartmentDataService.js"></script>
   <script src="services/carDataService.js"></script>
   <script src="services/userDataService.js"></script>
+
+  <script src="services/rideRiderDataService.js"></script>
+
   <script src="services/loginService.js"></script>
   <script src="services/registrationService.js"></script>
+  <script src="services/pendingUserService.js"></script>
+  <script src="services/adminDataService.js"></script>
+
 
   <script src="components/navbar/navbar_controller.js"></script>
   <script src="components/navbar/navbar_component.js"></script>
@@ -67,6 +77,8 @@
 
   <script src="routes/comment/comment_controller.js"></script>
   <script src="routes/apartment/apartment_controller.js"></script>
+  <script src="routes/rider/ride/riderRideController.js"></script>
+
 
   <script src="routes/car/car_controller.js"></script>
 
@@ -74,4 +86,5 @@
   <script src="routing.js"></script>
 
 </body>
+
 </html>

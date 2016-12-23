@@ -1,43 +1,81 @@
-(function(ng) {
-    ng.module("revashare")
-    .controller("riderRideController", ["$stateParams", "$cookies", "rideDataService", "rideRiderDataService", "dateService", function($stateParams, $cookies, rideDataService, rideRiderDataService, dateService) {
+(function (ng) {
+    angular.module("revashare").controller("riderRideController", ["$state", "$stateParams", "$cookies", "rideRiderDataService", "dateService", function ($state, $stateParams, $cookies, rideRiderDataService, dateService) {
         var vm = this;
-
-        vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
         vm.data = {};
-        vm.ridedata = {};
+        vm.ride = [];
+        vm.rides = [];
+        vm.rider = [];
+        vm.riders = [];
 
-        vm.requestRide = function() {
-            var rider = vm.data;
-            rider.username = $cookies.get("username");
-            var ride = vm.ridedata;
-            ride.username = driver.username;
-            ride.isToWork = $stateParams.toWork;
-            ride.startOfWeekDate = dateService.getThisWeeksDate();
-            ride.isOnTime = true;
+        if ($state.current.data.action == "create") {
+            vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
 
-            if (ride.departureTime === null) {
-                return "Departure time cannot be empty.";
-            }
+            vm.getRideByApartment = function (index) {
+                rideRiderDataService.getRideByApartment(rides[index].Vehicle.Owner.Apartment.Name,
+                    function (data) {
+                        // TODO: handle success
+                        console.log("Ride request submitted.");
+                        $state.go("requestRide");
+                    }, function () {
+                        // TODO: handle failure
+                        console.log("Ride request failed.");
+                    });
+            };
 
-            rideDataService.getRide(ride,  function() {
-                // TODO: handle success
-                console.log("Ride request sent.");
-            }, function() {
-                // TODO: handle failure
-                console.log("Ride request not sent.");
+            vm.createRide = function (index) {
+                rideRiderDataService.requestRide(rides[index].Vehicle.Owner.UserName, dateService.dateToString(dateService.getThisWeeksDate()), $stateParams.toWork, $cookies.getObject("username"),
+                    function (data) {
+                        // TODO: handle success
+                        console.log("Ride request submitted.");
+                        $state.go("viewRides");
+                    }, function () {
+                        // TODO: handle failure
+                        console.log("Ride request failed.");
+                    });
+            };
+        }
+
+        if ($state.current.data.action == "create") {
+            vm.toWorkRideExists = function () {
+                return vm.data.toWorkRide !== undefined;
+            };
+
+            vm.fromWorkRideExists = function () {
+                return vm.data.fromWorkRide !== undefined;
+            };
+        }
+
+        if ($state.current.data.action == "show") {
+            vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate();
+            vm.data.ride = {};
+            vm.data.riders = [];
+
+            rideRiderDataService.getRide($cookies.get("username"), dateService.getThisWeeksDate(), $stateParams.toWork, function (data) {
+                console.log("Ride gotten!");
+                console.log(data);
+                vm.data.ride = data;
+
+                rideDataService.getRiders($cookies.get("username"), dateService.getThisWeeksDate(), $stateParams.toWork, function (data) {
+                    console.log("Riders gotten!");
+                    console.log(data);
+                    vm.data.riders = data;
+                }, function () {
+                    // TODO: handle failure.
+                    console.log("Riders not gotten...");
+                });
+            }, function () {
+                // TODO: handle failure.
+                console.log("Ride not gotten...");
             });
-            function riderRideRequest(rider, ride){
 
-            }
-        };
+            rideRiderDataService.viewRides(
+                function success(rides) {
+                    vm.rides = rides;
+                },
+                function error() {
+                    console.log("error");
+                });
 
-        vm.toWorkRideExists = function() {
-            return vm.ridedata.toWorkRide !== undefined;
-        };
-
-        vm.fromWorkRideExists = function() {
-            return vm.ridedata.fromWorkRide !== undefined;
-        };
+        }
     }]);
 })(angular);
