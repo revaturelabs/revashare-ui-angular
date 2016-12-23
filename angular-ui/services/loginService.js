@@ -2,12 +2,13 @@
 	angular.module('revashare')
 	.service('loginService', ['$http', 'REVASHARE_API_URL', function($http, REVASHARE_API_URL) {
 		this.login = login;
+		this.logout = logout;
 
-		function login(email, username, password, successfulCallback, errorCallback) {
+		function login(username, password, successfulCallback, errorCallback) {
 			$http({
 				method: 'POST',
 				url: REVASHARE_API_URL + 'api/account/login',
-				params: { 'email': email, 'userName': username, 'password': password },
+				params: { 'userName': username, 'password': password },
 				cache: true
 			})
 			.then(function success(resposne) {
@@ -27,10 +28,10 @@
 			.then(function success(response) {
 
 			},
-			funciton error(response) {
+			function error(response) {
 				errorCallback('error');
 			});
 		}
-		
+
 	}]);
 })();
