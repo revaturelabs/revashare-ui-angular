@@ -44,7 +44,6 @@
                 roles = [ "Guest", "Unassigned", "Rider", "Driver", "Admin" ];
             }
 
-            console.log(roles);
             if (!displayStateService.isInGroup(displayStateService.role, roles)) {
                 event.preventDefault();
                 $state.go("welcome");
