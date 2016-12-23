@@ -1,6 +1,6 @@
 (function(ng) {
     ng.module("revashare")
-    .directive("rsRoleGroup", ["displayStateService", function(displayStateService) {
+    .directive("rsRoleGroup", ["displayStateService", "userDataService", function(displayStateService, userDataService) {
         return {
             restrict: "E",
             transclude: true,
@@ -9,16 +9,28 @@
                 var roles = attrs.rsRoles;
 
                 if (roles === undefined) {
-                    roles = [];
+                    roles = [ "Guest" ];
                 }
                 else {
                     roles = roles.replace(" ", "");
                     roles = roles.split(",");
                 }
 
-                element.css({
-                    display: "none"
-                });
+                function updateVisibility() {
+                    if (userDataService.isInGroup(displayStateService.username, roles)) {
+                        element.css({
+                            display: "block"
+                        });
+                    }
+                    else {
+                        element.css({
+                            display: "none"
+                        });
+                    }
+                }
+
+                displayStateService.addLoginListener(updateVisibility);
+                updateVisibility();
             }
         };
     }]);
