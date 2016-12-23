@@ -17,6 +17,9 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
+            .state("userProfileIndex", userProfileIndex)
+            .state("userProfileEdit", userProfileEdit)
+
             .state("riderRideRequest", riderRideRequest)
 
             .state("comment", comment)
@@ -58,6 +61,33 @@
         }
     };
 
+    var userProfileIndex = {
+        url: "/user/profile",
+        data: {
+            action: "index"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/user/profile/index.html",
+                controller: "userProfileCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var userProfileEdit = {
+        url: "/user/profile/edit",
+        data: {
+            action: "edit"
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/user/profile/edit.html",
+                controller: "userProfileCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     var riderRideRequest = {
         url: "/rider/ride/index",
