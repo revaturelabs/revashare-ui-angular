@@ -10,12 +10,12 @@
         if ($state.current.data.action == "create") {
             vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
 
-            vm.getRideByApartment = function () {
-                rideRiderDataService.getRideByApartment("The Townes",
+            vm.getRideByApartment = function (index) {
+                rideRiderDataService.getRideByApartment(rides[index].Vehicle.Owner.Apartment,
                     function (data) {
                         // TODO: handle success
                         console.log("Ride request submitted.");
-                        $state.go("viewRides");
+                        $state.go("requestRide");
                     }, function () {
                         // TODO: handle failure
                         console.log("Ride request failed.");
