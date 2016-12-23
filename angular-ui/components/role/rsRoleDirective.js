@@ -17,16 +17,18 @@
                 }
 
                 function updateVisibility() {
-                    if (userDataService.isInGroup(displayStateService.username, roles)) {
-                        element.css({
-                            display: "block"
-                        });
-                    }
-                    else {
-                        element.css({
-                            display: "none"
-                        });
-                    }
+                    userDataService.isInGroup(displayStateService.username, roles, function(isIn) {
+                        if (isIn) {
+                            element.css({
+                                display: "block"
+                            });
+                        }
+                        else {
+                            element.css({
+                                display: "none"
+                            });
+                        }
+                    });
                 }
 
                 displayStateService.addLoginListener(updateVisibility);

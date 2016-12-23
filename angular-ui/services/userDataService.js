@@ -28,6 +28,11 @@
       if (username !== false) {
         getUser(username, function(user) {
           userRole = user.Roles[0].Type;
+
+          if (userRole == "RequestDriver") {
+            userRole = "Rider";
+          }
+
           check();
         }, function() {
           check();
