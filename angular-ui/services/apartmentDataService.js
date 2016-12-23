@@ -2,6 +2,7 @@
     ng.module("revashare")
     .service("apartmentDataService", ["$http", "REVASHARE_API_URL", function($http, REVASHARE_API_URL) {
         var addApartment;
+        var listApartments;
         
         addApartment = function(apartment, successCallback, failureCallback) {
             $http.post(REVASHARE_API_URL + "api/apartment", apartment)
@@ -11,22 +12,16 @@
             function(data) {
                 failureCallback();
             });
-        };
-      
-      function listApartments(successCallback, errorCallback){
-      $http({
-        method: "GET",
-        url: "/api/user/get-apartments/",
-        cache: true
-      })
-        .then(function success(response) {
-          successCallback(response.data);
-        },
-        function error(response) {
-          errorCallback("error");
-        });
-    }
+        };      
 
+        listApartments = function(successCallback, failureCallback) {
+            $http.get(REVASHARE_API_URL + "api/user/get-apartments")
+            .then(function(response) {
+                successCallback(response.data);
+            }, function(response) {
+                failureCallback();
+            });
+        };
 
         this.addApartment = addApartment;    
         this.listApartments = listApartments;    

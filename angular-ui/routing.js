@@ -21,6 +21,9 @@
             .state("requestRide", requestRide)
             .state("riderRideShow", riderRideShow)
 
+            .state("userProfileIndex", userProfileIndex)
+            .state("userProfileEdit", userProfileEdit)
+
             .state("comment", comment)
             .state("addComment", addComment)
             .state("apartment", apartment)
@@ -77,14 +80,45 @@
             }
         }
     };
+   
 
-    var viewRides = {
-        url:  "/rider/ride/index",
+    var userProfileIndex = {
+        url: "/user/profile",
+
         data: {
             action: "index"
         },
         views: {
+            "main": {                
+                templateUrl: "routes/user/profile/index.html",
+                controller: "userProfileCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var userProfileEdit = {
+        url: "/user/profile/edit",
+        data: {
+            action: "edit"
+        },
+        views: {
             "main": {
+                templateUrl: "routes/user/profile/edit.html",
+                controller: "userProfileCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var viewRides = {
+        url:  "/rider/ride/index",
+         data: {
+            action: "index"
+        },
+        views: {
+            "main": {
+
                 templateUrl: "routes/rider/ride/index.html",
                 controller: "riderRideController",
                 controllerAs: "vm"

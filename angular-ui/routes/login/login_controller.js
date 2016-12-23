@@ -1,36 +1,34 @@
+angular.module('revashare').controller('login_controller', ['displayStateService', 'loginService', function (displayStateService, loginService) {
+  var vm = this;
 
-angular.module("revashare").controller("login_controller", function (displayStateService, serverDataService) {
-    var vm = this;
+  vm.login = login;
+  vm.logout  = logout;
+  vm.loginForm = {};
 
-    vm.loginUser = loginUser;
-    vm.loginAdmin = loginAdmin;
+  function login() {
+    loginService.login(vm.loginForm.username, vm.loginForm.password,
+      function success(response) {
+        displayStateService.alert_logged_in(vm.loginForm.username,
+          function success() {
 
-    function loginUser () {
-        serverDataService.loginUser(vm.loginForm.username, vm.loginForm.password, 
-            function success (response) {
-                console.log("logged in successfully");
-                window.toastr.success("successfully logged in");
-                //userStateService.notify_loggedIn(true);
-            },
-            function error () {
-                console.log("error logging in");
-                window.toastr.error("error logging in");
-                //userStateService.notify_loggedIn(false);
-            });
-    }
+          },
+          function error() {
 
-    function loginAdmin () {
-        serverDataService.loginAdmin(vm.loginForm.username, vm.loginForm.password, 
-            function success (response) {
-                console.log("logged in successfully");
-                window.toastr.success("successfully logged in");
-                //userStateService.notify_loggedIn(true);
-            },
-            function error () {
-                console.log("error logging in");
-                window.toastr.error("error logging in");
-                //userStateService.notify_loggedIn(false);
-            });
-    }
+          });
+      },
+      function error () {
+        window.toastr.error('error logging in');
+      });
+  }
 
-});
+  function logout() {
+    loginDataService.logout(
+      function success(response) {
+        window.toastr.error('logged out')
+      },
+      function error() {
+
+      });
+  }
+
+}]);
