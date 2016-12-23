@@ -1,9 +1,11 @@
 <div id="sidebar-wrapper" class="sidebar" ng-class="{'sidebar-visible': vm.sidebar_visible}">
     <div class="sidebar-profile-container" ng-if="!vm.logged_in">
         <!-- profile icon -->
-        <div class="sidebar-profile-badge">
-            Guest
-        </div>
+        <a href="http://nicememewebsitewebsitewebsitewebsitewebsite.website">
+            <div class="sidebar-profile-badge">
+                Nice Meme!
+            </div>
+        </a>
         <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
     </div>
     <div class="sidebar-profile-container" ng-if="vm.logged_in">
