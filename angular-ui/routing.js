@@ -1,20 +1,6 @@
 (function(ng) {
-    angular.module("revashare").config(function ($stateProvider, $state, $urlRouterProvider, $rootScope, displayStateService, userDataService) {
+    angular.module("revashare").config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/welcome");
-
-        $rootScope.$on('$stateChangeStart',
-        function(event, toState, toParams, fromState, fromParams){
-            var roles = toState.current.data.allowedRoles;
-
-            if (roles === undefined) {
-                roles = [ "Guest", "Unassigned", "Rider", "Driver", "Admin" ];
-            }
-
-            if (userDataService.isInRole(displayStateService.role, roles)) {
-                event.preventDefault();
-                $state.go("welcome");
-            }
-        });
 
         $stateProvider
             .state("welcome", welcome)
@@ -44,7 +30,27 @@
             .state("addApartment", addApartment)
 
             .state("car", car);
-    });
+    })
+    .run(["$state", "$rootScope", "displayStateService", "userDataService", function($state, $rootScope, displayStateService) {
+        $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams){
+            var roles;
+
+            if (toState.data !== undefined) {
+                roles = toState.data.allowedRoles;
+            }
+
+            if (roles === undefined) {
+                roles = [ "Guest", "Unassigned", "Rider", "Driver", "Admin" ];
+            }
+
+            console.log(roles);
+            if (!displayStateService.isInGroup(displayStateService.role, roles)) {
+                event.preventDefault();
+                $state.go("welcome");
+            }
+        });
+    }]);
 
     var driverRideIndex = {
         url: "/driver/ride",

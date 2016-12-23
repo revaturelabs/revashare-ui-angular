@@ -1,6 +1,6 @@
 (function(ng) {
     ng.module("revashare")
-    .directive("rsRoleGroup", ["displayStateService", "userDataService", function(displayStateService, userDataService) {
+    .directive("rsRoleGroup", ["displayStateService", function(displayStateService) {
         return {
             restrict: "E",
             transclude: true,
@@ -17,18 +17,16 @@
                 }
 
                 function updateVisibility() {
-                    userDataService.isInGroup(displayStateService.username, roles, function(isIn) {
-                        if (isIn) {
-                            element.css({
-                                display: "block"
-                            });
-                        }
-                        else {
-                            element.css({
-                                display: "none"
-                            });
-                        }
-                    });
+                    if (displayStateService.isInGroup(displayStateService.role, roles)) {
+                        element.css({
+                            display: "block"
+                        });
+                    }
+                    else {
+                        element.css({
+                            display: "none"
+                        });
+                    }
                 }
 
                 displayStateService.addLoginListener(updateVisibility);

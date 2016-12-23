@@ -6,22 +6,9 @@
     this.getRiders = getRiders;
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
-    this.isInGroup = isInGroup;
     this.getUser = getUser;
 
     var cache = {};
-
-    function isInGroup(role, groups, callback) {
-      var isIn = false;
-
-      angular.forEach(groups, function(group) {
-        if (group === role) {
-          isIn = true;
-        }
-      });
-
-      return role;
-    }
 
     function getUser(username, successCallback, failureCallback) {
       if (cache[username] === undefined) {
