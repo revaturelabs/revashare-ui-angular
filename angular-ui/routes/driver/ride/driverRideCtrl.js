@@ -1,6 +1,5 @@
 (function(ng) {
-    ng.module("revashare")
-    .controller("driverRideCtrl", ["$state", "$stateParams", "$cookies", "rideDataService", "dateService", function($state, $stateParams, $cookies, rideDataService, dateService) {
+    angular.module("revashare").controller("driverRideCtrl", ["$state", "$stateParams", "$cookies", "rideDataService", "dateService", function($state, $stateParams, $cookies, rideDataService, dateService) {
         var vm = this;
         vm.data = {};
 

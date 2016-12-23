@@ -4,7 +4,7 @@
         var addComment;
         
         addComment = function(comment, successCallback, failureCallback) {
-            $http.post(REVASHARE_API_URL + "flag", comment)
+            $http.post(REVASHARE_API_URL + "api/driver/reportrider", comment)
             .then(function(data) {
                 successCallback();
             },
@@ -17,7 +17,7 @@
         listComments = function(successCallback,errorCallback){
       $http({
         method: "GET",
-        url: "/flag/",
+        url: REVASHARE_API_URL + "driver/reportrider",
         cache: true
       })
         .then(function success(response) {
