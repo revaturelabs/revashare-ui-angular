@@ -4,5 +4,5 @@ var app = angular.module("revashare", [
 	"ngCookies"
 	])
 
-.constant("REVASHARE_API_URL", "http://34.192.6.56/revashareapi/");
+.constant("REVASHARE_API_URL", "http://54.145.144.187/revashare-api/");
 

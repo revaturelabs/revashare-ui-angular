@@ -41,7 +41,7 @@
       .then(function success(response) {
         successCallback(response.data);
       },
-      function error(response) {
+      function error() {
         errorCallback("error");
       });
     }

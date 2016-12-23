@@ -52,47 +52,14 @@
 
       function viewRides(successCallback, errorCallback) {
 
-        successCallback([
-          {
-            "RideDTO": {
-              "DriverDTO": {
-                "Name": "Joe Blow",
-                "PhoneNumber": "123-123-1234",
-                "ApartmentDTO": {
-                  "Latitude": "234.234",
-                  "Longitude": "9845.34",
-                  "Name": "Fairways"
-                },
-                "Email": "asdf@gmail.com",
-                "AccountType": "driver"
-              },
-              "RideRiderDTO": {
-                "Name": "Jim Bob",
-                "PhoneNumber": "123-123-1234",
-                "ApartmentDTO": {
-                  "Latitude": "234.234",
-                  "Longitude": "9845.34",
-                  "Name": "Fairways"
-                },
-                "Email": "asdf@gmail.com",
-                "AccountType": "rider"
-              },
-              "DepartureTime": "12/22/2016",
-              "Capacity": 3,
-              "CurrentlySeated": 1,
-              "VehicleDTO": {
-                "Make": "Ford",
-                "Model": "Taurus",
-                "LicensePlate": "123-ABC",
-                "Color": "Green",
-                "Capacity": 3
-              },
-              "TimeSpan": "08:00",
-              "IsOnTime": true
-            },
-          }
-        ]);
-      }
+        $http.post(REVASHARE_API_URL + "api/driver/getRide")
+          .then(function (data) {
+            successCallback(data);
+          },
+          function (data) {
+            failureCallback();
+          });
+      };
 
       requestRide = function (driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
         var rideRider = {
