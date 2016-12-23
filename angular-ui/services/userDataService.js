@@ -8,14 +8,14 @@
 		this.removeUser = removeUser;
     this.isInGroup = isInGroup;
     this.redirectIfNotInGroup = redirectIfNotInGroup;
+    this.getUser = getUser;
 
     function isInGroup(username, groups) {
       var isIn = false;
       var userRole = "Guest";
 
       if (username !== false) {
-        //userRole = getUser(username).Roles[0].Type;
-        userRole = "Rider";
+        userRole = getUser(username).Roles[0].Type;
       }
 
       angular.forEach(groups, function(group) {
@@ -43,6 +43,15 @@
       }
 
       return false;
+    }
+
+    function getUser(username, successCallback, failureCallback) {
+      $http.get(REVASHARE_API_URL + "api/user/get-user?username=" + username)
+      .then(function(response) {
+        successCallback(response.data);
+      }, function(response) {
+        failureCallback();
+      });
     }
 
     function addUser (user, successCallback, errorCallback) {
@@ -88,18 +97,22 @@
       });
     }
 
-    function modifyUser (user, successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: REVASHARE_API_URL + "api/admin/modifyuser",
-        data: user,
-        cache: false
-      })
-      .then(function success(response) {
+    function modifyUser (username, name, email, phoneNumber, apartmentName, successCallback, errorCallback) {
+      var user = {
+        UserName: username,
+        Name: name,
+        Email: email,
+        PhoneNumber: phoneNumber,
+        Apartment: {
+          Name: apartmentName
+        }
+      };
+
+      $http.post(REVASHARE_API_URL + "api/rider/save-user", user)
+      .then(function(response) {
         successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
+      }, function(response) {
+        failureCallback();
       });
     }
 
