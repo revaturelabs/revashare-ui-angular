@@ -8,7 +8,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     
     this.sidebar_always_visible = sidebar_query.matches;
     this.sidebar_visible = sidebar_query.matches;
-    this.logged_in = $cookies.getObject("logged_in") ? $cookies.getObject("logged_in") : true;
+    this.logged_in = $cookies.getObject("logged_in") ? $cookies.getObject("logged_in") : false;
     this.username = $cookies.getObject("username") ? $cookies.getObject("username") : false;
     this.role = $cookies.getObject("role") ? $cookies.getObject("role") : "Guest";
     
@@ -65,20 +65,21 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     }
 
     function alert_logged_in (username) {
+        var vm = this;
+
         userDataService.getUser(username, function(user) {
-            this.logged_in = true; 
-            this.username = username;
-            this.role = user.Roles[0].Type;
+            vm.logged_in = true; 
+            vm.username = username;
+            vm.role = user.Roles[0].Type;
             $cookies.putObject("logged_in", true);  
             $cookies.putObject("username", username);
             $cookies.putObject("role", user.Roles[0].Type);
+            alertLoggedInUserChange();
 
             $state.go("welcome");
         }, function() {
             console.log("Could not get user.");
         });
-
-        alertLoggedInUserChange();
     }
 
     function alert_logged_out () {

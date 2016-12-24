@@ -186,6 +186,9 @@
 
     var login = {
         url: "/login",
+        data: {
+            allowedRoles: [ "Guest" ]
+        },
         views: {
             "main": {
                 templateUrl: "routes/login/index.html",

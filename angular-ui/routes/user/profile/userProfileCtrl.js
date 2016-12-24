@@ -5,8 +5,7 @@
         vm.data = {};
         
         if ($state.current.data.action == "index") {
-            //userDataService.getUser($cookies.getObject("username"), function(user) {
-            userDataService.getUser("testdriver", function(user) {
+            userDataService.getUser($cookies.getObject("username"), function(user) {
                 vm.data.user = user;
             }, function() {
                 console.log("Could not get user...");
@@ -17,8 +16,7 @@
             vm.apartmentsLoading = true;
             vm.apartments = [];
 
-            //userDataService.getUser($cookies.getObject("username"), function(user) {
-            userDataService.getUser("testdriver", function(user) {
+            userDataService.getUser($cookies.getObject("username"), function(user) {
                 vm.data.user = user;
 
                 apartmentDataService.listApartments(function(apartments) {
