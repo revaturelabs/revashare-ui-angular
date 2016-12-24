@@ -9,6 +9,7 @@
     this.isInGroup = isInGroup;
     this.getUser = getUser;
     this.getPendingRiders = getPendingRiders;
+    this.approveRider = approveRider;
 
     var cache = {};
 
@@ -125,6 +126,19 @@
       $http.post(REVASHARE_API_URL + "api/rider/save-user", user)
       .then(function(response) {
         successCallback(response.data);
+      }, function(response) {
+        failureCallback();
+      });
+    }
+
+    function approveRider(username, successCallback, errorCallback) {
+      var user = {
+        UserName: username
+      };
+
+      $http.post(REVASHARE_API_URL + "api/admin/approve-user", user)
+      .then(function(response) {
+        successCallback();
       }, function(response) {
         failureCallback();
       });

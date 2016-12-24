@@ -16,11 +16,18 @@
             });
 
             vm.approveRider = function(index) {
+                var username = vm.data.riders[index].UserName;
 
+                userDataService.approveRider(username, function() {
+                    vm.data.riders.splice(index, 1);
+                    window.toastr.success("User " + username + " has been approved and is now a rider.");
+                }, function() {
+                    window.toastr.error("Could not approve user " + username + ", please try again later.");
+                });
             }
 
             vm.denyRider = function(index) {
-                
+
             }
         }
     }]);
