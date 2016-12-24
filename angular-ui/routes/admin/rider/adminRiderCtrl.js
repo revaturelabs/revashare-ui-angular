@@ -14,6 +14,14 @@
                 window.toastr.error("There was a problem loading the riders, please try again later.");
                 $state.go("welcome");
             });
+
+            vm.approveRider = function(index) {
+
+            }
+
+            vm.denyRider = function(index) {
+                
+            }
         }
     }]);
 })(angular);

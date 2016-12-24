@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="medium-12 columns">
+        <div ng-show="vm.isLoadingRiders">
+            Loading pending riders...
+        </div>
+
+        <div ng-hide="vm.isLoadingRiders">
+            <div ng-show="vm.data.riders.length > 0">
+                <div class="row" ng-repeat="rider in vm.data.riders">
+                    <div class="medium-6 columns">{{ rider.UserName }} ({{ rider.Name }})</div>
+                    <div class="medium-3 columns"><button ng-click="vm.approveRider($index)">&#10003;</button></div>
+                    <div class="medium-3 columns"><button ng-click="vm.denyRider($index)">&#10007;</button></div>
+                </div>
+            </div>
+
+            <div ng-hide="vm.data.riders.length > 0">
+                <em>There are no pending riders.</em>
+            </div>
+        </div>
+    </div>
+</div>
