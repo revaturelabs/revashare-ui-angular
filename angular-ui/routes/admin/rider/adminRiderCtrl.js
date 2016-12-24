@@ -24,7 +24,7 @@
                 }, function() {
                     window.toastr.error("Could not approve user " + username + ", please try again later.");
                 });
-            }
+            };
 
             vm.denyRider = function(index) {
                 var username = vm.data.riders[index].UserName;
@@ -35,7 +35,7 @@
                 }, function() {
                     window.toastr.error("Could not remove user " + username + ", please try again later.");
                 });
-            }
+            };
         }
     }]);
 })(angular);
