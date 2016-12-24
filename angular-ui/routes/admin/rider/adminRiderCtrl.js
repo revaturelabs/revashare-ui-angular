@@ -4,7 +4,7 @@
         var vm = this;
         vm.data = {};
 
-        if ($stateParams.current.data.action == "index") {
+        if ($state.current.data.action == "index") {
             vm.isLoadingRiders = true;
 
             userDataService.getPendingRiders(function(riders) {
@@ -27,7 +27,14 @@
             }
 
             vm.denyRider = function(index) {
+                var username = vm.data.riders[index].UserName;
 
+                userDataService.removeUser(username, function() {
+                    vm.data.riders.splice(index, 1);
+                    window.toastr.success("User " + username + " has been removed.");
+                }, function() {
+                    window.toastr.error("Could not remove user " + username + ", please try again later.");
+                });
             }
         }
     }]);

@@ -144,18 +144,16 @@
       });
     }
 
-    function removeUser (user, successCallback, errorCallback) {
-      $http({
-        method: "POST",
-        url: REVASHARE_API_URL + "api/admin/removeuser",
-        data: user,
-        cache: false
-      })
-      .then(function success(response) {
-        successCallback(response.data);
-      },
-      function error(response) {
-        errorCallback("error");
+    function removeUser (username, successCallback, errorCallback) {
+      var user = {
+        UserName: username
+      };
+
+      $http.post(REVASHARE_API_URL + "api/admin/remove-rider", user)
+      .then(function(response) {
+        successCallback();
+      }, function(response) {
+        failureCallback();
       });
     }
 
