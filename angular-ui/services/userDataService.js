@@ -8,6 +8,7 @@
 		this.removeUser = removeUser;
     this.isInGroup = isInGroup;
     this.getUser = getUser;
+    this.getPendingRiders = getPendingRiders;
 
     var cache = {};
 
@@ -98,6 +99,15 @@
       },
       function error(response) {
         errorCallback("error");
+      });
+    }
+
+    function getPendingRiders(successCallback, failureCallback) {
+      $http.get(REVASHARE_API_URL + "api/admin/get-pending-riders")
+      .then(function(response) {
+        successCallback(response.data);
+      }, function(response) {
+        failureCallback();
       });
     }
 
