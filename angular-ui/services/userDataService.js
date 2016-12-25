@@ -6,42 +6,9 @@
     this.getRiders = getRiders;
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
-    this.isInGroup = isInGroup;
     this.getUser = getUser;
 
     var cache = {};
-
-    function isInGroup(username, groups, callback) {
-      var isIn = false;
-      var userRole = "Guest";
-
-      function check() {
-        angular.forEach(groups, function(group) {
-          if (group === userRole) {
-            isIn = true;
-          }
-        });
-
-        callback(isIn);
-      }
-
-      if (username !== false) {
-        getUser(username, function(user) {
-          userRole = user.Roles[0].Type;
-
-          if (userRole == "RequestDriver") {
-            userRole = "Rider";
-          }
-
-          check();
-        }, function() {
-          check();
-        });
-      }
-      else {
-        check();
-      }
-    }
 
     function getUser(username, successCallback, failureCallback) {
       if (cache[username] === undefined) {
