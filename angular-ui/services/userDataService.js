@@ -7,8 +7,6 @@
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
     this.getUser = getUser;
-    this.getPendingRiders = getPendingRiders;
-    this.approveRider = approveRider;
 
     var cache = {};
 
@@ -70,15 +68,6 @@
       });
     }
 
-    function getPendingRiders(successCallback, failureCallback) {
-      $http.get(REVASHARE_API_URL + "api/admin/get-pending-riders")
-      .then(function(response) {
-        successCallback(response.data);
-      }, function(response) {
-        failureCallback();
-      });
-    }
-
     function modifyUser (username, name, email, phoneNumber, apartmentName, successCallback, errorCallback) {
       var user = {
         UserName: username,
@@ -93,19 +82,6 @@
       $http.post(REVASHARE_API_URL + "api/rider/save-user", user)
       .then(function(response) {
         successCallback(response.data);
-      }, function(response) {
-        failureCallback();
-      });
-    }
-
-    function approveRider(username, successCallback, errorCallback) {
-      var user = {
-        UserName: username
-      };
-
-      $http.post(REVASHARE_API_URL + "api/admin/approve-user", user)
-      .then(function(response) {
-        successCallback();
       }, function(response) {
         failureCallback();
       });

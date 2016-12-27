@@ -1,13 +1,13 @@
 (function(ng) {
     ng.module("revashare")
-    .controller("adminRiderCtrl", ["$state", "$stateParams", "userDataService", function($state, $stateParams, userDataService) {
+    .controller("adminRiderCtrl", ["$state", "$stateParams", "userDataService", "pendingUserService", function($state, $stateParams, userDataService, pendingUserService) {
         var vm = this;
         vm.data = {};
 
         if ($state.current.data.action == "index") {
             vm.isLoadingRiders = true;
 
-            userDataService.getPendingRiders(function(riders) {
+            pendingUserService.getPendingUsers(function(riders) {
                 vm.data.riders = riders;
                 vm.isLoadingRiders = false;
             }, function() {
@@ -18,7 +18,7 @@
             vm.approveRider = function(index) {
                 var username = vm.data.riders[index].UserName;
 
-                userDataService.approveRider(username, function() {
+                pendingUserService.approveRider(username, function() {
                     vm.data.riders.splice(index, 1);
                     window.toastr.success("User " + username + " has been approved and is now a rider.");
                 }, function() {
