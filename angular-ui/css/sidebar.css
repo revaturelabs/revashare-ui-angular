@@ -104,6 +104,10 @@
   #sidebar-wrapper .sidebar-link:active, #sidebar-wrapper .sidebar-link:focus {
     text-decoration: none; 
   }
+
+  #sidebar-wrapper .sidebar-link {
+    border-left: 0.25rem solid transparent;
+  }
   
   #sidebar-wrapper .sidebar-link.sidebar_selected {
     border-left: 0.25rem solid #f26925; 
