@@ -7,14 +7,50 @@
     <h3>Riders</h3>
     <table class="table table-striped">
       <tr>
-        <th>#</th>
-        <th>name</th>
-        <th>phone number</th>
-        <th>appartment complex</th>
-        <th>email</th>
-        <th>role</th>
+        <th>
+          <a href="" ng-click="vm.sort = '#'; reverse = !reverse">
+            #
+            <span ng-show="vm.sort == '#' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == '#' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="vm.sort = 'name'; reverse = !reverse">
+            name
+            <span ng-show="vm.sort == 'name' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == 'name' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="vm.sort = 'phone'; reverse = !reverse">
+            phone number
+            <span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="vm.sort = 'apartment'; reverse = !reverse">
+            apartment complex
+            <span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="vm.sort = 'email'; reverse = !reverse">
+            email
+            <span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="vm.sort = 'role'; reverse = !reverse">
+            role
+            <span ng-show="vm.sort == 'role' && !vm.reverse" class="fa fa-caret-down"></span>
+            <span ng-show="vm.sort == 'role' && vm.reverse" class="fa fa-caret-down"></span>
+          </a>
+        </th>
       </tr>
-      <tr ng-repeat="rider in vm.riders | limitTo:10 track by $index">
+      <tr ng-repeat="rider in vm.riders | limitTo:10 track by $index"><!--  | orderBy:vm.sort:vm.reverse"> -->
         <td>{{$index}}</td>
         <td>{{rider.Name}}</td>
         <td>{{rider.PhoneNumber}}</td>

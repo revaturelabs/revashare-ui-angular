@@ -2,12 +2,16 @@ angular.module("revashare").controller("user_controller", ['$state', 'userDataSe
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
+  vm.sort = [];
+  vm.reverse = false;
 
   vm.viewUser = viewUser;
   vm.addUser = addUser;
   vm.modifyUser = modifyUser;
   vm.removeUser = removeUser;
   vm.approveDriver = approveDriver;
+
+  getRiders();
 
   function viewUser(index) {
     $state.go('userProfileIndex', {username: vm.drivers[index].UserName});
