@@ -25,6 +25,7 @@ angular.module("revashare").controller("sidebar_controller", function ($scope, d
     $scope.$watch(() => {
         return displayStateService.username;
     }, (username) => {
+        vm.logged_in = displayStateService.logged_in;
         vm.username = username;
     });
 
@@ -43,20 +44,21 @@ angular.module("revashare").controller("sidebar_controller", function ($scope, d
 
 
     function logout() {
-        server_data.logout().then(
-            function successCallback(response) {
-            toastr.success("logged out");
-            displayStateService.alert_logged_out();
-        }, 
-        function errorCallback(response) {
-            if (response.status === 401) {
-                toastr.success("logged out");
-                displayStateService.alert_logged_out();
-            } else {
-                toastr.error("error logging out");
-            }
+        // server_data.logout().then(
+        //     function successCallback(response) {
+        //     toastr.success("logged out");
+        //     displayStateService.alert_logged_out();
+        // }, 
+        // function errorCallback(response) {
+        //     if (response.status === 401) {
+        //         toastr.success("logged out");
+        //         displayStateService.alert_logged_out();
+        //     } else {
+        //         toastr.error("error logging out");
+        //     }
 
-        });
+        // });
+        displayStateService.alert_logged_out();
     }
 
 });

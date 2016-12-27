@@ -32,7 +32,26 @@
             .state("addApartment", addApartment)
 
             .state("car", car);
-    });
+    })
+    .run(["$state", "$rootScope", "displayStateService", "userDataService", function($state, $rootScope, displayStateService) {
+        $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams){
+            var roles;
+
+            if (toState.data !== undefined) {
+                roles = toState.data.allowedRoles;
+            }
+
+            if (roles === undefined) {
+                roles = [ "Guest", "Unassigned", "Rider", "Driver", "Admin" ];
+            }
+
+            if (!displayStateService.isInGroup(displayStateService.role, roles)) {
+                event.preventDefault();
+                $state.go("welcome");
+            }
+        });
+    }]);
 
     var adminRiderIndex = {
         url: "/admin/rider",
@@ -52,7 +71,8 @@
     var driverRideIndex = {
         url: "/driver/ride",
         data: {
-            action: "index"
+            action: "index",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -69,7 +89,8 @@
             toWork: true
         },
         data: {
-            action: "create"
+            action: "create",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -86,7 +107,8 @@
             toWork: true
         },
         data: {
-            action: "show"
+            action: "show",
+            allowedRoles: [ "Driver" ]
         },
         views: {
             "main": {
@@ -103,7 +125,8 @@
         url: "/user/profile",
 
         data: {
-            action: "index"
+            action: "index",
+            allowedRoles: [ "Unassigned", "Rider", "Driver", "Admin" ]
         },
         views: {
             "main": {                
@@ -117,7 +140,8 @@
     var userProfileEdit = {
         url: "/user/profile/edit",
         data: {
-            action: "edit"
+            action: "edit",
+            allowedRoles: [ "Unassigned", "Rider", "Driver", "Admin" ]
         },
         views: {
             "main": {
@@ -179,6 +203,9 @@
 
     var login = {
         url: "/login",
+        data: {
+            allowedRoles: [ "Guest" ]
+        },
         views: {
             "main": {
                 templateUrl: "routes/login/index.html",
