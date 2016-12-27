@@ -18,7 +18,7 @@
             vm.approveRider = function(index) {
                 var username = vm.data.riders[index].UserName;
 
-                pendingUserService.approveRider(username, function() {
+                pendingUserService.approveUser(username, function() {
                     vm.data.riders.splice(index, 1);
                     window.toastr.success("User " + username + " has been approved and is now a rider.");
                 }, function() {

@@ -68,7 +68,7 @@
       });
     }
 
-    function modifyUser (username, name, email, phoneNumber, apartmentName, successCallback, errorCallback) {
+    function modifyUser (username, name, email, phoneNumber, apartmentName, successCallback, failureCallback) {
       var user = {
         UserName: username,
         Name: name,
@@ -87,7 +87,7 @@
       });
     }
 
-    function removeUser (username, successCallback, errorCallback) {
+    function removeUser (username, successCallback, failureCallback) {
       var user = {
         UserName: username
       };
