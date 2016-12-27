@@ -287,7 +287,10 @@
     };
 
     var apartment = {
-        url: "/apartment",
+        url: "/apartment/index",
+        data: {
+            action: "index"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/index.html",
@@ -298,7 +301,10 @@
     };
 
     var addApartment = {
-        url: "/addApartment",
+        url: "/apartment/add",
+        data: {
+            action: "create"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/add.html",

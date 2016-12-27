@@ -1,22 +1,23 @@
 <div class="page-primary-content">
 
-  <div ng-view>            </div>
-        <div>
-            <form action="">               
-                <label for="name">Name</label>
-               <textarea name="name" id="name" cols="8"></textarea>
+    <div ng-view>
+</div>
+<div>
+    <form ng-submit="vm.addApartment()">
+        <label for="Name">Name</label>
+        <textarea name="Name" id="Name" ng-model="vm.data.Name" cols="8"></textarea>
 
-               <label for="lat">Latitude</label>
-               <textarea name="lat" id="lat" cols="4"></textarea>
+        <label for="Latitude">Latitude</label>
+        <textarea name="Latitude" id="Latitude" ng-model="vm.data.Latitude" cols="4"></textarea>
 
-               <label for="long">Longitude</label>
-               <textarea name="long" id="long"cols="4"></textarea>
+        <label for="Longitude">Longitude</label>
+        <textarea name="Longitude" id="Longitude" ng-model="vm.data.Longitude" cols="4"></textarea>
 
-                <button type="reset" class="btn btn-danger btn-large">cancel</button>
+        <button type="reset" class="btn btn-danger btn-large">cancel</button>
 
-                <button type="button" class="btn btn-success btn-large">submit</button>
-            </form>
+        <input type="submit" value="submit" />
+    </form>
 
-        </div>
+    </div>
 
 </div>
