@@ -24,6 +24,19 @@
         </a>
     </div>
 
+    <!-- Admin only -->
+    <rs-role-group rs-roles="Admin">
+        <div class="sidebar-category-header">
+            Admin
+        </div>
+        
+        <div class="sidebar-link-container">
+            <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
+                Manage Users
+            </a>
+        </div>
+    </rs-role-group>
+
     <!-- Driver only -->
     <rs-role-group rs-roles="Driver">
         <div class="sidebar-category-header">
@@ -102,11 +115,6 @@
     </div>
     <div class="sidebar-category-header">
         Users
-    </div>
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
-            user directory
-        </a>
     </div>
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="comment" ui-sref-active="sidebar_selected">
