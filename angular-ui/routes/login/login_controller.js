@@ -2,7 +2,6 @@ angular.module('revashare').controller('login_controller', ['displayStateService
   var vm = this;
 
   vm.login = login;
-  vm.logout  = logout;
   vm.recoverPassword = recoverPassword;
   vm.loginForm = {};
 

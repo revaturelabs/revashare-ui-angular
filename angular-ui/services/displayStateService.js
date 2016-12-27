@@ -68,6 +68,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         var vm = this;
 
         //userDataService.getUser(username, function(user) {
+            vm.logged_in = true;
             vm.username = username;
             vm.role = 'Driver';
             $cookies.putObject("username", username);
@@ -88,6 +89,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         $cookies.putObject("username", false);
         $cookies.putObject("role", "Guest");
 
+        $state.go("welcome");
         alertLoggedInUserChange();
     }
 
