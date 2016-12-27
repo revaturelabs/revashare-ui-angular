@@ -57,7 +57,7 @@
         url: "/admin/rider",
         data: {
             action: "index",
-            approvedRoles: [ "Admin" ]
+            allowedRoles: [ "Admin" ]
         },
         views: {
             "main": {
