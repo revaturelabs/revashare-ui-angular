@@ -1,5 +1,5 @@
 
-angular.module("revashare").controller("sidebar_controller", function ($scope, displayStateService) {
+angular.module("revashare").controller("sidebar_controller", ['loginService', '$scope', 'displayStateService', function (loginService, $scope, displayStateService) {
     var vm = this;
 
 
@@ -61,4 +61,4 @@ angular.module("revashare").controller("sidebar_controller", function ($scope, d
         displayStateService.alert_logged_out();
     }
 
-});
+}]);
