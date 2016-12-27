@@ -106,6 +106,9 @@
 
     var userProfileIndex = {
         url: "/user/profile",
+        params: {
+            username: null
+        },
 
         data: {
             action: "index",

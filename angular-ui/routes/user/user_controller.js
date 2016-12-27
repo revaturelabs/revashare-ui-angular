@@ -1,8 +1,8 @@
-angular.module("revashare").controller("user_controller", ['$state', 'userDataService', 'pendingUserService', function ($state, userDataService, pendingUserService) {
+angular.module("revashare").controller("user_controller", ['$state', '$stateParams', 'userDataService', 'pendingUserService', function ($state, $stateParams, userDataService, pendingUserService) {
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
-  vm.sort = [];
+  vm.sort = 'name';
   vm.reverse = false;
 
   vm.viewUser = viewUser;
@@ -13,8 +13,8 @@ angular.module("revashare").controller("user_controller", ['$state', 'userDataSe
 
   getRiders();
 
-  function viewUser(index) {
-    $state.go('userProfileIndex', {username: vm.drivers[index].UserName});
+  function viewUser(username) {
+    $state.go('userProfileIndex', {username: username});
   }
 
   function addUser () {
