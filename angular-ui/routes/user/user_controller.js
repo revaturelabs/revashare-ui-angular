@@ -1,4 +1,4 @@
-angular.module("revashare").controller("user_controller", ['userDataService', function (userDataService) {
+angular.module("revashare").controller("user_controller", ['userDataService', 'pendingUserService', function (userDataService, pendingUserService) {
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
@@ -7,9 +7,6 @@ angular.module("revashare").controller("user_controller", ['userDataService', fu
   vm.modifyUser = modifyUser;
   vm.removeUser = removeUser;
   vm.upgradeToDriver = upgradeToDriver;
-
-  getDrivers();
-  getRiders();
 
   function addUser () {
     userDataService.addUser(user,
