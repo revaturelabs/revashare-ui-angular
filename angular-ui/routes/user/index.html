@@ -43,8 +43,8 @@
         <td>{{driver.ApartmentDTO.Name}}</td>
         <td>{{driver.Email}}</td>
         <td>{{driver.AccountType}}</td>
-        <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
-        <td><div class="button" ng-click="vm.upgradeToDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
+        <td><div class="button" ng-click="vm.viewUser($index)">view profile</div></td>
+        <td><div class="button" ng-click="vm.approveDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
       </tr>
     </table>
   </div>

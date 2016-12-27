@@ -67,19 +67,19 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     function alert_logged_in (username) {
         var vm = this;
 
-        userDataService.getUser(username, function(user) {
+        // userDataService.getUser(username, function(user) {
             vm.logged_in = true; 
             vm.username = username;
-            vm.role = user.Roles[0].Type;
+            vm.role = 'Admin';//user.Roles[0].Type;
             $cookies.putObject("logged_in", true);  
             $cookies.putObject("username", username);
-            $cookies.putObject("role", user.Roles[0].Type);
+            $cookies.putObject("role", 'Admin');//user.Roles[0].Type);
             alertLoggedInUserChange();
 
             $state.go("welcome");
-        }, function() {
-            console.log("Could not get user.");
-        });
+        // }, function() {
+        //     console.log("Could not get user.");
+        // });
     }
 
     function alert_logged_out () {

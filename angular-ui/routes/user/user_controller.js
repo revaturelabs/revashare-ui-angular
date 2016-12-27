@@ -1,12 +1,17 @@
-angular.module("revashare").controller("user_controller", ['userDataService', 'pendingUserService', function (userDataService, pendingUserService) {
+angular.module("revashare").controller("user_controller", ['$state', 'userDataService', 'pendingUserService', function ($state, userDataService, pendingUserService) {
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
 
+  vm.viewUser = viewUser;
   vm.addUser = addUser;
   vm.modifyUser = modifyUser;
   vm.removeUser = removeUser;
-  vm.upgradeToDriver = upgradeToDriver;
+  vm.approveDriver = approveDriver;
+
+  function viewUser(index) {
+    $state.go('userProfileIndex', {username: vm.drivers[index].UserName});
+  }
 
   function addUser () {
     userDataService.addUser(user,
@@ -58,10 +63,10 @@ angular.module("revashare").controller("user_controller", ['userDataService', 'p
       });
   }
 
-  function upgradeToDriver(index) {
-    userDataService.upgradeToDriver(vm.users[index],
+  function approveDriver(index) {
+    pendingUserService.approveDriver(vm.riders[index],
       function success (response) {
-        console.log("works");
+
       },
       function error () {
 
