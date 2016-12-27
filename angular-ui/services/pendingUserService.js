@@ -62,21 +62,23 @@
 		}
 
 		function getPendingUsers(successfulCallback, errorCallback) {
-			successfulCallback([
-				{"Name":"john bob","PhoneNumber":"9876543210","Apartment":{"Latitude":"1.1","Longitude":"2.2","Name":"abc"},"Email":"a@b.c","ApartmentId":0,"Roles":[{"Type":"Rider"}],"UserName":"johnbob"}
-			]);
-			// $http({
-			// 	method: 'GET',
-			// 	url: REVASHARE_API_URL + 'api/admin/get-pending-users',
-			// 	cache: true
-			// })
-			// .then(
-			// 	function success(response) {
-			// 		successfulCallback(response.data);
-			// 	},
-			// 	function error() {
-			// 		errorCallback('error');
-			// 	});
+			$http({
+				method: 'GET',
+				url: REVASHARE_API_URL + 'api/admin/get-pending-users',
+				cache: true
+			})
+			.then(
+				function success(response) {
+					successfulCallback(response.data);
+				},
+				function error() {
+					// errorCallback('error');
+					// 
+					// TODO: remove after service is fixed
+					successfulCallback([
+						{"Name":"john bob","PhoneNumber":"9876543210","Apartment":{"Latitude":"1.1","Longitude":"2.2","Name":"abc"},"Email":"a@b.c","ApartmentId":0,"Roles":[{"Type":"Rider"}],"UserName":"johnbob"}
+					]);
+				});
 		}
 
 		function getUserComments(successfulCallback, errorCallback) {
