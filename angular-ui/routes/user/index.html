@@ -42,9 +42,8 @@
             <span ng-show="vm.sort == 'role' && vm.reverse" class="fa fa-caret-down"></span>
           </a>
         </th>
-        <th>
-          view
-        </th>
+        <th></th>
+        <th></th>
       </tr>
       <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:10">
         <td>{{rider.Name}}</td>
@@ -53,7 +52,7 @@
         <td>{{rider.Email}}</td>
         <td>{{rider.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: rider.UserName})">view profile</div></td>
-        <!-- <td><div class="button" ng-click="vm.approveDriver(rider.userName)" ng-show="user.AccountType == 'rider'">upgrade</div></td> -->
+        <td><div class="button" ng-click="vm.approveDriver(rider)">upgrade</div></td>
       </tr>      
     </table>
   </div>
@@ -61,12 +60,13 @@
     <h3>Drivers</h3>
     <table class="table table-striped">
       <tr>
-        <th>#</th>
         <th>name</th>
         <th>phone number</th>
         <th>appartment complex</th>
         <th>email</th>
         <th>role</th>
+        <th></th>
+        <th></th>
       </tr>
       <tr ng-repeat="driver in vm.drivers | limitTo:10">
         <td>{{driver.Name}}</td>
@@ -74,7 +74,8 @@
         <td>{{driver.ApartmentDTO.Name}}</td>
         <td>{{driver.Email}}</td>
         <td>{{driver.AccountType}}</td>
-        <td><div class="button" ng-click="vm.viewUser(rider.userName)">view profile</div></td>
+        <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">view profile</div></td>
+        <td><div class="button" ng-click="vm.demoteDriver(driver)">demote</div></td>
       </tr>
     </table>
   </div>

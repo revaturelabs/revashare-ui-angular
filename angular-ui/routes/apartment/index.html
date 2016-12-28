@@ -4,19 +4,22 @@
 
     <h1>apartments</h1>
 
+    <div class="button" ui-sref="addApartment">add apartment</div>
+
     <div class="table-container">
         <table class="table table-striped">           
             <tr>
                 <th>#</th>
                 <th>name</th>
                 <th>latitude</th>
-                <th>longitude</th>                     
+                <th>longitude</th>       
+                <th></th>          
             </tr>
             <tr ng-repeat="apartment in vm.apartments | limitTo:10 track by $index">
                 <td>{{$index}}</td>
-                <td>{{apartment.name}}</td>
-                <td>{{apartment.latitude}}</td>
-                <td>{{apartment.longitude}}</td>                              
+                <td>{{apartment.Name}}</td>
+                <td>{{apartment.Latitude}}</td>
+                <td>{{apartment.Longitude}}</td>                              
                 <td><div class="button" ng-click="vm.apartments($index)">Delete</div></td>
             </tr>
         </table>
