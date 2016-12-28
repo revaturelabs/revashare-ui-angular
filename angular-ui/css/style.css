@@ -46,7 +46,6 @@ input[type=submit]:hover {
 #page-wrapper {
   display: inline-block;
   position: relative;
-  height: 100%;
   width: 100%;
   z-index: 10;
   overflow: hidden;
@@ -67,6 +66,21 @@ input[type=submit]:hover {
 .loading {
   display: none; }
 
+.revature-logo {
+  background: url("../img/revature-logo.png") no-repeat;
+  border: none;
+  display: block;
+  height: 75px;
+  margin: 0 auto;
+  width: 239px;
+}
+
+.copyright {
+  font-style: italic;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .page-primary-content {
     width: 600px;
@@ -76,9 +90,14 @@ input[type=submit]:hover {
 }
 
 @media (min-width: 992px) {
-  #page-wrapper {
-    padding-left: 14rem; } }
+  #page-wrapper,
+  footer {
+    padding-left: 14rem;
+  }
+}
 
 @media (min-width: 1200px) {
   .page-primary-content {
-    width: 720px; } }
+    width: 720px;
+  }
+}
