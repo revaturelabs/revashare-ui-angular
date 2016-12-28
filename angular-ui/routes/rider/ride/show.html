@@ -1,5 +1,5 @@
 <div class="page-primary-content">
-    <h1>Approved Rides</h1>
+    <h1>Rides</h1>
      <table class="table table-striped">
             <tr>
                 <th>#</th>
@@ -7,17 +7,15 @@
                 <th>phone number</th>
                 <th>appartment complex</th>
                 <th>Open Seats</th>
-                <th>riders</th>
+                
             </tr>
-            <tr ng-repeat="ride in vm.rides | limitTo:10 track by $index">
+            <tr ng-repeat="ride in vm.data.rides | limitTo:10 track by $index">
                 <td>{{$index}}</td>
-                <td>{{ride.RideDTO.DriverDTO.Name}}</td>
-                <td>{{ride.RideDTO.DriverDTO.PhoneNumber}}</td>
-                <td>{{ride.RideDTO.DriverDTO.ApartmentDTO.Name}}</td>
-                <td>{{ride.RideDTO.CurrentlySeated}}</td>
-                <td>{{ride.RideDTO.RideRiderDTO.Name}}</td>
-                <td><div class="button" ng-click="vm.viewProfile($index)">view profile</div></td>
-                <td><div class="button" ng-click="vm.upgradeToDriver($index)" ng-show="user.AccountType == 'rider'">upgrade</div></td>
+                <td>{{ride.Vehicle.Owner.Name}}</td>
+                <td>{{ride.Vehicle.Owner.PhoneNumber}}</td>
+                <td>{{ride.Vehicle.Owner.Apartment.Name}}</td>
+                <td>{{ride.NumberOfRidersInRide}}</td>
+                               
             </tr>
         </table>
 </div>

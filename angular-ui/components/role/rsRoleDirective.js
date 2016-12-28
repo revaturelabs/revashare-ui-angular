@@ -17,8 +17,6 @@
                 }
 
                 function updateVisibility() {
-                    console.log(roles);
-
                     if (displayStateService.isInGroup(displayStateService.role, roles)) {
                         element.css({
                             display: "block"

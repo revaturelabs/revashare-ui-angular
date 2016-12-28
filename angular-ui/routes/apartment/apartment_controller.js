@@ -1,41 +1,36 @@
 
 (function (ng) {
     ng.module("revashare")
-        .controller("apartment_controller", ["apartmentDataService", function (apartmentDataService) {
+        .controller("apartment_controller", ["$state", "apartmentDataService", function ($state, apartmentDataService) {
             var vm = this;
-
-            vm.title = "- Create Apartment -";
             vm.data = {};
 
-            vm.addApartment = function () {
-                var apartment = vm.data;
-                apartment.name = name;               
-                apartment.lat = lat;
-                apartment.long = long;
+            if ($state.current.data.action == "create") {
+                vm.title = "Create Apartment";
 
+                vm.addApartment = function () {
+                    apartmentDataService.addApartment(vm.data.Name, vm.data.Latitude, vm.data.Longitude, function (data) {
+                        // TODO: handle success
+                        console.log("Apartment created.");
+                        $state.go("apartment");
+                    }, function () {
+                        // TODO: handle failure
+                        console.log("Apartment not created.");
+                    });
+                };
+            }
 
-                if (apartment.name === null) {
-                    return "Name cannot be empty.";
+            if ($state.current.data.action == "index") {
+                apartmentDataService.listApartments(
+                    function success(apartments) {
+                        vm.apartments = apartments;
+                    },
+                    function error() {
+                        toastr.error("there was an error retrieving apartment information");
+                    }
+                );
 
-                }
-
-                apartmentDataService.addApartment(apartment, function () {
-                    // TODO: handle success
-                    console.log("Apartment created.");
-                }, function () {
-                    // TODO: handle failure
-                    console.log("Apartment not created.");
-                });
-            };
-
-            apartmentDataService.listApartments(
-                function success(apartments) {
-                    vm.apartments = apartments;
-                },
-                function error() {
-                    toastr.error("there was an error retrieving apartment information");
-                }
-            );
-
+            }
         }]);
+
 })(angular);
