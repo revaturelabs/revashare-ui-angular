@@ -135,10 +135,10 @@
         }
     };
 
-    var viewRides = {
-        url:  "/rider/ride/index",
+    var requestRide = {
+        url:  "/rider/ride/create",
          data: {
-            action: "index"
+            action: "create"
         },
         views: {
             "main": {
@@ -150,13 +150,13 @@
         }
     };
 
-    var requestRide = {
-        url: "/rider/ride/listOpen",
+    var viewRides = {
+        url: "/rider/ride/index",
         params: {
             toWork: true
         },
         data: {
-            action: "create"
+            action: "index"
         },
         views: {
             "main": {
