@@ -37,6 +37,7 @@ input[type=submit]:hover {
   background-color: #45a049; }
 
 #sidebar-page-wrapper {
+  box-sizing: border-box;
   position: relative;
   height: 100%;
   width: 100%;

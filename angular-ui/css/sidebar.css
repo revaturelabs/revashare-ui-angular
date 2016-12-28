@@ -2,7 +2,7 @@
   display: inline-flex;
   flex-direction: column;
   position: absolute;
-  height: 100%;
+  height: calc(100% - 96px);
   width: 14rem;
   z-index: 20;
   overflow: hidden;
@@ -113,6 +113,10 @@
 
 #sidebar-wrapper .sidebar-link.sidebar_selected {
   border-left: 0.25rem solid #f26925; 
+}
+
+.sidebar-scroll {
+  overflow: auto;
 }
 
 @media (min-width: 992px) {
