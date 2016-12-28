@@ -52,6 +52,10 @@ input[type=submit]:hover {
   transition: width 0.5s ease;
   transition: padding-left 0.5s ease; }
 
+#page-wrapper>.row:first-child {
+  margin-top: 1em;
+}
+
 .page-primary-content {
   margin: 2rem auto 0 auto;
   padding: 1rem;
@@ -61,6 +65,13 @@ input[type=submit]:hover {
 .table-container {
   max-width: 100%;
   overflow-x: scroll;
+}
+
+.button-padding {
+  border: 1px solid transparent;
+  line-height: 1;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
 }
 
 .loading {

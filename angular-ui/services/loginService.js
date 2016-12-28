@@ -8,10 +8,10 @@
 			$http({
 				method: 'POST',
 				url: REVASHARE_API_URL + 'api/account/login',
-				params: { 'userName': username, 'password': password },
+				data: { 'userName': username, 'password': password },
 				cache: true
 			})
-			.then(function success(resposne) {
+			.then(function success(response) {
 				successfulCallback(response.data);
 			},
 			function error(response) {

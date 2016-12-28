@@ -9,7 +9,11 @@
 		this.removeComment = removeComment;
 		this.demoteDriver = demoteDriver;
 
-		function approveUser(user, successfulCallback, errorCallback) {
+		function approveUser(username, successfulCallback, errorCallback) {
+			var user = {
+				UserName: username
+			};
+
 			$http({
 				method: 'POST',
 				url: REVASHARE_API_URL + 'api/admin/approve-user',
@@ -68,7 +72,12 @@
 					successfulCallback(response.data);
 				},
 				function error() {
-					errorCallback('error');
+					// errorCallback('error');
+					// 
+					// TODO: remove after service is fixed
+					successfulCallback([
+						{"Name":"john bob","PhoneNumber":"9876543210","Apartment":{"Latitude":"1.1","Longitude":"2.2","Name":"abc"},"Email":"a@b.c","ApartmentId":0,"Roles":[{"Type":"Rider"}],"UserName":"johnbob"}
+					]);
 				});
 		}
 

@@ -35,6 +35,12 @@
                 Schedule/View Rides
             </a>
         </div>
+        
+         <div class="sidebar-link-container">
+        <a class="sidebar-link" ui-sref="driverRideShow" ui-sref-active="sidebar_selected">
+            Rides
+        </a>
+    </div>
     </rs-role-group>
 
     <!-- All logged in roles -->
@@ -74,26 +80,24 @@
             </a>
         </div>
     </rs-role-group>
-
-    <!-- TODO: Move these into rs-role-group
+    <rs-role-group rs-roles="Rider">
+     <!--TODO: Move these into rs-role-group-->
     <div class="sidebar-category-header">
-        Driving
+        Rides
     </div>
 
     <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="schedule" ui-sref-active="sidebar_selected">
-            schedules
+        <a class="sidebar-link" ui-sref="riderRideShow" ui-sref-active="sidebar_selected">
+            show rides
         </a>
     </div>
 
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="viewRides" ui-sref-active="sidebar_selected">
             approved rides
-
-        <a class="sidebar-link" ui-sref="driverRideIndex" ui-sref-active="sidebar_selected">
-            Driver Rides
         </a>
     </div>
+   
 
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="requestRide" ui-sref-active="sidebar_selected">
@@ -143,6 +147,6 @@
             Settings
         </a>
     </div>
-    -->
+    
 </div>
 <div id="sidebar-underlay" ng-class="{'sidebar-underlay-visible': vm.sidebar_visible && !vm.sidebar_always_visible }" ng-click="vm.hide_sidebar()"></div>

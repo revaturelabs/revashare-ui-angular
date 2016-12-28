@@ -6,10 +6,11 @@
         addComment = function(comment, successCallback, failureCallback) {
             $http.post(REVASHARE_API_URL + "api/driver/reportrider", comment)
             .then(function(data) {
-                successCallback();
+                console.log(data);
+                successCallback(data);
             },
             function(data) {
-                failureCallback();
+                failureCallback(data);
             });
         };
       var listComments;
@@ -21,6 +22,7 @@
         cache: true
       })
         .then(function success(response) {
+            console.log(response);
           successCallback(response.data);
         },
         function error(response) {
