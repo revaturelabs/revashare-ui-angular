@@ -135,10 +135,10 @@
         }
     };
 
-    var viewRides = {
-        url:  "/rider/ride/index",
+    var requestRide = {
+        url:  "/rider/ride/create",
          data: {
-            action: "index"
+            action: "create"
         },
         views: {
             "main": {
@@ -150,13 +150,13 @@
         }
     };
 
-    var requestRide = {
-        url: "/rider/ride/listOpen",
+    var viewRides = {
+        url: "/rider/ride/index",
         params: {
             toWork: true
         },
         data: {
-            action: "create"
+            action: "index"
         },
         views: {
             "main": {
@@ -287,7 +287,10 @@
     };
 
     var apartment = {
-        url: "/apartment",
+        url: "/apartment/index",
+        data: {
+            action: "index"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/index.html",
@@ -298,7 +301,10 @@
     };
 
     var addApartment = {
-        url: "/addApartment",
+        url: "/apartment/add",
+        data: {
+            action: "create"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/add.html",
