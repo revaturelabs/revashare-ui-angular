@@ -1,22 +1,17 @@
 <div id="sidebar-wrapper" class="sidebar" ng-class="{'sidebar-visible': vm.sidebar_visible}">
-    <div class="sidebar-profile-container" ng-if="!vm.logged_in">
-        <!-- profile icon -->
-        <a href="http://nicememewebsitewebsitewebsitewebsitewebsite.website">
-            <div class="sidebar-profile-badge">
-                Nice Meme!
-            </div>
-        </a>
+    <rs-role-group class="sidebar-profile-container">
+        <div class="sidebar-profile-badge">
+            Guest
+        </div>
         <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
-    </div>
+    </rs-role-group>
 
-    <div class="sidebar-profile-container" ng-if="vm.logged_in">
-        <!-- profile icon -->
-        <!-- profile name -->
+    <rs-role-group class="sidebar-profile-container" rs-roles="Unassigned, Rider, Driver, Admin">
         <div class="sidebar-profile-badge">
             {{vm.username}}
         </div>
         <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
-    </div>
+    </rs-role-group>
 
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="welcome" ui-sref-active="sidebar_selected">
