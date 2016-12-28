@@ -12,6 +12,8 @@
             .state("schedule", schedule)
             .state("user", user)
             .state("message", message)
+
+            .state("adminRiderIndex", adminRiderIndex)
       
             .state("driverRideIndex", driverRideIndex)
             .state("driverRideCreate", driverRideCreate)
@@ -50,6 +52,21 @@
             }
         });
     }]);
+
+    var adminRiderIndex = {
+        url: "/admin/rider",
+        data: {
+            action: "index",
+            allowedRoles: [ "Admin" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/admin/rider/index.html",
+                controller: "adminRiderCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     var driverRideIndex = {
         url: "/driver/ride",
