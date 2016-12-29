@@ -1,27 +1,51 @@
 <div class="page-primary-content">
 
-    <form>
-
-        <div class="form-group">
-            <label for="email-input">email</label>
-            <input type="email" id="email-input" class="form-control" ng-model="vm.signupForm.email" />
+    <form ng-submit="vm.signUp()">
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="username">Username</label></strong></div>
+            <div class="medium-6 columns"><input type="text" id="username" ng-model="vm.user.UserName" /></div>
         </div>
 
-        <div class="form-group">
-            <label for="username-input">username</label>
-            <input type="text" id="username-input" class="form-control" ng-model="vm.signupForm.username" />
+        <br />
+
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="name">Name</label></strong></div>
+            <div class="medium-6 columns"><input type="text" id="name" ng-model="vm.user.Name" /></div>
         </div>
 
-        <div class="form-group">
-            <label for="password-input">password</label>
-            <input type="password" id="password-input" class="form-control" ng-model="vm.signupForm.password" />
+        <br />
+
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="email">Email</label></strong></div>
+            <div class="medium-6 columns"><input type="text" id="email" ng-model="vm.user.Email" /></div>
         </div>
 
+        <br />
 
-        <input type="submit" ng-click="vm.signupRider()" value="signup as rider" />
-        <input type="submit" ng-click="vm.signupDriver()" value="signup as driver" />
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="phone-number">Phone Number</label></strong></div>
+            <div class="medium-6 columns"><input type="text" id="phone-number" ng-model="vm.user.PhoneNumber" /></div>
+        </div>
 
+        <br />
 
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="apartment">Apartment</label></strong></div>
+            <div class="medium-6 columns"><select ng-model="vm.user.Apartment" ng-options="apartment.Name for apartment in vm.apartments"></select></div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="medium-6 columns"><strong><label for="password">Password</label></strong></div>
+            <div class="medium-6 columns"><input type="password" id="password" ng-model="vm.password" /></div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="medium-12 columns"><input type="submit" value="sign up" /></div>
+        </div>
     </form>
 
 </div>
