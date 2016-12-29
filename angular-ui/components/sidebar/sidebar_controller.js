@@ -1,5 +1,4 @@
-
-angular.module("revashare").controller("sidebar_controller", ['loginService', '$scope', 'displayStateService', function (loginService, $scope, displayStateService) {
+angular.module("revashare").controller("sidebar_controller", ['loginService', '$state', '$scope', 'displayStateService', function (loginService, $state, $scope, displayStateService) {
     var vm = this;
 
 
@@ -8,18 +7,12 @@ angular.module("revashare").controller("sidebar_controller", ['loginService', '$
     vm.username = displayStateService.username;
     vm.show_sidebar = displayStateService.alert_sidebar_visible;
     vm.hide_sidebar = displayStateService.alert_sidebar_hidden;
+    vm.toggle_sidebar = displayStateService.toggle_sidebar;
     vm.logged_in = displayStateService.logged_in;
     vm.logout = logout;
     
-
-    $scope.$watch(() => {
-        return displayStateService.sidebar_visible;
-    }, handle_sidebar_visibility);
-    
-
-    $scope.$watch(() => {
-        return displayStateService.sidebar_always_visible;
-    }, handle_sidebar_always_visible);
+    displayStateService.addSidebarVisibleListener(handle_sidebar_visibility);
+    displayStateService.addSidebarAlwaysVisibleListener(handle_sidebar_always_visible);
     
 
     $scope.$watch(() => {
@@ -31,34 +24,24 @@ angular.module("revashare").controller("sidebar_controller", ['loginService', '$
 
 
     function handle_sidebar_visibility (is_sidebar_visible) {
-        vm.sidebar_visible = is_sidebar_visible;
+        console.log(vm);
+        vm.sidebar_visible = displayStateService.sidebar_visible;
     }
 
 
     function handle_sidebar_always_visible (is_sidebar_always_visible) {
-        vm.sidebar_always_visible = is_sidebar_always_visible;
-        if (!is_sidebar_always_visible) {
-            displayStateService.alert_sidebar_hidden();
-        }
+        vm.sidebar_always_visible = displayStateService.sidebar_always_visible;
     }
 
 
     function logout() {
-        // server_data.logout().then(
-        //     function successCallback(response) {
-        //     toastr.success("logged out");
-        //     displayStateService.alert_logged_out();
-        // }, 
-        // function errorCallback(response) {
-        //     if (response.status === 401) {
-        //         toastr.success("logged out");
-        //         displayStateService.alert_logged_out();
-        //     } else {
-        //         toastr.error("error logging out");
-        //     }
-
-        // });
-        displayStateService.alert_logged_out();
+        loginService.logout(function success(response) {
+            window.toastr.success('You are now logged out.');
+            displayStateService.alert_logged_out();
+            $state.go("welcome");
+        },
+        function error() {
+            window.toastr.error("We could not log you out. Please try again.");
+        });
     }
-
 }]);
