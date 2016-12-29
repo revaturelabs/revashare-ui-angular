@@ -8,23 +8,23 @@
         vm.data.riders = [];
 
         if ($state.current.data.action == "index") {
-            vm.title = "Request Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();            
+            vm.title = "Request Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.getRideByApartment = function (index) {
-                
+
             };
         }
         if ($state.current.data.action == "create") {
             vm.title = "Rides Available - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
-            rideRiderDataService.getRideByApartment($cookies.getObject("username"), 
-                    function (data) {
-                        // TODO: handle success
-                        //console.log("Ride request submitted.");
-                        vm.data.rides = data;
-                       // $state.go("viewRides");
-                    }, function () {
-                        // TODO: handle failure
-                        console.log("Ride request failed.");
-                    });
+            rideRiderDataService.getRideByApartment($cookies.getObject("username"),
+                function (data) {
+                    // TODO: handle success
+                    //console.log("Ride request submitted.");
+                    vm.data.rides = data;
+                    // $state.go("viewRides");
+                }, function () {
+                    // TODO: handle failure
+                    console.log("Ride request failed.");
+                });
             vm.toWorkRideExists = function () {
                 return vm.data.toWorkRide !== undefined;
             };
@@ -39,13 +39,24 @@
                 function (data) {
                     // TODO: handle success
                     console.log("Ride request submitted.");
-                   // $state.go("viewRides");
+                    $state.go("riderRideShow");
                 }, function () {
                     // TODO: handle failure
                     console.log("Ride request failed.");
                 });
         };
 
+        vm.dropRide = function (ride) {
+            rideRiderDataService.dropRideRequest(ride,
+                function (data) {
+                    // TODO: handle success
+                    console.log("Ride dropped.");
+                    // $state.go("viewRides");
+                }, function () {
+                    // TODO: handle failure
+                    console.log("Could not drop ride.");
+                });
+        };
 
 
 
@@ -62,7 +73,6 @@
                 function error() {
                     console.log("error");
                 });
-
         }
     }]);
 })(angular);

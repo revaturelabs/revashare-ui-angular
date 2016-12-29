@@ -3,7 +3,7 @@
     .service("rideRiderDataService", ["$http", "REVASHARE_API_URL", function ($http, REVASHARE_API_URL) {
 
       var getRide;
-      //var createRide;
+      var dropRideRequest;
       //var getRiders
       var viewRides
       var requestRide;
@@ -75,8 +75,22 @@
             failureCallback();
           });
       }
+
+      dropRideRequest = function (ride, successCallback, failureCallback) {
+       
+
+        $http.post(REVASHARE_API_URL + "api/rider/unbookRide", ride)
+          .then(function (response) {
+            console.log(response);
+            successCallback(response.data);
+          },
+          function (response) {
+            failureCallback();
+          });
+      }
+
       this.getRide = getRide;
-      // this.createRide = createRide;
+      this.dropRideRequest = dropRideRequest;
       this.viewRides = viewRides;
       //this.getRiders = getRiders;
       this.requestRide = requestRide;
