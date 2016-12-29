@@ -17,7 +17,7 @@
           .then(function (response) {
             $http.get(REVASHARE_API_URL + "api/user/get-rides-by-apartment?name=" + response.data.Apartment.Name)
               .then(function (response) {
-                console.log(response);
+                //console.log(response);
                 successCallback(response.data);
               },
               function (response) {
@@ -79,7 +79,7 @@
           }
         };
 
-        $http.post(REVASHARE_API_URL + "api/rider/add-ride", rideRider)
+        $http.post(REVASHARE_API_URL + "api/rider/bookRide", rideRider)
           .then(function (response) {
             console.log(response);
             successCallback(response.data);

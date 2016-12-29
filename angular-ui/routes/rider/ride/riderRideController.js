@@ -18,7 +18,7 @@
             rideRiderDataService.getRideByApartment($cookies.getObject("username"), 
                     function (data) {
                         // TODO: handle success
-                        console.log("Ride request submitted.");
+                        //console.log("Ride request submitted.");
                         vm.data.rides = data;
                        // $state.go("viewRides");
                     }, function () {
@@ -39,7 +39,7 @@
                 function (data) {
                     // TODO: handle success
                     console.log("Ride request submitted.");
-                    $state.go("viewRides");
+                   // $state.go("viewRides");
                 }, function () {
                     // TODO: handle failure
                     console.log("Ride request failed.");
