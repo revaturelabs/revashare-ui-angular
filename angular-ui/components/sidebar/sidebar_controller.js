@@ -7,18 +7,12 @@ angular.module("revashare").controller("sidebar_controller", ['loginService', '$
     vm.username = displayStateService.username;
     vm.show_sidebar = displayStateService.alert_sidebar_visible;
     vm.hide_sidebar = displayStateService.alert_sidebar_hidden;
+    vm.toggle_sidebar = displayStateService.toggle_sidebar;
     vm.logged_in = displayStateService.logged_in;
     vm.logout = logout;
     
-
-    $scope.$watch(() => {
-        return displayStateService.sidebar_visible;
-    }, handle_sidebar_visibility);
-    
-
-    $scope.$watch(() => {
-        return displayStateService.sidebar_always_visible;
-    }, handle_sidebar_always_visible);
+    displayStateService.addSidebarVisibleListener(handle_sidebar_visibility);
+    displayStateService.addSidebarAlwaysVisibleListener(handle_sidebar_always_visible);
     
 
     $scope.$watch(() => {
@@ -30,15 +24,13 @@ angular.module("revashare").controller("sidebar_controller", ['loginService', '$
 
 
     function handle_sidebar_visibility (is_sidebar_visible) {
-        vm.sidebar_visible = is_sidebar_visible;
+        console.log(vm);
+        vm.sidebar_visible = displayStateService.sidebar_visible;
     }
 
 
     function handle_sidebar_always_visible (is_sidebar_always_visible) {
-        vm.sidebar_always_visible = is_sidebar_always_visible;
-        if (!is_sidebar_always_visible) {
-            displayStateService.alert_sidebar_hidden();
-        }
+        vm.sidebar_always_visible = displayStateService.sidebar_always_visible;
     }
 
 
