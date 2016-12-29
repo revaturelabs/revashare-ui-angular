@@ -63,23 +63,10 @@
           });
       };
 
-      requestRide = function (driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
-        var rideRider = {
-          ride: {
-            Vehicle: {
-              Owner: {
-                UserName: driver
-              },
-            },
-            StartOfWeekDate: startOfWeekDate,
-            IsAMRide: isToWork
-          },
-          rider: {
-            UserName: rider
-          }
-        };
+      requestRide = function (ride, successCallback, failureCallback) {
+       
 
-        $http.post(REVASHARE_API_URL + "api/rider/bookRide", rideRider)
+        $http.post(REVASHARE_API_URL + "api/rider/bookRide", ride)
           .then(function (response) {
             console.log(response);
             successCallback(response.data);

@@ -2,10 +2,10 @@
     angular.module("revashare").controller("riderRideController", ["$state", "$stateParams", "$cookies", "rideRiderDataService", "dateService", function ($state, $stateParams, $cookies, rideRiderDataService, dateService) {
         var vm = this;
         vm.data = {};
-        vm.ride = [];
-        vm.rides = [];
-        vm.rider = [];
-        vm.riders = [];
+        vm.data.ride = {};
+        vm.data.rides = [];
+        vm.data.rider = {};
+        vm.data.riders = [];
 
         if ($state.current.data.action == "index") {
             vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
@@ -35,7 +35,7 @@
         }
 
         vm.createRide = function (index) {
-            rideRiderDataService.requestRide(rides[index].Vehicle.Owner.UserName, dateService.dateToString(dateService.getThisWeeksDate()), $stateParams.toWork, $cookies.getObject("username"),
+            rideRiderDataService.requestRide(vm.data.ride,
                 function (data) {
                     // TODO: handle success
                     console.log("Ride request submitted.");
