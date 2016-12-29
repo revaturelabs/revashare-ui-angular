@@ -24,23 +24,45 @@
         </a>
     </div>
 
+    <!-- Admin only -->
+    <rs-role-group rs-roles="Admin">
+        <div class="sidebar-category-header">
+            Admin
+        </div>
+        
+        <div class="sidebar-link-container">
+            <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
+                Manage Users
+            </a>
+        </div>
+        <div class="sidebar-link-container">
+            <a class="sidebar-link" ui-sref="apartment" ui-sref-active="sidebar_selected">
+                View Apartments
+            </a>
+        </div>
+    </rs-role-group>
+
     <!-- Driver only -->
     <rs-role-group rs-roles="Driver">
         <div class="sidebar-category-header">
             Driving
         </div>
-
+        
         <div class="sidebar-link-container">
             <a class="sidebar-link" ui-sref="driverRideIndex" ui-sref-active="sidebar_selected">
                 Schedule/View Rides
             </a>
         </div>
-        
-         <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="driverRideShow" ui-sref-active="sidebar_selected">
-            Rides
-        </a>
-    </div>
+        <div class="sidebar-link-container">
+            <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
+                View Car
+            </a>
+        </div>
+        <div class="sidebar-link-container">
+            <a class="sidebar-link" ui-sref="driverRideShow" ui-sref-active="sidebar_selected">
+                Rides
+            </a>
+        </div>
     </rs-role-group>
 
     <!-- All logged in roles -->
@@ -108,11 +130,6 @@
         Users
     </div>
     <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
-            user directory
-        </a>
-    </div>
-    <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="comment" ui-sref-active="sidebar_selected">
                 comments
         </a>
@@ -123,20 +140,10 @@
         </a>
     </div>
     <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="apartment" ui-sref-active="sidebar_selected">
-                apartments
-        </a>
-    </div>
-    <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
                 add apartment
         </a>
     </div>    
-    <div class="sidebar-link-container">
-        <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
-            car
-        </a>
-    </div>   
     <div class="sidebar-link-container">
         <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
             messages

@@ -14,7 +14,7 @@ angular.module("revashare").controller("car_controller", ['$cookies', 'carDataSe
 				}
 			},
 			function error () {
-				window.toastr.error('an error has occurred')
+				window.toastr.error('an error has occurred');
 			});
 	}
 
