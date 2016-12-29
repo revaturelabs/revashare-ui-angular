@@ -8,13 +8,13 @@
         vm.data.riders = [];
 
         if ($state.current.data.action == "index") {
-            vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
-
+            vm.title = "Request Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();            
             vm.getRideByApartment = function (index) {
                 
             };
         }
         if ($state.current.data.action == "create") {
+            vm.title = "Rides Available - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             rideRiderDataService.getRideByApartment($cookies.getObject("username"), 
                     function (data) {
                         // TODO: handle success
@@ -34,8 +34,8 @@
             };
         }
 
-        vm.createRide = function (index) {
-            rideRiderDataService.requestRide(vm.data.ride,
+        vm.createRide = function (ride) {
+            rideRiderDataService.requestRide(ride,
                 function (data) {
                     // TODO: handle success
                     console.log("Ride request submitted.");
@@ -50,11 +50,11 @@
 
 
         if ($state.current.data.action == "show") {
-            vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate();
+            vm.title = "Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
 
             vm.data.rides = [];
 
-            rideRiderDataService.viewRides($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()),
+            rideRiderDataService.viewRides(
                 function (rides) {
                     vm.data.rides = rides;
                     console.log(rides);

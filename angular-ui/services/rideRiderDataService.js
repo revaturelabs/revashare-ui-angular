@@ -52,7 +52,7 @@
           });
       };
 
-      viewRides = function (username, date, successCallback, failureCallback) {
+      viewRides = function (successCallback, failureCallback) {
         $http.get(REVASHARE_API_URL + "api/rider/rides")
           .then(function (response) {
             console.log(response);
