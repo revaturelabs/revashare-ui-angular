@@ -12,6 +12,8 @@
             .state("schedule", schedule)
             .state("user", user)
             .state("message", message)
+
+            .state("adminRiderIndex", adminRiderIndex)
       
             .state("driverRideIndex", driverRideIndex)
             .state("driverRideCreate", driverRideCreate)
@@ -50,6 +52,21 @@
             }
         });
     }]);
+
+    var adminRiderIndex = {
+        url: "/admin/rider",
+        data: {
+            action: "index",
+            allowedRoles: [ "Admin" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/admin/rider/index.html",
+                controller: "adminRiderCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     var driverRideIndex = {
         url: "/driver/ride",
@@ -138,10 +155,10 @@
         }
     };
 
-    var viewRides = {
-        url:  "/rider/ride/index",
+    var requestRide = {
+        url:  "/rider/ride/create",
          data: {
-            action: "index"
+            action: "create"
         },
         views: {
             "main": {
@@ -153,13 +170,13 @@
         }
     };
 
-    var requestRide = {
-        url: "/rider/ride/listOpen",
+    var viewRides = {
+        url: "/rider/ride/index",
         params: {
             toWork: true
         },
         data: {
-            action: "create"
+            action: "index"
         },
         views: {
             "main": {
@@ -290,7 +307,10 @@
     };
 
     var apartment = {
-        url: "/apartment",
+        url: "/apartment/index",
+        data: {
+            action: "index"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/index.html",
@@ -301,7 +321,10 @@
     };
 
     var addApartment = {
-        url: "/addApartment",
+        url: "/apartment/add",
+        data: {
+            action: "create"
+        },
         views: {
             "main": {
                 templateUrl: "routes/apartment/add.html",
