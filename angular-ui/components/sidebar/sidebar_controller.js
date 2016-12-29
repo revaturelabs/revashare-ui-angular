@@ -1,5 +1,4 @@
-
-angular.module("revashare").controller("sidebar_controller", function ($scope, $state, displayStateService, loginService) {
+angular.module("revashare").controller("sidebar_controller", ['loginService', '$state', '$scope', 'displayStateService', function (loginService, $state, $scope, displayStateService) {
     var vm = this;
 
 
@@ -53,4 +52,4 @@ angular.module("revashare").controller("sidebar_controller", function ($scope, $
             window.toastr.error("We could not log you out. Please try again.");
         });
     }
-});
+}]);

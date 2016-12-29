@@ -2,7 +2,6 @@ angular.module('revashare').controller('login_controller', ['displayStateService
   var vm = this;
 
   vm.login = login;
-  vm.logout  = logout;
   vm.recoverPassword = recoverPassword;
   vm.loginForm = {};
 
@@ -14,18 +13,6 @@ angular.module('revashare').controller('login_controller', ['displayStateService
       },
       function error () {
         window.toastr.error('We could not login user ' + vm.loginForm.username + '. Please try again.');
-      });
-    //displayStateService.alert_logged_in(vm.loginForm.username);
-  }
-
-  function logout() {
-    loginService.logout(
-      function success(response) {
-        window.toastr.success('You are now logged out.');
-        displayStateService.alert_logged_out();
-      },
-      function error() {
-        window.toastr.error("We could not log you out. Please try again.");
       });
   }
 

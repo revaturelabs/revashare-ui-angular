@@ -1,11 +1,17 @@
 (function(ng) {
     ng.module("revashare")
-    .controller("userProfileCtrl", ["$state", "$cookies", "userDataService", "apartmentDataService", function($state, $cookies, userDataService, apartmentDataService) {
+    .controller("userProfileCtrl", ["$state", "$stateParams", "$cookies", "userDataService", "apartmentDataService", function($state, $stateParams, $cookies, userDataService, apartmentDataService) {
         var vm = this;
         vm.data = {};
+
+        var username = $cookies.getObject("username");
+
+        if ($stateParams.username) {
+            username = $stateParams.username;
+        }
         
         if ($state.current.data.action == "index") {
-            userDataService.getUser($cookies.getObject("username"), function(user) {
+            userDataService.getUser(username, function(user) {
                 vm.data.user = user;
             }, function() {
                 console.log("Could not get user...");
@@ -16,7 +22,7 @@
             vm.apartmentsLoading = true;
             vm.apartments = [];
 
-            userDataService.getUser($cookies.getObject("username"), function(user) {
+            userDataService.getUser(username, function(user) {
                 vm.data.user = user;
 
                 apartmentDataService.listApartments(function(apartments) {
