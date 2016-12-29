@@ -14,7 +14,7 @@
 				function success(response) {
 					successfulCallback(response.data);
 				},
-				function error() {
+				function error(response) {
 					errorCallback('error');
 				});
 		}

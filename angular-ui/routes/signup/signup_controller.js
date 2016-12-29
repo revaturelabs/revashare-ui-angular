@@ -1,4 +1,4 @@
-angular.module('revashare').controller('signup_controller', ['registrationService', 'apartmentDataService', function (registrationService, apartmentDataService) {
+angular.module('revashare').controller('signup_controller', ['registrationService', 'apartmentDataService', '$state', function (registrationService, apartmentDataService, $state) {
   var vm = this;
 
   vm.apartments = [];
@@ -12,6 +12,7 @@ angular.module('revashare').controller('signup_controller', ['registrationServic
     registrationService.signUp(vm.user, vm.password, 
       function success (response) {
         toastr.success("signed in successfully");
+        $state.go('login');
       },
       function error () {
         toastr.error("error signing in");
