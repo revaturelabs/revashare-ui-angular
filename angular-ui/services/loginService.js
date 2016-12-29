@@ -21,12 +21,12 @@
 
 		function logout(successfulCallback, errorCallback) {
 			$http({
-				method: 'GET',
+				method: 'POST',
 				url: REVASHARE_API_URL + 'api/account/logout',
 				cache: true
 			})
 			.then(function success(response) {
-
+				successfulCallback();
 			},
 			function error(response) {
 				errorCallback('error');

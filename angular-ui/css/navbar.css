@@ -2,20 +2,23 @@
   display: flex;
   align-items: center;
   position: absolute;
-  height: 4rem;
+  height: 96px;
   width: 100%;
-  z-index: 20;
+  z-index: 25;
   background-color: #f26925; 
   }
 
 #navbar .navbar-button {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  height: 3rem;
-  margin: 0 .5rem; 
+  box-sizing: border-box;
   cursor: pointer; 
-  }
+  display: inline-flex;
+  height: 3rem;
+  justify-content: center;
+  margin: 0 auto; 
+  padding-right: 3em;
+  width: 100%;
+}
 
 #navbar .navbar-icon-button {
   display: inline-flex;
@@ -41,3 +44,22 @@
   line-height: 1;
   color: white;
   }
+
+.logo {
+  background: url("../img/revashare-logo.png") no-repeat;
+  border: inline-flex;
+  height: 76px;
+  margin: 0 auto;
+  width: 240px;
+}
+
+@media (min-width: 992px) {
+  #navbar .navbar-icon-button {
+    display: none;
+  }
+
+  #navbar .navbar-button {
+    margin: 0 .5rem;
+    width: auto;
+  }
+}
