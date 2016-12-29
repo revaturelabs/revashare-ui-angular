@@ -116,34 +116,7 @@
 			$http({
 				method: 'POST',
 				url: REVASHARE_API_URL + 'api/admin/remove-driver-privileges',
-				data: {
-					"Type": "sample string 1",
-					"Message": "sample string 2",
-					"DriverId": "sample string 3",
-					"RiderId": "sample string 4",
-					"Driver": driver,
-					"Rider": {
-						"Name": "sample string 1",
-						"PhoneNumber": "sample string 2",
-						"Apartment": {
-							"Latitude": "sample string 1",
-							"Longitude": "sample string 2",
-							"Name": "sample string 3"
-						},
-						"Email": "sample string 3",
-						"ApartmentId": 4,
-						"Roles": [
-						{
-							"Type": "sample string 1"
-						},
-						{
-							"Type": "sample string 1"
-						}
-						],
-						"UserName": "sample string 5"
-					},
-					"FlagId": 5
-				},
+				params: { username: driver },
 				cache: true
 			})
 			.then(

@@ -75,7 +75,7 @@
         <td>{{driver.Email}}</td>
         <td>{{driver.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">view profile</div></td>
-        <td><div class="button" ng-click="vm.demoteDriver(driver)">demote</div></td>
+        <td><div class="button" ng-click="vm.demoteDriver(driver.UserName)">demote</div></td>
       </tr>
     </table>
   </div>

@@ -7,6 +7,7 @@
 		this.modifyUser = modifyUser;
 		this.removeUser = removeUser;
     this.getUser = getUser;
+    this.getUsers = getUsers;
 
     var cache = {};
 
@@ -97,6 +98,20 @@
         successCallback();
       }, function(response) {
         failureCallback();
+      });
+    }
+
+    function getUsers(successCallback, errorCallback) {
+      $http({
+        method: 'GET',
+        url: REVASHARE_API_URL + 'api/user/get-users',
+        cache: true
+      })
+      .then(function success(response) {
+        successCallback(response.data);
+      },
+      function error(response) {
+        errorCallback('error');
       });
     }
 
