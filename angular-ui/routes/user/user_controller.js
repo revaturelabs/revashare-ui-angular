@@ -1,15 +1,18 @@
-angular.module("revashare").controller("user_controller", ['userDataService', function (userDataService) {
+angular.module("revashare").controller("user_controller", ['$state', '$stateParams', 'userDataService', 'pendingUserService', function ($state, $stateParams, userDataService, pendingUserService) {
   var vm = this;
   vm.drivers = [];
   vm.riders = [];
+  vm.sort = 'name';
+  vm.reverse = false;
 
   vm.addUser = addUser;
   vm.modifyUser = modifyUser;
   vm.removeUser = removeUser;
-  vm.upgradeToDriver = upgradeToDriver;
+  vm.approveDriver = approveDriver;
+  vm.demoteDriver = demoteDriver;
 
+  //getRiders();
   getDrivers();
-  getRiders();
 
   function addUser () {
     userDataService.addUser(user,
@@ -61,14 +64,24 @@ angular.module("revashare").controller("user_controller", ['userDataService', fu
       });
   }
 
-  function upgradeToDriver(index) {
-    userDataService.upgradeToDriver(vm.users[index],
+  function approveDriver(rider) {
+    pendingUserService.approveDriver(rider,
       function success (response) {
-        console.log("works");
+        toastr.success('successfully upgraded');
       },
       function error () {
 
       });
+  }
+
+  function demoteDriver(driver) {
+    pendingUserService.demoteDriver(driver,
+      function success(response) {
+        toastr.success('successfully demoted');
+      },
+      function error() {
+        toastr.error('error');
+      })
   }
 
 }]);
