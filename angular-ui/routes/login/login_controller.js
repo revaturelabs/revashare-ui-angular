@@ -2,7 +2,6 @@ angular.module('revashare').controller('login_controller', ['displayStateService
   var vm = this;
 
   vm.login = login;
-  vm.logout  = logout;
   vm.recoverPassword = recoverPassword;
   vm.loginForm = {};
 
@@ -21,22 +20,6 @@ angular.module('revashare').controller('login_controller', ['displayStateService
         window.toastr.error('error logging in');
       });
     //displayStateService.alert_logged_in(vm.loginForm.username);
-  }
-
-  function logout() {
-    loginService.logout(
-      function success(response) {
-        displayStateService.alert_logged_out(
-          function success() {
-            window.toastr.error('logged out');
-          },
-          function error() {
-
-          });
-      },
-      function error() {
-
-      });
   }
 
   function recoverPassword() {
