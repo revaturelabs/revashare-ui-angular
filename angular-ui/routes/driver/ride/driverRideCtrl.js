@@ -63,6 +63,7 @@
             vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.data.ride = {};
             vm.data.riders = [];
+            vm.data.approvedRiders = [];
             vm.isLoadingData = true;
 
             var date = dateService.dateToString(dateService.getThisWeeksDate());
@@ -75,6 +76,11 @@
                 rideDataService.getRiders($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
                     console.log("Riders gotten!");
                     console.log(data);
+
+                    angular.forEach(data, function(rider, index) {
+                        vm.data.approvedRiders[index] = false;
+                    });
+
                     vm.data.riders = data;
                     vm.isLoadingData = false;
                 }, function() {
@@ -91,7 +97,7 @@
                 // rideDataService.approveRider($cookies.getObject("username"), date, $stateParams.toWork, vm.data.riders[index].UserName, function() {
                 rideDataService.approveRider(vm.data.ride, vm.data.riders[index], function() {
                     console.log("Approved rider!");
-                    vm.data.riders[index].Approved = true;
+                    vm.data.approvedRiders[index] = true;
                 }, function() {
                     // TODO: handle failure
                     console.log("Could not approve rider...");

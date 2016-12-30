@@ -25,8 +25,8 @@
             <div class="medium-9 columns"><strong>Name:</strong> {{ rider.Name }}</div>
             <div class="medium-3 columns">
                 <strong>Approved:</strong>
-                <span ng-show="rider.approved" class="button">&#10003;</span>
-                <button ng-hide="rider.approved" ng-click="vm.approveRider($index)" class="button">&#10007;</button>
+                <span ng-show="vm.data.approvedRiders[$index]" class="button">&#10003;</span>
+                <button ng-hide="vm.data.approvedRiders[$index]" ng-click="vm.approveRider($index)" class="button">&#10007;</button>
             </div>
         </div>
     </div>
