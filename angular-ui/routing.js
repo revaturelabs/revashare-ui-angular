@@ -11,6 +11,8 @@
 
             .state("schedule", schedule)
             .state("user", user)
+            .state("pendingUsers", pendingUsers)
+            .state("pendingDrivers", pendingDrivers)
             .state("message", message)
 
             .state("adminRiderIndex", adminRiderIndex)
@@ -52,6 +54,36 @@
             }
         });
     }]);
+
+    var pendingDrivers = {
+        url: "/user/pendingdrivers",
+        data: {
+            action: "driver",
+            allowedRoles: [ "Admin" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/user/driver.html",
+                controller: "user_controller",
+                controllerAs: "vm"
+            }
+        }
+    }
+
+    var pendingUsers = {
+        url: "/user/pendingusers",
+        data: {
+            action: "user",
+            allowedRoles: [ "Admin" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/user/user.html",
+                controller: "user_controller",
+                controllerAs: "vm"
+            }
+        }
+    };
 
     var adminRiderIndex = {
         url: "/admin/rider",
@@ -264,6 +296,10 @@
 
     var user = {
         url: "/user",
+        data: {
+            action: "index",
+            allowedRoles: [ "Admin" ]
+        },
         views: {
             "main": {
                 templateUrl: "routes/user/index.html",

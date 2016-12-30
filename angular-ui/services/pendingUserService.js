@@ -9,11 +9,7 @@
 		this.removeComment = removeComment;
 		this.demoteDriver = demoteDriver;
 
-		function approveUser(username, successfulCallback, errorCallback) {
-			var user = {
-				UserName: username
-			};
-
+		function approveUser(user, successfulCallback, errorCallback) {
 			$http({
 				method: 'POST',
 				url: REVASHARE_API_URL + 'api/admin/approve-user',
@@ -64,7 +60,7 @@
 		function getPendingUsers(successfulCallback, errorCallback) {
 			$http({
 				method: 'GET',
-				url: REVASHARE_API_URL + 'api/admin/get-pending-users',
+				url: REVASHARE_API_URL + 'api/admin/get-pending-riders',
 				cache: true
 			})
 			.then(
