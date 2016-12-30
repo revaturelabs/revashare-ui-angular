@@ -13,6 +13,8 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     this.role = $cookies.getObject("role") ? $cookies.getObject("role") : "Guest";
     
     this.addLoginListener = addLoginListener;
+    this.addSidebarVisibleListener = addSidebarVisibleListener;
+    this.addSidebarAlwaysVisibleListener = addSidebarAlwaysVisibleListener;
     this.isInGroup = isInGroup;
     this.alert_logged_in = alert_logged_in;
     this.alert_logged_out = alert_logged_out;
@@ -21,15 +23,25 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     this.toggle_sidebar = toggle_sidebar;
 
     var loginListeners = [];
+    var sidebarVisibleListeners = [];
+    var sidebarAlwaysVisibleListeners = [];
 
     function addLoginListener(listener) {
         loginListeners.push(listener);
     }
 
-    function alertLoggedInUserChange() {
+    function addSidebarVisibleListener(listener) {
+        sidebarVisibleListeners.push(listener);
+    }
+
+    function addSidebarAlwaysVisibleListener(listener) {
+        sidebarAlwaysVisibleListeners.push(listener);
+    }
+
+    function alertListeners(listeners) {
         var removeListeners = [];
 
-        angular.forEach(loginListeners, function(listener, i) {
+        angular.forEach(listeners, function(listener, i) {
             try {
                 listener();
             }
@@ -39,7 +51,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         });
 
         angular.forEach(removeListeners, function(i) {
-            loginListeners.splice(i, 1);
+            listeners.splice(i, 1);
         });
     }
 
@@ -59,50 +71,54 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         return isIn;
     }
 
+    var service = this;
+
     function sidebar_locked_open_listener (width_query) {
-        this.sidebar_visible = width_query.matches;
-        this.sidebar_always_visible = width_query.matches;
+        console.log(width_query);
+        service.sidebar_visible = width_query.matches;
+        service.sidebar_always_visible = width_query.matches;
+        alertListeners(sidebarVisibleListeners);
+        alertListeners(sidebarAlwaysVisibleListeners);
     }
 
     function alert_logged_in (username) {
-        var vm = this;
-
-        //userDataService.getUser(username, function(user) {
-            vm.logged_in = true;
-            vm.username = username;
-            vm.role = 'Driver';
+        userDataService.getUser(username, function(user) {
+            service.logged_in = true;
+            service.username = username;
+            service.role = user.Roles[0].Type;
             $cookies.putObject("username", username);
-            $cookies.putObject("role", 'Driver');
-            alertLoggedInUserChange();
+            $cookies.putObject("role", user.Roles[0].Type);
+            alertListeners(loginListeners);
 
             $state.go("welcome");
-        // }, function() {
-        //     console.log("Could not get user.");
-        // });
+        }, function() {
+            window.toastr.error("Could not get your user information. Please try again.");
+        });
     }
 
     function alert_logged_out () {
-        this.logged_in = false; 
-        this.username = false;
-        this.role = "Guest";
-        $cookies.putObject("logged_in", false);
+        service.logged_in = false; 
+        service.username = false;
+        service.role = "Guest";
         $cookies.putObject("username", false);
         $cookies.putObject("role", "Guest");
+        alertListeners(loginListeners);
 
         $state.go("welcome");
-        alertLoggedInUserChange();
     }
 
     function alert_sidebar_visible () {
-        this.sidebar_visible = true;
+        service.sidebar_visible = true;
+        alertListeners(sidebarVisibleListeners);
     }
 
     function alert_sidebar_hidden () {
-        this.sidebar_visible = false;
+        service.sidebar_visible = false;
+        alertListeners(sidebarVisibleListeners);
     }
 
     function toggle_sidebar () {
-        this.sidebar_visible = ! this.sidebar_visible;
+        service.sidebar_visible = ! service.sidebar_visible;
+        alertListeners(sidebarVisibleListeners);
     }
-
 });

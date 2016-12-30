@@ -1,21 +1,25 @@
 <div class="page-primary-content">
-    <h1>Rides</h1>
-     <table class="table table-striped">
-            <tr>
-                <th>#</th>
-                <th>driver</th>
-                <th>phone number</th>
-                <th>appartment complex</th>
-                <th>Open Seats</th>
-                
-            </tr>
-            <tr ng-repeat="ride in vm.data.rides | limitTo:10 track by $index">
-                <td>{{$index}}</td>
-                <td>{{ride.Vehicle.Owner.Name}}</td>
-                <td>{{ride.Vehicle.Owner.PhoneNumber}}</td>
-                <td>{{ride.Vehicle.Owner.Apartment.Name}}</td>
-                <td>{{ride.NumberOfRidersInRide}}</td>
-                               
-            </tr>
-        </table>
+    <h1>{{ vm.title }}</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Driver</th>
+            <th>Phone Number</th>
+            <th>Apartment Complex</th>
+            <th>Departure Time</th>
+            <th>Open Seats</th>
+
+        </tr>
+        <tr ng-repeat="ride in vm.data.rides | limitTo:10 track by $index">
+            <td>{{$index}}</td>
+            <td>{{ride.Vehicle.Owner.Name}}</td>
+            <td>{{ride.Vehicle.Owner.PhoneNumber}}</td>
+            <td>{{ride.Vehicle.Owner.Apartment.Name}}</td>
+            <td>{{ride.DepartureTime}}</td>
+            <td>{{ride.Vehicle.Capacity - ride.NumberOfRidersInRide | number:0}}</td>
+            <td>
+                <div class="button" ng-click="vm.dropRide(ride)">Drop this ride</div>
+            </td>
+        </tr>
+    </table>
 </div>
