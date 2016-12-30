@@ -2,29 +2,29 @@
     angular.module("revashare").controller("riderRideController", ["$state", "$stateParams", "$cookies", "rideRiderDataService", "dateService", function ($state, $stateParams, $cookies, rideRiderDataService, dateService) {
         var vm = this;
         vm.data = {};
-        vm.ride = [];
-        vm.rides = [];
-        vm.rider = [];
-        vm.riders = [];
+        vm.data.ride = {};
+        vm.data.rides = [];
+        vm.data.rider = {};
+        vm.data.riders = [];
 
         if ($state.current.data.action == "index") {
-            vm.title = "Request Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
-
+            vm.title = "Request Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.getRideByApartment = function (index) {
-                
+
             };
         }
         if ($state.current.data.action == "create") {
-            rideRiderDataService.getRideByApartment($cookies.getObject("username"), 
-                    function (data) {
-                        // TODO: handle success
-                        console.log("Ride request submitted.");
-                        vm.data.rides = data;
-                       // $state.go("viewRides");
-                    }, function () {
-                        // TODO: handle failure
-                        console.log("Ride request failed.");
-                    });
+            vm.title = "Rides Available - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
+            rideRiderDataService.getRideByApartment($cookies.getObject("username"),
+                function (data) {
+                    // TODO: handle success
+                    //console.log("Ride request submitted.");
+                    vm.data.rides = data;
+                    // $state.go("viewRides");
+                }, function () {
+                    // TODO: handle failure
+                    console.log("Ride request failed.");
+                });
             vm.toWorkRideExists = function () {
                 return vm.data.toWorkRide !== undefined;
             };
@@ -34,27 +34,38 @@
             };
         }
 
-        vm.createRide = function (index) {
-            rideRiderDataService.requestRide(rides[index].Vehicle.Owner.UserName, dateService.dateToString(dateService.getThisWeeksDate()), $stateParams.toWork, $cookies.getObject("username"),
+        vm.createRide = function (ride) {
+            rideRiderDataService.requestRide(ride,
                 function (data) {
                     // TODO: handle success
                     console.log("Ride request submitted.");
-                    $state.go("viewRides");
+                    $state.go("riderRideShow");
                 }, function () {
                     // TODO: handle failure
                     console.log("Ride request failed.");
                 });
         };
 
+        vm.dropRide = function (ride) {
+            rideRiderDataService.dropRideRequest(ride,
+                function (data) {
+                    // TODO: handle success
+                    console.log("Ride dropped.");
+                    // $state.go("viewRides");
+                }, function () {
+                    // TODO: handle failure
+                    console.log("Could not drop ride.");
+                });
+        };
 
 
 
         if ($state.current.data.action == "show") {
-            vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate();
+            vm.title = "Rides - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
 
             vm.data.rides = [];
 
-            rideRiderDataService.viewRides($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()),
+            rideRiderDataService.viewRides(
                 function (rides) {
                     vm.data.rides = rides;
                     console.log(rides);
@@ -62,7 +73,6 @@
                 function error() {
                     console.log("error");
                 });
-
         }
     }]);
 })(angular);

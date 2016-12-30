@@ -3,7 +3,7 @@
     .service("rideRiderDataService", ["$http", "REVASHARE_API_URL", function ($http, REVASHARE_API_URL) {
 
       var getRide;
-      //var createRide;
+      var dropRideRequest;
       //var getRiders
       var viewRides
       var requestRide;
@@ -17,7 +17,7 @@
           .then(function (response) {
             $http.get(REVASHARE_API_URL + "api/user/get-rides-by-apartment?name=" + response.data.Apartment.Name)
               .then(function (response) {
-                console.log(response);
+                //console.log(response);
                 successCallback(response.data);
               },
               function (response) {
@@ -52,7 +52,7 @@
           });
       };
 
-      viewRides = function (username, date, successCallback, failureCallback) {
+      viewRides = function (successCallback, failureCallback) {
         $http.get(REVASHARE_API_URL + "api/rider/rides")
           .then(function (response) {
             console.log(response);
@@ -63,23 +63,10 @@
           });
       };
 
-      requestRide = function (driver, startOfWeekDate, isToWork, rider, successCallback, failureCallback) {
-        var rideRider = {
-          ride: {
-            Vehicle: {
-              Owner: {
-                UserName: driver
-              },
-            },
-            StartOfWeekDate: startOfWeekDate,
-            IsAMRide: isToWork
-          },
-          rider: {
-            UserName: rider
-          }
-        };
+      requestRide = function (ride, successCallback, failureCallback) {
+       
 
-        $http.post(REVASHARE_API_URL + "api/rider/add-ride", rideRider)
+        $http.post(REVASHARE_API_URL + "api/rider/bookRide", ride)
           .then(function (response) {
             console.log(response);
             successCallback(response.data);
@@ -88,8 +75,22 @@
             failureCallback();
           });
       }
+
+      dropRideRequest = function (ride, successCallback, failureCallback) {
+       
+
+        $http.post(REVASHARE_API_URL + "api/rider/unbookRide", ride)
+          .then(function (response) {
+            console.log(response);
+            successCallback(response.data);
+          },
+          function (response) {
+            failureCallback();
+          });
+      }
+
       this.getRide = getRide;
-      // this.createRide = createRide;
+      this.dropRideRequest = dropRideRequest;
       this.viewRides = viewRides;
       //this.getRiders = getRiders;
       this.requestRide = requestRide;
