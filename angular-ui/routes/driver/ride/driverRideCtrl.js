@@ -62,35 +62,32 @@
         if ($state.current.data.action == "show") {
             vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
             vm.data.ride = {};
-            vm.data.riders = [];
+            vm.data.unnapprovedRiders = [];
             vm.data.approvedRiders = [];
             vm.isLoadingData = true;
 
             var date = dateService.dateToString(dateService.getThisWeeksDate());
 
             rideDataService.getRide($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
-                console.log("Ride gotten!");
-                console.log(data);
                 vm.data.ride = data;
 
                 rideDataService.getRiders($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
-                    console.log("Riders gotten!");
-                    console.log(data);
-
-                    angular.forEach(data, function(rider, index) {
-                        vm.data.approvedRiders[index] = false;
+                    angular.forEach(data, function(rider) {
+                        if (rider.Approved) {
+                            vm.data.approvedRiders.push(rider);
+                        }
+                        else {
+                            vm.data.unnapprovedRiders.push(rider);
+                        }
                     });
 
-                    vm.data.riders = data;
                     vm.isLoadingData = false;
                 }, function() {
-                    // TODO: handle failure.
-                    console.log("Riders not gotten...");
+                    window.toastr.error("Could not get ride data. Please try again later.");
                     vm.isLoadingData = false;
                 });
             }, function() {
-                // TODO: handle failure.
-                console.log("Ride not gotten...");
+                window.toastr.error("Could not get ride data. Please try again later.");
             });
 
             vm.approveRider = function(index) {
