@@ -4,6 +4,10 @@ var app = angular.module("revashare", [
 	"ngCookies"
 	])
 .constant("REVASHARE_API_URL", "http://54.145.144.187/revashare-api/")
-.config(["$httpProvider", function($httpProvider)
-{$httpProvider.defaults.withCredentials = true}]);
+.config(["$httpProvider", function($httpProvider) {
+    $httpProvider.defaults.withCredentials = true
+}]);
 
+window.toastr.options = {
+    "positionClass": "toast-top-right"
+};

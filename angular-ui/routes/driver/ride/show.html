@@ -24,8 +24,10 @@
                 </div>
             </div>
 
-            <div class="row" ng-show="vm.data.approvedRiders.length > 0" ng-repeat="rider in vm.data.approvedRiders">
-                <div class="medium-12 columns"><strong>Name:</strong> {{ rider.Name }}</div>
+            <div class="row-table">
+                <div class="row" ng-show="vm.data.approvedRiders.length > 0" ng-repeat="rider in vm.data.approvedRiders">
+                    <div class="medium-12 columns"><div class="button-padding"><strong>Name:</strong> {{ rider.Name }}</div></div>
+                </div>
             </div>
 
             <br />
@@ -38,11 +40,13 @@
                 </div>
             </div>
 
-            <div class="row" ng-show="vm.data.unnapprovedRiders.length > 0" ng-repeat="rider in vm.data.unnapprovedRiders">
-                <div class="medium-9 columns"><strong>Name:</strong> {{ rider.Name }}</div>
-                <div class="medium-3 columns">
-                    <button ng-click="vm.approveRider($index)" class="button success">&#10003; Approve</button>
-                    <button ng-click="vm.denyRider($index)" class="button alert">&#10007; Deny</button>
+            <div class="row-table">
+                <div class="row" ng-show="vm.data.unnapprovedRiders.length > 0" ng-repeat="rider in vm.data.unnapprovedRiders">
+                    <div class="medium-9 columns"><div class="button-padding"><strong>Name:</strong> {{ rider.Name }}</div></div>
+                    <div class="medium-3 columns">
+                        <button ng-click="vm.approveRider($index)" class="button success">&#10003; Approve</button>
+                        <button ng-click="vm.denyRider($index)" class="button alert">&#10007; Deny</button>
+                    </div>
                 </div>
             </div>
         </div>
