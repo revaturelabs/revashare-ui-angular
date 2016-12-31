@@ -92,14 +92,14 @@
 
             vm.approveRider = function(index) {
                 // rideDataService.approveRider($cookies.getObject("username"), date, $stateParams.toWork, vm.data.riders[index].UserName, function() {
-                rideDataService.approveRider(vm.data.ride, vm.data.riders[index], function() {
+                rideDataService.approveRider(vm.data.ride, vm.data.approvedRiders[index], function() {
                     console.log("Approved rider!");
                     vm.data.approvedRiders[index] = true;
                 }, function() {
                     // TODO: handle failure
                     console.log("Could not approve rider...");
                 });
-            }
+            };
         }
     }]);
 })(angular);
