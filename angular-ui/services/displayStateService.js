@@ -15,6 +15,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     this.addLoginListener = addLoginListener;
     this.addSidebarVisibleListener = addSidebarVisibleListener;
     this.addSidebarAlwaysVisibleListener = addSidebarAlwaysVisibleListener;
+    this.updateRole = updateRole;
     this.isInGroup = isInGroup;
     this.alert_logged_in = alert_logged_in;
     this.alert_logged_out = alert_logged_out;
@@ -58,7 +59,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     function isInGroup(role, groups) {
         var isIn = false;
 
-        if (role == "DriverRequest") {
+        if (role == "RequestDriver") {
             role = "Rider";
         }
 
@@ -72,6 +73,11 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
     }
 
     var service = this;
+
+    function updateRole(role) {
+        service.role = role;
+        $cookies.setObject("role", role);
+    }
 
     function sidebar_locked_open_listener (width_query) {
         console.log(width_query);

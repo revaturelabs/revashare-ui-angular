@@ -11,7 +11,7 @@
         vm.requestDriver = function() {
             riderDataService.requestDriver(vm.data.vehicle, displayStateService.username, function() {
                 vm.role = "DriverRequest";
-                displayStateService.role = "DriverRequest";
+                displayStateService.role.updateRole("DriverRequest");
 
                 window.toastr.success("Your request has been received! You will receive an email when your request has been approved or denied.");
             }, function() {
