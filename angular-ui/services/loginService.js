@@ -1,6 +1,6 @@
 (function() {
 	angular.module('revashare')
-	.service('loginService', ['$http', 'REVASHARE_API_URL', function($http, REVASHARE_API_URL) {
+	.service('loginService', ['$http', 'REVASHARE_API_URL', 'userDataService', function($http, REVASHARE_API_URL, userDataService) {
 		this.login = login;
 		this.logout = logout;
 
@@ -12,7 +12,11 @@
 				cache: true
 			})
 			.then(function success(response) {
-				successfulCallback(response.data);
+				userDataService.getUser(username, function(user) {
+					successfulCallback(user);
+				}, function() {
+					logout(errorCallback, errorCallback);
+				});
 			},
 			function error(response) {
 				errorCallback('error');

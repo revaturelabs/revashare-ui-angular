@@ -1,4 +1,4 @@
-angular.module('revashare').controller('login_controller', ['displayStateService', 'loginService', 'userDataService', function (displayStateService, loginService, userDataService) {
+angular.module('revashare').controller('login_controller', ['displayStateService', 'loginService', function (displayStateService, loginService) {
   var vm = this;
 
   vm.login = login;
@@ -7,9 +7,9 @@ angular.module('revashare').controller('login_controller', ['displayStateService
 
   function login() {
     loginService.login(vm.loginForm.username, vm.loginForm.password,
-      function success(response) {
+      function success(user) {
         window.toastr.success('Welcome, ' + vm.loginForm.username + '!');
-        displayStateService.alert_logged_in(vm.loginForm.username);
+        displayStateService.alert_logged_in(user);
       },
       function error () {
         window.toastr.error('We could not login user ' + vm.loginForm.username + '. Please try again.');
