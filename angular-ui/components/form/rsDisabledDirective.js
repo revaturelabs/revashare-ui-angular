@@ -7,9 +7,17 @@
                 disabled: "=rsDisabled"
             },
             link: function(scope, element) {
-                element.on("click", function() {
-                    scope.disabled = true;
-                });
+                var parent = element.parent();
+
+                while (parent.prop("tagName").toLowerCase() !== "form") {
+                    parent = parent.parent();
+                }
+
+                if (parent !== null) {
+                    parent.on("submit", function() {
+                        scope.disabled = true;
+                    });
+                }
 
                 scope.$watch("disabled", function() {
                     element.attr("disabled", scope.disabled);
