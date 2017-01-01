@@ -1,7 +1,7 @@
-<div ng-show="vm.role == 'Rider'">
-    <form ng-submit="vm.requestDriver()">
-        <br />
+<br />
 
+<div ng-show="vm.role === 'Rider'">
+    <form ng-submit="vm.requestDriver()">
         <div class="row">
             <div class="medium-3 columns">
                <label for="make" class="middle"><strong>Make</strong></label>
@@ -60,7 +60,7 @@
     </form>
 </div>
 
-<div class="row" ng-hide="vm.role == 'Rider'">
+<div class="row" ng-hide="vm.role === 'Rider'">
     <div class="medium-12 columns">
         <em>Your request has not been updated yet. You will receive an email when your it has been approved or denied.</em>
     </div>

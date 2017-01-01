@@ -1,6 +1,8 @@
 (function(ng) { 
     ng.module("revashare")
     .controller("riderDriverRequestCtrl", ["displayStateService", "riderDataService", function(displayStateService, riderDataService) {
+        var vm = this;
+
         vm.data = {};
 
         vm.data.vehicle = {};

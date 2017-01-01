@@ -161,7 +161,7 @@
         data: {
             allowedRoles: [ "Rider" ]
         },
-        view: {
+        views: {
             "main": {
                 templateUrl: "routes/rider/driverRequest/index.html",
                 controller: "riderDriverRequestCtrl",
