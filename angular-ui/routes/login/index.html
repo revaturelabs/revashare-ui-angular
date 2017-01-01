@@ -1,13 +1,13 @@
 <br />
 
-<form ng-submit="vm.login()">
+<form ng-submit="vm.login()" rs-disable="vm.formDisabled">
     <div class="row">
         <div class="medium-3 columns">
             <label for="username" class="middle"><strong>Username</strong></label>
         </div>
 
         <div class="medium-9 columns">
-            <input type="text" id="username" ng-model="vm.loginForm.username"/>
+            <input type="text" id="username" ng-model="vm.loginForm.username" ng-disabled="vm.formDisabled" />
         </div>
     </div>
 
@@ -17,13 +17,13 @@
         </div>
 
         <div class="medium-9 columns">
-            <input type="password" id="password" class="form-control" ng-model="vm.loginForm.password"/>
+            <input type="password" id="password" class="form-control" ng-model="vm.loginForm.password" ng-disabled="vm.formDisabled" />
         </div>
     </div>
 
     <div class="row">
         <div class="medium-12 columns">
-            <button type="submit" class="button" rs-disabled="vm.formDisabled">Login</button>
+            <button type="submit" class="button" ng-disabled="vm.formDisabled">Login</button>
         </div>
 </form>
 
