@@ -79,7 +79,7 @@
   display: inline-block;
   position: relative;
   width: calc(100% - 2rem);
-  height: 1.5rem;
+  /*height: 1.5rem;*/
   margin: .5rem 0;
   margin-left: 1rem; 
 }
@@ -87,10 +87,10 @@
 #sidebar-wrapper .sidebar-link {
   border-left: 0.25rem solid transparent;
   display: inline-block;
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  bottom: 0;
-  height: 1.5rem;
+  bottom: 0;*/
+  /*height: 1.5rem;*/
   font-size: 1rem;
   line-height: 1;
   padding: .25rem 0;
