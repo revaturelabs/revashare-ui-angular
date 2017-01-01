@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="medium-12 columns">
+        <h1>{{ vm.title }}</h1>
+    </div>
+</div>
+
+<!-- <div class="table-container">
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Driver</th>
+            <th>Phone Number</th>
+            <th>Apartment Complex</th>
+            <th>Departure Time</th>
+            <th>Open Seats</th>
+        </tr>
+
+        <tr ng-repeat="ride in vm.data.rides | limitTo:10 track by $index">
+            <td>{{ $index }}</td>
+            <td>{{ ride.Vehicle.Owner.Name }}</td>
+            <td>{{ ride.Vehicle.Owner.PhoneNumber }}</td>
+            <td>{{ ride.Vehicle.Owner.Apartment.Name }}</td>
+            <td>{{ ride.DepartureTime }}</td>
+            <td>{{ ride.Vehicle.Capacity - ride.NumberOfRidersInRide| number:0 }}</td>
+            <td>
+                <div class="button" ng-click="vm.createRide(ride)">Get this ride</div>
+            </td>
+            
+        </tr>
+    </table>
+</div> -->
+
+<div class="row" ng-show="vm.isLoadingData">
+    <div class="medium-12 columns">
+        <em>Loading available rides...</em>
+    </div>
+</div>
+
+<div class="row-table" ng-hide="vm.isLoadingData">
+    <div class="row" ng-class="{'no-ride-capacity': vm.hasNoCapacity(ride)}" ng-repeat="ride in vm.data.rides" ng-show="vm.data.rides.length > 0">
+        <div class="medium-3 columns">
+            <label class="middle"><strong>Driver:</strong> {{ ride.Vehicle.Owner.Name }}</label>
+        </div>
+
+        <div class="medium-3 columns">
+            <label class="middle"><strong>Departure Time:</strong> {{ ride.DepartureTime | rsTime }}</label>
+        </div>
+
+        <div class="medium-3 columns">
+            <label class="middle"><strong># Seats Open:</strong> {{ ride.Vehicle.Capacity - ride.NumberOfRidersInRide | number:0 }}</label>
+        </div>
+
+        <div class="medium-3 columns">
+            <button class="button" ng-disabled="vm.hasNoCapacity(ride)" ng-click="vm.createRide(ride)">Sign-up</button>
+        </div>
+    </div>
+
+    <div class="row" ng-repeat="ride in vm.data.rides" ng-hide="vm.data.rides.length > 0">
+        <div class="medium-12 columns">
+            <em>There are no rides available at your apartment.</em>
+        </div>
+    </div>
+</div>

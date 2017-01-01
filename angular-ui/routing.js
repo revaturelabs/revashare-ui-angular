@@ -19,9 +19,8 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
-            .state("viewRides", viewRides)
-            .state("requestRide", requestRide)
-            .state("riderRideShow", riderRideShow)
+            .state("riderRidesIndex", riderRidesIndex)
+            .state("riderRidesCreate", riderRidesCreate)
 
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
@@ -155,49 +154,34 @@
         }
     };
 
-    var requestRide = {
+    var riderRidesCreate = {
         url:  "/rider/ride/create",
-         data: {
+        params: {
+            toWork: true,
+            allowedRoles: [ "Rider", "Driver" ]
+        },
+        data: {
             action: "create"
         },
         views: {
             "main": {
 
+                templateUrl: "routes/rider/ride/create.html",
+                controller: "riderRideController",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var riderRidesIndex = {
+        url: "/rider/ride",
+        data: {
+            action: "index",
+            allowedRoles: [ "Rider", "Driver" ]
+        },
+        views: {
+            "main": {
                 templateUrl: "routes/rider/ride/index.html",
-                controller: "riderRideController",
-                controllerAs: "vm"
-            }
-        }
-    };
-
-    var viewRides = {
-        url: "/rider/ride/index",
-        params: {
-            toWork: true
-        },
-        data: {
-            action: "index"
-        },
-        views: {
-            "main": {
-                templateUrl: "routes/rider/ride/listOpen.html",
-                controller: "riderRideController",
-                controllerAs: "vm"
-            }
-        }
-    };
-
-    var riderRideShow = {
-        url: "/rider/ride/show",
-        params: {
-            toWork: true
-        },
-        data: {
-            action: "show"
-        },
-        views: {
-            "main": {
-                templateUrl: "routes/rider/ride/show.html",
                 controller: "riderRideController",
                 controllerAs: "vm"
             }

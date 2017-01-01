@@ -62,6 +62,10 @@ input[type=submit]:hover {
   width: 100%;
 }
 
+.no-ride-capacity label {
+  color: #aaa;
+}
+
 .table-container {
   max-width: 100%;
   overflow-x: scroll;
