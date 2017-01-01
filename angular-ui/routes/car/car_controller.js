@@ -1,7 +1,6 @@
 angular.module("revashare").controller("car_controller", ['$cookies', 'carDataService', function ($cookies, carDataService) {
 	var vm = this;
 
-	vm.submitLabel = "Update Car Info";
 	vm.addCar = addCar;
 	vm.updateCarInfo = updateCarInfo;
 

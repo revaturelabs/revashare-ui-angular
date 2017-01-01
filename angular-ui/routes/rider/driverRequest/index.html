@@ -1,0 +1,67 @@
+<div ng-show="vm.role == 'Rider'">
+    <form ng-submit="vm.requestDriver()">
+        <br />
+
+        <div class="row">
+            <div class="medium-3 columns">
+               <label for="make" class="middle"><strong>Make</strong></label>
+            </div>
+
+            <div class="medium-9 columns">
+               <input type="text" id="make" ng-model="vm.data.vehicle.Make"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-3 columns">
+               <label for="model" class="middle"><strong>Model</strong></label>
+            </div>
+
+            <div class="medium-9 columns">
+               <input type="text" id="model" ng-model="vm.data.vehicle.Model"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-3 columns">
+               <label for="color" class="middle"><strong>Color</strong></label>
+            </div>
+
+            <div class="medium-9 columns">
+               <input type="text" id="color" ng-model="vm.data.vehicle.Color"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-3 columns">
+                <label for="capacity" class="middle"><strong>Capacity</strong></label>
+            </div>
+
+            <div class="medium-9 columns">
+                <input type="text" id="capacity" ng-model="vm.data.vehicle.Capacity"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-3 columns">
+                <label class="middle"><strong>License Plate</strong></label>
+            </div>
+
+            <div class="medium-9 columns">
+                <input type="text" ng-model="vm.data.vehicle.LicensePlate" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-12 columns">
+               <button type="submit" class="button">Apply to Be a Driver</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" ng-hide="vm.role == 'Rider'">
+    <div class="medium-12 columns">
+        <em>Your request has not been updated yet. You will receive an email when your it has been approved or denied.</em>
+    </div>
+</div>
