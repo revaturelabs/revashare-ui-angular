@@ -2,7 +2,15 @@
     ng.module("revashare")
     .filter("rsTime", function() {
         return function(input) {
-            return (new Date("2016-12-31T" + input)).toLocaleTimeString();
+            var date = new Date("2016-12-31T" + input);
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var amPm = hours < 12 ? "AM" : "PM";
+
+            hours = hours % 12;
+            hours = hours === 0 ? 12 : hours;
+
+            return hours + ":" + minutes + " " + amPm;
         }
     })
     .service("dateService", [function() {

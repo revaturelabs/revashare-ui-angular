@@ -40,14 +40,19 @@
         }
 
         if ($state.current.data.action == "create") {
-            vm.title = "Rides Available - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
+            var date = dateService.getThisWeeksDate();
+
+            vm.title = "Rides Available - Week of " + date.toLocaleDateString();
             vm.isLoadingData = true;
+            vm.isSubmittingRequest = false;
 
             vm.data.rides = [];
 
             rideRiderDataService.getRideByApartment($cookies.getObject("username"), function (rides) {
                 angular.forEach(rides, function(ride) {
-                    if (ride.IsAMRide == $stateParams.toWork) {
+                    var rideDate = (new Date(ride.StartOfWeekDate)).getTime();
+
+                    if (ride.IsAMRide == $stateParams.toWork && rideDate > date.getTime()) {
                         vm.data.rides.push(ride);
                     }
                 });
@@ -62,10 +67,15 @@
             vm.createRide = function(ride) {
                 rideRiderDataService.requestRide(ride, function (data) {
                     window.toastr.success("You have signed up for the ride.");
+                    vm.isSubmittingRequest = false;
+
                     $state.go("riderRidesIndex");
                 }, function () {
                     window.toastr.error("You could not be signed up for the ride. Please try again later.");
+                    vm.isSubmittingRequest = false;
                 });
+
+                vm.isSubmittingRequest = true;
             };
 
             vm.hasNoCapacity = function(ride) {
