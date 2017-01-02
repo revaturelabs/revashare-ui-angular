@@ -51,8 +51,8 @@
             rideRiderDataService.getRideByApartment($cookies.getObject("username"), function (rides) {
                 angular.forEach(rides, function(ride) {
                     var rideDate = (new Date(ride.StartOfWeekDate)).getTime();
-
-                    if (ride.IsAMRide == $stateParams.toWork && rideDate > date.getTime()) {
+                    
+                    if (ride.IsAMRide == $stateParams.toWork && rideDate >= date.getTime()) {
                         vm.data.rides.push(ride);
                     }
                 });
