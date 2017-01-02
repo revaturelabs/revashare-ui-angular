@@ -10,6 +10,8 @@
             hours = hours % 12;
             hours = hours === 0 ? 12 : hours;
 
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+
             return hours + ":" + minutes + " " + amPm;
         }
     })
