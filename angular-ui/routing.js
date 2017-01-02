@@ -21,6 +21,7 @@
 
             .state("riderRidesIndex", riderRidesIndex)
             .state("riderRidesCreate", riderRidesCreate)
+            .state("riderRidesShow", riderRidesShow)
 
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
@@ -47,6 +48,7 @@
 
             if (!displayStateService.isInGroup(displayStateService.role, roles)) {
                 event.preventDefault();
+                console.log("No Permission!");
                 $state.go("welcome");
             }
         });
@@ -157,11 +159,11 @@
     var riderRidesCreate = {
         url:  "/rider/ride/create",
         params: {
-            toWork: true,
-            allowedRoles: [ "Rider", "Driver" ]
+            toWork: true
         },
         data: {
-            action: "create"
+            action: "create",
+            allowedRoles: [ "Rider", "Driver" ]
         },
         views: {
             "main": {
@@ -182,6 +184,24 @@
         views: {
             "main": {
                 templateUrl: "routes/rider/ride/index.html",
+                controller: "riderRideController",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var riderRidesShow = {
+        url: "/rider/ride/show",
+        params: {
+            toWork: true
+        },
+        data: {
+            action: "show",
+            allowedRoles: [ "Rider", "Driver" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/rider/ride/show.html",
                 controller: "riderRideController",
                 controllerAs: "vm"
             }
