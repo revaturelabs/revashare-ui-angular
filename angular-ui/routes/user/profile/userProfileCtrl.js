@@ -14,11 +14,12 @@
             userDataService.getUser(username, function(user) {
                 vm.data.user = user;
             }, function() {
-                console.log("Could not get user...");
+                window.toastr.error("Could not load user data. Please try again later.");
             });
         }
 
         if ($state.current.data.action == "edit") {
+            vm.isSubmittingData = false;
             vm.apartmentsLoading = true;
             vm.apartments = [];
 
@@ -37,19 +38,22 @@
                     vm.apartmentsLoading = false;
                 },
                 function() {
-                    console.log("Could not get apartments.");
+                    window.toastr.error("Could not load user data. Please try again later.");
                     $state.go("userProfileIndex");
                 });
             }, function() {
-                console.log("Could not get user...");
+                window.toastr.error("Could not load user data. Please try again later.");
+                $state.go("userProfileIndex");
             });
 
             vm.updateProfile = function() {
-                userDataService.modifyUser("testdriver", vm.data.user.Name, vm.data.user.Email, vm.data.user.PhoneNumber, vm.data.apartment.Name, function(data) {
-                    console.log("Updated user!");
+                userDataService.modifyUser($cookies.getObject("username"), vm.data.user.Name, vm.data.user.Email, vm.data.user.PhoneNumber, vm.data.apartment.Name, function(data) {
+                    window.toastr.success("You have updated your information.");
+                    vm.isSubmittingData = false;
                     $state.go("userProfileIndex");
                 }, function() {
-                    console.log("Could not update user.");
+                    window.toastr.success("Could not update your information. Please try again later.");
+                    vm.isSubmittingData = false;
                 });
             };
         }
