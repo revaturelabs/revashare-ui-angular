@@ -24,6 +24,7 @@
             .state("viewRides", viewRides)
             .state("requestRide", requestRide)
             .state("riderRideShow", riderRideShow)
+            .state("riderDriverRequest", riderDriverRequest)
 
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
@@ -182,6 +183,20 @@
             "main": {
                 templateUrl: "routes/user/profile/edit.html",
                 controller: "userProfileCtrl",
+                controllerAs: "vm"
+            }
+        }
+    };
+
+    var riderDriverRequest = {
+        url: "/rider/driver-request",
+        data: {
+            allowedRoles: [ "Rider" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/rider/driverRequest/index.html",
+                controller: "riderDriverRequestCtrl",
                 controllerAs: "vm"
             }
         }
