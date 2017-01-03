@@ -2,7 +2,7 @@
 <div class="page-primary-content">
 
   <h1>user information</h1>
-
+  
   <div class="table-container">
     <h3>Riders</h3>
     <table class="table table-striped">
@@ -43,16 +43,14 @@
           </a>
         </th>
         <th></th>
-        <th></th>
       </tr>
-      <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:10">
+      <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:500">
         <td>{{rider.Name}}</td>
         <td>{{rider.PhoneNumber}}</td>
         <td>{{rider.ApartmentDTO.Name}}</td>
         <td>{{rider.Email}}</td>
         <td>{{rider.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: rider.UserName})">view profile</div></td>
-        <td><div class="button" ng-click="vm.approveDriver(rider)">upgrade</div></td>
       </tr>      
     </table>
   </div>
@@ -75,7 +73,7 @@
         <td>{{driver.Email}}</td>
         <td>{{driver.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">view profile</div></td>
-        <td><div class="button" ng-click="vm.demoteDriver(driver)">demote</div></td>
+        <td><div class="button" ng-click="vm.demoteDriver(driver.UserName)">demote</div></td>
       </tr>
     </table>
   </div>
