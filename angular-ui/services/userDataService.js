@@ -45,7 +45,7 @@
       $http({
         method: "GET",
         url: REVASHARE_API_URL + "api/admin/get-drivers",
-        cache: true
+        cache: false
       })
       .then(function success(response) {
         successCallback(response.data);
@@ -59,7 +59,7 @@
       $http({
         method: "GET",
         url: REVASHARE_API_URL + "api/admin/get-riders",
-        cache: true
+        cache: false
       })
       .then(function success(response) {
         successCallback(response.data);

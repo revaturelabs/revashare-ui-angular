@@ -46,7 +46,7 @@
 			$http({
 				method: 'GET',
 				url: REVASHARE_API_URL + 'api/admin/get-pending-drivers',
-				cache: true
+				cache: false
 			})
 			.then(
 				function success(response) {
@@ -61,7 +61,7 @@
 			$http({
 				method: 'GET',
 				url: REVASHARE_API_URL + 'api/admin/get-pending-riders',
-				cache: true
+				cache: false
 			})
 			.then(
 				function success(response) {
