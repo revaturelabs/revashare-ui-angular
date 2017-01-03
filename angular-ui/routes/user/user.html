@@ -48,7 +48,7 @@
 			<tr ng-repeat="user in vm.users | orderBy:vm.sort:vm.reverse | limitTo:10">
 				<td>{{user.Name}}</td>
 				<td>{{user.PhoneNumber}}</td>
-				<td>{{user.ApartmentDTO.Name}}</td>
+				<td>{{user.Apartment.Name}}</td>
 				<td>{{user.Email}}</td>
 				<td>{{user.AccountType}}</td>
 				<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">view profile</div></td>

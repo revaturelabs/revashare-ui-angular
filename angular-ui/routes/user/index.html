@@ -48,7 +48,7 @@
       <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:500">
         <td>{{rider.Name}}</td>
         <td>{{rider.PhoneNumber}}</td>
-        <td>{{rider.ApartmentDTO.Name}}</td>
+        <td>{{rider.Apartment.Name}}</td>
         <td>{{rider.Email}}</td>
         <td>{{rider.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: rider.UserName})">view profile</div></td>
@@ -72,7 +72,7 @@
       <tr ng-repeat="driver in vm.drivers | limitTo:10">
         <td>{{driver.Name}}</td>
         <td>{{driver.PhoneNumber}}</td>
-        <td>{{driver.ApartmentDTO.Name}}</td>
+        <td>{{driver.Apartment.Name}}</td>
         <td>{{driver.Email}}</td>
         <td>{{driver.AccountType}}</td>
         <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">view profile</div></td>
