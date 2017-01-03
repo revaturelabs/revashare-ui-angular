@@ -24,6 +24,7 @@
             .state("riderRidesIndex", riderRidesIndex)
             .state("riderRidesCreate", riderRidesCreate)
             .state("riderRidesShow", riderRidesShow)
+            .state("riderDriverRequest", riderDriverRequest)
 
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
@@ -55,6 +56,20 @@
             }
         });
     }]);
+
+    var riderDriverRequest = {
+        url: "/rider/driverrequest",
+        data: {
+            allowedRoles: [ "Rider" ]
+        },
+        views: {
+            "main": {
+                templateUrl: "routes/rider/driverRequest/index.html",
+                controller: "riderDriverRequestCtrl",
+                controllerAs: "vm"
+            }
+        }
+    }
 
     var pendingDrivers = {
         url: "/user/pendingdrivers",
