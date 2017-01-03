@@ -6,48 +6,42 @@
 
         if ($state.current.data.action == "create") {
             vm.title = "Create Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
+            vm.isSubmittingRequest = false;
 
             vm.createRide = function() {
                 rideDataService.createRide($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()), vm.data.departureTime, $stateParams.toWork, function(data) {
-                    // TODO: handle success
-                    console.log("Ride created.");
+                    vm.isSubmittingRequest = false;
+                    window.toastr.success("Your ride has been created.");
                     $state.go("driverRideIndex");
                 }, function() {
-                    // TODO: handle failure
-                    console.log("Ride not created.");
+                    vm.isSubmittingRequest = false;
+                    window.toastr.error("Your ride could not be created. Please try again later.");
                 });
             };
         }
 
         if ($state.current.data.action == "index") {
             vm.StartOfWeekDate = dateService.getThisWeeksDate().toLocaleDateString();
-            vm.isLoadingToWorkRide = true;
-            vm.isLoadingFromWorkRide = true;
+            vm.isLoadingData = true;
 
             var date = dateService.dateToString(dateService.getThisWeeksDate());
 
             function getFromWorkRide() {
                 rideDataService.getRide($cookies.getObject("username"), date, false, function(ride) {
-                    console.log("Got from work ride!");
                     vm.data.fromWorkRide = ride;
-                    vm.isLoadingFromWorkRide = false;
+                    vm.isLoadingData = false;
                 },
                 function() {
-                    console.log("Cannot get from work ride.");
-                    vm.isLoadingFromWorkRide = false;
+                    vm.isLoadingData = false;
                 }); 
             }
 
             rideDataService.getRide($cookies.getObject("username"), date, true, function(ride) {
-                console.log("Got to work ride!");
                 getFromWorkRide();
                 vm.data.toWorkRide = ride;
-                vm.isLoadingToWorkRide = false;
             },
             function() {
-                console.log("Cannot get to work ride.");
                 getFromWorkRide();
-                vm.isLoadingToWorkRide = false;
             });
 
             vm.toWorkRideExists = function() {
@@ -61,6 +55,8 @@
 
         if ($state.current.data.action == "show") {
             vm.title = ($stateParams.toWork ? "To Work" : "From Work") + " Ride - Week of " + dateService.getThisWeeksDate().toLocaleDateString();
+            vm.isSubmittingRequest = false;
+
             vm.data.ride = {};
             vm.data.unnapprovedRiders = [];
             vm.data.approvedRiders = [];
@@ -88,16 +84,18 @@
                 });
             }, function() {
                 window.toastr.error("Could not get ride data. Please try again later.");
+                vm.isLoadingData = false;
             });
 
             vm.approveRider = function(index) {
                 // rideDataService.approveRider($cookies.getObject("username"), date, $stateParams.toWork, vm.data.riders[index].UserName, function() {
-                rideDataService.approveRider(vm.data.ride, vm.data.approvedRiders[index], function() {
-                    console.log("Approved rider!");
+                rideDataService.approveRider(vm.data.ride, vm.data.unnapprovedRiders[index], function() {
+                    vm.isSubmittingRequest = false;
                     vm.data.approvedRiders[index] = true;
+                    window.toastr.success("You have approved " + vm.data.unnapprovedRiders[index].Name + " for your ride.");
                 }, function() {
-                    // TODO: handle failure
-                    console.log("Could not approve rider...");
+                    vm.isSubmittingRequest = false;
+                    window.toastr.success("Could no approved " + vm.data.unnapprovedRiders[index].Name + " for your ride. Please try again later.");
                 });
             };
         }
