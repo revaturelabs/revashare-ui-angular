@@ -98,13 +98,27 @@ angular.module("revashare").controller("user_controller", ['$state', '$statePara
       });
   }
 
-  function removeUser () {
+  function removeUser (user) {
     userDataService.removeUser(user,
       function success (response) {
-
+        if(user.Roles[0].Type === 'Unassigned') {
+          var index = vm.users.indexOf(user);
+          vm.users.splice(index, 1);
+        } else if (user.Roles[0].Type === 'Rider') {
+          var index = vm.riders.indexOf(user);
+          vm.riders.splice(index, 1);
+        } else if (user.Roles[0].Type === 'RequestDriver') {
+          var index = vm.pending.indexOf(user);
+          vm.pending.splice(index, 1);
+        } else if (user.Roles[0].Type === 'Driver') {
+          var index = vm.drivers.indexOf(user);
+          vm.drivers.splice(index, 1);
+        }
+        $state.$apply;
+        toastr.success('successfully removed ' + user.Name)
       },
       function error() {
-
+        toastr.error('unable to remove');
       });
   }
 
@@ -114,6 +128,7 @@ angular.module("revashare").controller("user_controller", ['$state', '$statePara
         var index = vm.riders.indexOf(rider);
         vm.riders.splice(index, 1);
         vm.drivers.push(rider);
+        $state.$apply;
         toastr.success('successfully upgraded');
       },
       function error () {
