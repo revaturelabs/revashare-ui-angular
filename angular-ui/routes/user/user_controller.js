@@ -122,8 +122,13 @@ angular.module("revashare").controller("user_controller", ['$state', '$statePara
   }
 
   function demoteDriver(driver) {
-    pendingUserService.demoteDriver(driver,
+    pendingUserService.demoteDriver(driver.UserName,
       function success(response) {
+        var index = vm.drivers.indexOf(driver);
+        vm.drivers.splice(index, 1);
+        vm.riders.push(driver);
+
+        $state.$apply;
         toastr.success('successfully demoted');
       },
       function error() {
