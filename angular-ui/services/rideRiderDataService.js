@@ -44,7 +44,6 @@
         };
         $http.post(REVASHARE_API_URL + "ride?username=" + username + "&startOfWeekDate=" + startOfWeekDate + "&isToWork=" + isToWork)
           .then(function (response) {
-            console.log(response);
             successCallback(response.data);
           },
           function (response) {
@@ -55,7 +54,6 @@
       viewRides = function (successCallback, failureCallback) {
         $http.get(REVASHARE_API_URL + "api/rider/rides")
           .then(function (response) {
-            console.log(response);
             successCallback(response.data);
           },
           function (response) {
@@ -68,7 +66,6 @@
 
         $http.post(REVASHARE_API_URL + "api/rider/bookRide", ride)
           .then(function (response) {
-            console.log(response);
             successCallback(response.data);
           },
           function (response) {
@@ -77,11 +74,8 @@
       }
 
       dropRideRequest = function (ride, successCallback, failureCallback) {
-       
-
         $http.post(REVASHARE_API_URL + "api/rider/unbookRide", ride)
           .then(function (response) {
-            console.log(response);
             successCallback(response.data);
           },
           function (response) {

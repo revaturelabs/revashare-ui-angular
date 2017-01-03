@@ -39,6 +39,11 @@ input:disabled {
   color: #b9b9b9;
 }
 
+.row .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 #sidebar-page-wrapper {
   box-sizing: border-box;
   position: relative;
@@ -63,6 +68,10 @@ input:disabled {
   margin: 2rem auto 0 auto;
   padding: 1rem;
   width: 100%;
+}
+
+.no-ride-capacity label {
+  color: #aaa;
 }
 
 .table-container {

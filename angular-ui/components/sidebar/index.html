@@ -62,27 +62,60 @@
 
         <!-- Riders and Drivers -->
         <rs-role-group rs-roles="Rider, Driver">
+             <!--TODO: Move these into rs-role-group-->
             <div class="sidebar-category-header">
                 Rides
             </div>
 
             <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="riderRideShow" ui-sref-active="sidebar_selected">
-                    Show Rides
+                <a class="sidebar-link" ui-sref="riderRidesIndex" ui-sref-active="sidebar_selected">
+                    My Rides
                 </a>
             </div>
 
+            <!-- <div class="sidebar-category-header">
+                Users
+            </div>
             <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="viewRides" ui-sref-active="sidebar_selected">
-                    Approved Rides
+                <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
+                    user directory
                 </a>
             </div>
-
             <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="requestRide" ui-sref-active="sidebar_selected">
-                    Find a Ride
+                <a class="sidebar-link" ui-sref="comment" ui-sref-active="sidebar_selected">
+                        comments
                 </a>
             </div>
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="addComment" ui-sref-active="sidebar_selected">
+                        add comment
+                </a>
+            </div>
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="apartment" ui-sref-active="sidebar_selected">
+                        apartments
+                </a>
+            </div>
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
+                        add apartment
+                </a>
+            </div>    
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
+                    car
+                </a>
+            </div>   
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
+                    messages
+                </a>
+            </div>
+            <div class="sidebar-link-container">
+                <a class="sidebar-link" ui-sref="settings" ui-sref-active="nav_selected">
+                    Settings
+                </a>
+            </div> -->
         </rs-role-group>
 
         <!-- Riders -->
@@ -131,50 +164,6 @@
                 </a>
             </div>
         </rs-role-group>
-
-            <!-- <div class="sidebar-category-header">
-                Users
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="user" ui-sref-active="sidebar_selected">
-                    user directory
-                </a>
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="comment" ui-sref-active="sidebar_selected">
-                        comments
-                </a>
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="addComment" ui-sref-active="sidebar_selected">
-                        add comment
-                </a>
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="apartment" ui-sref-active="sidebar_selected">
-                        apartments
-                </a>
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="addApartment" ui-sref-active="sidebar_selected">
-                        add apartment
-                </a>
-            </div>    
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="car" ui-sref-active="sidebar_selected">
-                    car
-                </a>
-            </div>   
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="message" ui-sref-active="sidebar_selected">
-                    messages
-                </a>
-            </div>
-            <div class="sidebar-link-container">
-                <a class="sidebar-link" ui-sref="settings" ui-sref-active="nav_selected">
-                    Settings
-                </a>
-            </div> -->
     </div>
 </div>
 <div id="sidebar-underlay" ng-class="{'sidebar-underlay-visible': vm.sidebar_visible && !vm.sidebar_always_visible }" ng-click="vm.toggle_sidebar()"></div>

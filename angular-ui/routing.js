@@ -21,10 +21,9 @@
             .state("driverRideCreate", driverRideCreate)
             .state("driverRideShow", driverRideShow)
 
-            .state("viewRides", viewRides)
-            .state("requestRide", requestRide)
-            .state("riderRideShow", riderRideShow)
-            .state("riderDriverRequest", riderDriverRequest)
+            .state("riderRidesIndex", riderRidesIndex)
+            .state("riderRidesCreate", riderRidesCreate)
+            .state("riderRidesShow", riderRidesShow)
 
             .state("userProfileIndex", userProfileIndex)
             .state("userProfileEdit", userProfileEdit)
@@ -51,6 +50,7 @@
 
             if (!displayStateService.isInGroup(displayStateService.role, roles)) {
                 event.preventDefault();
+                console.log("No Permission!");
                 $state.go("welcome");
             }
         });
@@ -188,28 +188,33 @@
         }
     };
 
-    var riderDriverRequest = {
-        url: "/rider/driver-request",
+    var riderRidesCreate = {
+        url:  "/rider/ride/create",
+        params: {
+            toWork: true
+        },
         data: {
-            allowedRoles: [ "Rider" ]
+            action: "create",
+            allowedRoles: [ "Rider", "Driver" ]
         },
         views: {
             "main": {
-                templateUrl: "routes/rider/driverRequest/index.html",
-                controller: "riderDriverRequestCtrl",
+
+                templateUrl: "routes/rider/ride/create.html",
+                controller: "riderRideController",
                 controllerAs: "vm"
             }
         }
     };
 
-    var requestRide = {
-        url:  "/rider/ride/create",
-         data: {
-            action: "create"
+    var riderRidesIndex = {
+        url: "/rider/ride",
+        data: {
+            action: "index",
+            allowedRoles: [ "Rider", "Driver" ]
         },
         views: {
             "main": {
-
                 templateUrl: "routes/rider/ride/index.html",
                 controller: "riderRideController",
                 controllerAs: "vm"
@@ -217,30 +222,14 @@
         }
     };
 
-    var viewRides = {
-        url: "/rider/ride/index",
-        params: {
-            toWork: true
-        },
-        data: {
-            action: "index"
-        },
-        views: {
-            "main": {
-                templateUrl: "routes/rider/ride/listOpen.html",
-                controller: "riderRideController",
-                controllerAs: "vm"
-            }
-        }
-    };
-
-    var riderRideShow = {
+    var riderRidesShow = {
         url: "/rider/ride/show",
         params: {
             toWork: true
         },
         data: {
-            action: "show"
+            action: "show",
+            allowedRoles: [ "Rider", "Driver" ]
         },
         views: {
             "main": {

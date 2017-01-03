@@ -1,31 +1,51 @@
-<div class="page-primary-content">
-    <h1>{{ vm.title }}</h1>
-    <div class="table-container">
-        <table class="table table-striped">
-            <tr>
-                <th>#</th>
-                <th>Driver</th>
-                <th>Phone Number</th>
-                <th>Apartment Complex</th>
-                <th>Departure Time</th>
-                <th>Open Seats</th>
-            </tr>
-            <tr ng-repeat="ride in vm.data.rides | limitTo:10 track by $index">
-                <td>{{$index}}</td>
-                <td>{{ride.Vehicle.Owner.Name}}</td>
-                <td>{{ride.Vehicle.Owner.PhoneNumber}}</td>
-                <td>{{ride.Vehicle.Owner.Apartment.Name}}</td>
-                <td>{{ride.DepartureTime}}</td>
-                <td>{{ride.Vehicle.Capacity - ride.NumberOfRidersInRide| number:0}}</td>
-                <td>
-                    <div class="button" ng-click="vm.createRide(ride)">Get this ride</div>
-                </td>
-                
-            </tr>
-        </table>
+<div class="row">
+    <div class="medium-12 columns">
+        <h1>{{ vm.title }}</h1>
+    </div>
+</div>
+
+<div class="row" ng-show="vm.isLoadingData">
+    <div class="medium-12 columns">
+        <em>Loading your rides...</em>
+    </div>
+</div>
+
+<div class="row" ng-hide="vm.isLoadingData">
+    <div class="medium-6 columns">
+        <h2>To Work</h2>
+
+        <div ng-show="vm.toWorkRideExists()">
+            <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.toWorkRide.DepartureTime | rsTime }}</div></div>
+            <br/>
+            <div class="row"><div class="medium-12 columns"><a ui-sref="riderRidesShow({toWork: true})" class="button">View More Details</a></div></div>
+            <form rs-disable="vm.isSubmittingRequest" ng-submit="vm.dropRide(vm.data.toWorkRide)">
+                <div class="row"><div class="medium-12 columns"><button type="submit" ng-disabled="vm.isSubmittingRequest" class="button alert">Remove Ride</button></div></div>
+            </form>
+        </div>
+
+        <div ng-hide="vm.toWorkRideExists()">
+            <div class="row"><div class="medium-12 columns"><em>You are not signed-up for a ride.</em></div></div>
+            <br/>
+            <div class="row"><div class="medium-12 columns"><a ui-sref="riderRidesCreate({toWork: true})" class="button">Get Ride To Work</a></div></div>
+        </div>
     </div>
 
+    <div class="medium-6 columns">
+        <h2>From Work</h2>
+        
+        <div ng-show="vm.fromWorkRideExists()">
+            <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.fromWorkRide.DepartureTime | rsTime }}</div></div>
+            <br/>
+            <div class="row"><div class="medium-12 columns"><a ui-sref="riderRidesShow({toWork: false})" class="button">View More Details</a></div></div>
+            <form rs-disable="vm.isSubmittingRequest" ng-submit="vm.dropRide(vm.data.fromWorkRide)">
+                <div class="row"><div class="medium-12 columns"><button type="submit" ng-disabled="vm.isSubmittingRequest" class="button alert">Remove Ride</button></div></div>
+            </form>
+        </div>
 
-
-
+        <div ng-hide="vm.fromWorkRideExists()">
+            <div class="row"><div class="medium-12 columns"><em>You are not signed-up for a ride.</em></div></div>
+            <br/>
+            <div class="row"><div class="medium-12 columns"><a ui-sref="riderRidesCreate({toWork: false})" class="button">Get Ride From Work</a></div></div>
+        </div>
+    </div>
 </div>

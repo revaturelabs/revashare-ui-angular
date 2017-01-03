@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="medium-12 columns">
+        <h1>{{ vm.title }}</h1>
+    </div>
+</div>
+
+<div class="row" ng-show="vm.isLoadingData">
+    <div class="medium-12 columns">
+        <em>Loading available rides...</em>
+    </div>
+</div>
+
+<div class="row-table" ng-hide="vm.isLoadingData">
+    <div class="row" ng-class="{'no-ride-capacity': vm.hasNoCapacity(ride)}" ng-repeat="ride in vm.data.rides" ng-show="vm.data.rides.length > 0">
+        <form ng-submit="vm.createRide(ride)" rs-disable="vm.isSubmittingRequest">
+            <div class="medium-3 columns">
+                <label class="middle"><strong>Driver:</strong> {{ ride.Vehicle.Owner.Name }}</label>
+            </div>
+
+            <div class="medium-3 columns">
+                <label class="middle"><strong>Departure Time:</strong> {{ ride.DepartureTime | rsTime }}</label>
+            </div>
+
+            <div class="medium-3 columns">
+                <label class="middle"><strong># Seats Open:</strong> {{ ride.Vehicle.Capacity - ride.NumberOfRidersInRide | number:0 }}</label>
+            </div>
+
+            <div class="medium-3 columns">
+                <button class="button" ng-disabled="vm.hasNoCapacity(ride) || vm.isSubmittingRequest">Sign-up</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row" ng-hide="vm.data.rides.length > 0">
+        <div class="medium-12 columns">
+            <em>There are no rides available at your apartment.</em>
+        </div>
+    </div>
+</div>
