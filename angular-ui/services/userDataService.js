@@ -80,7 +80,7 @@
         }
       };
 
-      $http.post(REVASHARE_API_URL + "api/rider/save-user", user)
+      $http.post(REVASHARE_API_URL + "api/user/updateProfile", user)
       .then(function(response) {
         successCallback(response.data);
       }, function(response) {

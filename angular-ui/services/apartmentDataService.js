@@ -11,8 +11,6 @@
                 Longitude: Longitude
             };
 
-            console.log(apartment);
-
             $http.post(REVASHARE_API_URL + "api/admin/add-apartment", apartment)
             .then(function(response) {
                 console.log(response);

@@ -19,8 +19,6 @@
                 IsAMRide: isAmRide
             };
 
-            console.log(ride);
-
             $http.post(REVASHARE_API_URL + "api/driver/scheduleride", ride)
             .then(function(response) {
                 successCallback(response.data);
@@ -41,8 +39,6 @@
                 },
                 IsAMRide: isAmRide
             };
-
-            console.log(ride);
 
             $http.post(REVASHARE_API_URL + "api/driver/getRide", ride)
             .then(function(response) {
