@@ -1,19 +1,22 @@
 <div id="sidebar-wrapper" class="sidebar" ng-class="{'sidebar-visible': vm.sidebar_visible}">
-    <rs-role-group class="sidebar-profile-container">
-        <div class="sidebar-profile-badge">
-            Guest
-        </div>
-        <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
-    </rs-role-group>
-
-    <rs-role-group class="sidebar-profile-container" rs-roles="Unassigned, Rider, Driver, Admin">
-        <div class="sidebar-profile-badge">
-            {{vm.username}}
-        </div>
-        <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
-    </rs-role-group>
-
     <div class="sidebar-scroll">
+        <!-- User badge - logged out -->
+        <rs-role-group class="sidebar-profile-container">
+            <div class="sidebar-profile-badge">
+                Guest
+            </div>
+            <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
+        </rs-role-group>
+
+        <!-- User badge - logged in -->
+        <rs-role-group class="sidebar-profile-container" rs-roles="Unassigned, Rider, Driver, Admin">
+            <div class="sidebar-profile-badge">
+                {{vm.username}}
+            </div>
+            <i class="sidebar-close-arrow fa fa-arrow-left" aria-hidden="true" ng-click="vm.hide_sidebar()"></i>
+        </rs-role-group>
+
+        <!-- Home -->
         <div class="sidebar-link-container">
             <a class="sidebar-link" ui-sref="welcome" ui-sref-active="sidebar_selected">
                 Home
