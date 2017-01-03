@@ -1,19 +1,59 @@
-<div class="page-primary-content">
-    
-    <h1>
-        my car
-    </h1>
-    
-    <form>
-    	Make
-    	<input type="text" name="make-input" ng-model="vm.car.Make"/>
-    	Model
-    	<input type="text" name="model-input" ng-model="vm.car.Model"/>
-    	Color
-    	<input type="text" name="color-input" ng-model="vm.car.Color"/>
-    	Capacity
-    	<input type="text" name="capacity-input" ng-model="vm.car.Capacity"/>
-    	<p>License Plate: {{vm.car.LicensePlate}}</p>
-    	<input type="submit" ng-click="vm.updateCarInfo(vm.car)" value="update"/>
-    </form>
-</div>
+<form ng-submit="vm.updateCarInfo()">
+    <br />
+
+    <div class="row">
+        <div class="medium-3 columns">
+    	   <label for="make" class="middle"><strong>Make</strong></label>
+        </div>
+
+        <div class="medium-9 columns">
+    	   <input type="text" id="make" ng-model="vm.car.Make"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-3 columns">
+    	   <label for="model" class="middle"><strong>Model</strong></label>
+        </div>
+
+        <div class="medium-9 columns">
+    	   <input type="text" id="model" ng-model="vm.car.Model"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-3 columns">
+    	   <label for="color" class="middle"><strong>Color</strong></label>
+        </div>
+
+        <div class="medium-9 columns">
+    	   <input type="text" id="color" ng-model="vm.car.Color"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-3 columns">
+        	<label for="capacity" class="middle"><strong>Capacity</strong></label>
+        </div>
+
+        <div class="medium-9 columns">
+        	<input type="text" id="capacity" ng-model="vm.car.Capacity"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-3 columns">
+            <label class="middle"><strong>License Plate</strong></label>
+        </div>
+
+        <div class="medium-9 columns">
+            <input type="text" disabled="disabled" ng-model="vm.car.LicensePlate" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns">
+    	   <button type="submit" class="button">Update Car Info</button>
+        </div>
+    </div>
+</form>

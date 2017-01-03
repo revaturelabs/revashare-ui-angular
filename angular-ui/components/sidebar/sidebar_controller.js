@@ -35,13 +35,12 @@ angular.module("revashare").controller("sidebar_controller", ['loginService', '$
 
 
     function logout() {
-        loginService.logout(function success(response) {
+        function lo() {
             window.toastr.success('You are now logged out.');
             displayStateService.alert_logged_out();
             $state.go("welcome");
-        },
-        function error() {
-            window.toastr.error("We could not log you out. Please try again.");
-        });
+        }
+
+        loginService.logout(lo, lo);
     }
 }]);

@@ -1,25 +1,37 @@
+<br />
 
-<div class="page-primary-content">
-    
-    <form>
-
-        <div class="form-group">
-            <label for="username-input">Username</label>
-            <input type="text" id="username-input" class="form-control" ng-model="vm.loginForm.username"/>
+<form ng-submit="vm.login()" rs-disable="vm.formDisabled">
+    <div class="row">
+        <div class="medium-3 columns">
+            <label for="username" class="middle"><strong>Username</strong></label>
         </div>
 
-        <div class="form-group">
-            <label for="password-input">Password</label>
-            <input type="password" id="password-input" class="form-control" ng-model="vm.loginForm.password"/>
+        <div class="medium-9 columns">
+            <input type="text" id="username" ng-model="vm.loginForm.username" ng-disabled="vm.formDisabled" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-3 columns">
+            <label for="password" class="middle"><strong>Password</strong></label>
         </div>
 
-        <input type="submit" ng-click="vm.login()" value="login" />
+        <div class="medium-9 columns">
+            <input type="password" id="password" class="form-control" ng-model="vm.loginForm.password" ng-disabled="vm.formDisabled" />
+        </div>
+    </div>
 
-        <a href=''>
-            forgot password
+    <div class="row">
+        <div class="medium-12 columns">
+            <button type="submit" class="button" ng-disabled="vm.formDisabled">Login</button>
+        </div>
+</form>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <a href="#">
+            Forgot Password
         </a>
-
-    </form>
-    
+    </div>
 </div>
 
