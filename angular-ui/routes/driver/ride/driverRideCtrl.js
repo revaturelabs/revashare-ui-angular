@@ -69,11 +69,11 @@
 
                 rideDataService.getRiders($cookies.getObject("username"), date, $stateParams.toWork, function(data) {
                     angular.forEach(data, function(rider) {
-                        if (rider.Approved) {
-                            vm.data.approvedRiders.push(rider);
+                        if (rider.Accepted) {
+                            vm.data.approvedRiders.push(rider.Rider);
                         }
                         else {
-                            vm.data.unnapprovedRiders.push(rider);
+                            vm.data.unnapprovedRiders.push(rider.Rider);
                         }
                     });
 
@@ -91,11 +91,12 @@
                 // rideDataService.approveRider($cookies.getObject("username"), date, $stateParams.toWork, vm.data.riders[index].UserName, function() {
                 rideDataService.approveRider(vm.data.ride, vm.data.unnapprovedRiders[index], function() {
                     vm.isSubmittingRequest = false;
-                    vm.data.approvedRiders[index] = true;
+                    vm.data.approvedRiders.push(vm.data.unnapprovedRiders[index]);
                     window.toastr.success("You have approved " + vm.data.unnapprovedRiders[index].Name + " for your ride.");
+                    vm.data.unnapprovedRiders.splice(index, 1);
                 }, function() {
                     vm.isSubmittingRequest = false;
-                    window.toastr.success("Could no approved " + vm.data.unnapprovedRiders[index].Name + " for your ride. Please try again later.");
+                    window.toastr.error("Could not approved " + vm.data.unnapprovedRiders[index].Name + " for your ride. Please try again later.");
                 });
             };
         }
