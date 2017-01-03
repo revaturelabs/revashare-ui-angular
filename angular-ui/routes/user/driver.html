@@ -43,6 +43,7 @@
 				</th>
 				<th></th>
 				<th></th>
+				<th></th>
 			</tr>
 			<tr ng-repeat="user in vm.pending | orderBy:vm.sort:vm.reverse | limitTo:10">
 				<td>{{user.Name}}</td>
@@ -52,6 +53,7 @@
 				<td>{{user.AccountType}}</td>
 				<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">view profile</div></td>
 				<td><div class="button" ng-click="vm.approveDriver(user)">upgrade</div></td>
+				<td><div class="button" ng-click="vm.removeUser(user)">remove</div></td>
 			</tr>      
 		</table>
 	</div>

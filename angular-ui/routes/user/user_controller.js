@@ -98,13 +98,14 @@ angular.module("revashare").controller("user_controller", ['$state', '$statePara
       });
   }
 
-  function removeUser () {
+  function removeUser (user) {
     userDataService.removeUser(user,
       function success (response) {
-
+        toastr.success('successfully removed ' + user.Name)
       },
       function error() {
-
+        toastr.error('unable to remove');
+        console.log(user);
       });
   }
 
