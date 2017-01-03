@@ -19,6 +19,7 @@
         }
 
         if ($state.current.data.action == "edit") {
+            vm.isSubmittingData = false;
             vm.apartmentsLoading = true;
             vm.apartments = [];
 
@@ -48,9 +49,11 @@
             vm.updateProfile = function() {
                 userDataService.modifyUser($cookies.getObject("username"), vm.data.user.Name, vm.data.user.Email, vm.data.user.PhoneNumber, vm.data.apartment.Name, function(data) {
                     window.toastr.success("You have updated your information.");
+                    vm.isSubmittingData = false;
                     $state.go("userProfileIndex");
                 }, function() {
                     window.toastr.success("Could not update your information. Please try again later.");
+                    vm.isSubmittingData = false;
                 });
             };
         }
