@@ -39,6 +39,11 @@ input:disabled {
   color: #b9b9b9;
 }
 
+.row .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 #sidebar-page-wrapper {
   box-sizing: border-box;
   position: relative;

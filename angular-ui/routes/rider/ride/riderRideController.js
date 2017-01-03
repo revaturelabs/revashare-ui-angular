@@ -22,6 +22,7 @@
 
             rideRiderDataService.viewRides(function(rides) {
                 angular.forEach(rides, function(ride) {
+                    ride = ride.Ride;
                     var rideDate = (new Date(ride.StartOfWeekDate)).getTime();
 
                     if (ride.IsAMRide && rideDate >= date.getTime()) {
@@ -41,6 +42,14 @@
             vm.dropRide = function (ride) {
                 rideRiderDataService.dropRideRequest(ride, function (data) {
                     window.toastr.success("You have been removed from the ride.");
+
+                    if (ride.IsAMRide) {
+                        vm.data.toWorkRide = undefined;
+                    }
+                    else {
+                        vm.data.fromWorkRide = undefined;
+                    }
+
                     vm.isSubmittingRequest = false;
                     $state.go("riderRidesIndex");
                 }, function () {
@@ -103,9 +112,11 @@
 
             rideRiderDataService.viewRides(function (rides) {
                 angular.forEach(rides, function(ride) {
+                    ride = ride.Ride;
                     var rideDate = (new Date(ride.StartOfWeekDate)).getTime();
 
                     if (ride.IsAMRide == $stateParams.toWork && rideDate >= date.getTime()) {
+                        console.log(ride);
                         vm.data.ride = ride;
                     }
                 });
