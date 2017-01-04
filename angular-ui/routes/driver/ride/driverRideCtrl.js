@@ -1,12 +1,32 @@
 (function(ng) {
     ng.module("revashare")
-    .controller("driverRideCtrl", ["$state", "$stateParams", "$cookies", "rideDataService", "dateService", function($state, $stateParams, $cookies, rideDataService, dateService) {
+    .controller("driverRideCtrl", ["$scope", "$document", "$state", "$stateParams", "$cookies", "rideDataService", "dateService", function($scope, $document, $state, $stateParams, $cookies, rideDataService, dateService) {
         var vm = this;
         vm.data = {};
 
         if ($state.current.data.action == "create") {
             vm.title = "Create Ride - " + ($stateParams.toWork ? "To Work" : "From Work");
             vm.isSubmittingRequest = false;
+
+            // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
+            $document.on("keypress", function(event) {
+                var key = String.fromCharCode(event.which);
+                if (key === "0") {
+                    $scope.$apply(function() {
+                        vm.data.departureTime = "";
+                    });
+                }
+                else if (key === "7") {
+                    $scope.$apply(function() {
+                        vm.data.departureTime = "17:00:00";
+                    });
+                }
+                else if (event.which === 13) {
+                    vm.isSubmittingRequest = true;
+                    vm.createRide();
+                }
+            });
+            // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
 
             vm.createRide = function() {
                 rideDataService.createRide($cookies.getObject("username"), dateService.dateToString(dateService.getThisWeeksDate()), vm.data.departureTime, $stateParams.toWork, function(data) {
