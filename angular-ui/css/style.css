@@ -33,7 +33,13 @@ input[type=submit] {
 }
 
 .button {
+  background-color: #f26925;
+  color: #fff;
   border-radius: 4px;
+}
+
+a {
+  color: #f26925;
 }
 
 input[type=submit]:hover {
