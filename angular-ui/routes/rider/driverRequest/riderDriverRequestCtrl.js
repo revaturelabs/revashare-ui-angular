@@ -16,7 +16,7 @@
                     vm.data.vehicle = {};
                 });
             }
-            else if (key === "5") {
+            else if (key === "4") {
                 $scope.$apply(function() {
                     vm.data.vehicle = {
                         Make: "Ford",
