@@ -27,6 +27,9 @@ angular.module('revashare').controller('signup_controller', ['$scope', '$documen
         vm.password = "password";
       });
     }
+    else if (event.which === 13) {
+      signUp();
+    }
   });
   // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
 
@@ -35,11 +38,11 @@ angular.module('revashare').controller('signup_controller', ['$scope', '$documen
   function signUp() {
     registrationService.signUp(vm.user, vm.password, 
       function success (response) {
-        toastr.success("signed in successfully");
+        toastr.success("Signed up successfully.");
         $state.go('login');
       },
       function error () {
-        toastr.error("error signing in");
+        toastr.error("There was a problem signing up. Please try again.");
       });
   }
 
@@ -49,7 +52,8 @@ angular.module('revashare').controller('signup_controller', ['$scope', '$documen
         vm.apartments = response;
       },
       function error() {
-        toastr.error('error loading apartments');
+        toastr.error('There was a problem loading the registration form. Please try again later.');
+        $state.go("welcome");
       });
   }
 

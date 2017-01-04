@@ -38,6 +38,18 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
         };
       });
     }
+    else if (key === "8") {
+      $scope.$apply(function() {
+        vm.loginForm = {
+          username: "adminman",
+          password: "password"
+        };
+      });
+    }
+    else if (event.which === 13) {
+      vm.formDisabled = true;
+      login();
+    }
   });
   // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
 

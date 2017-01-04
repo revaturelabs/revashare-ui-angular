@@ -1,12 +1,37 @@
 (function(ng) { 
     ng.module("revashare")
-    .controller("riderDriverRequestCtrl", ["displayStateService", "riderDataService", function(displayStateService, riderDataService) {
+    .controller("riderDriverRequestCtrl", ["$scope", "$document", "displayStateService", "riderDataService", function($scope, $document, displayStateService, riderDataService) {
         var vm = this;
 
         vm.data = {};
 
         vm.data.vehicle = {};
         vm.role = displayStateService.role;
+
+        // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
+        $document.on("keypress", function(event) {
+            var key = String.fromCharCode(event.which);
+            if (key === "0") {
+                $scope.$apply(function() {
+                    vm.data.vehicle = {};
+                });
+            }
+            else if (key === "5") {
+                $scope.$apply(function() {
+                    vm.data.vehicle = {
+                        Make: "Ford",
+                        Model: "Pinto",
+                        Color: "Yellow",
+                        Capacity: 2,
+                        LicensePlate: "FEA-5823"
+                    };
+                });
+            }
+            else if (event.which === 13) {
+                vm.requestDriver();
+            }
+        });
+        // -- ONLY FOR DEMONSTRATION PURPOSES; REMOVE LATER
 
         vm.requestDriver = function() {
             riderDataService.requestDriver(vm.data.vehicle, displayStateService.username, function() {
