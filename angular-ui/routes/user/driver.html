@@ -1,35 +1,35 @@
 
 <div class="row">
 	<div class="medium-12 columns">
-		<h1>user information</h1>
+		<h1>User Information</h1>
 		<div class="table-container">
 			<h3>Pending Drivers</h3>
 			<table class="table table-striped">
 				<tr>
 					<th>
 						<a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
-							name
+							Name
 							<span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
 							<span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
 						</a>
 					</th>
 					<th>
 						<a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
-							phone number
+							Phone #
 							<span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
 							<span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
 						</a>
 					</th>
 					<th>
 						<a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
-							apartment complex
+							Apartment Complex
 							<span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
 							<span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
 						</a>
 					</th>
 					<th>
 						<a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
-							email
+							Email
 							<span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
 							<span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
 						</a>
@@ -43,10 +43,10 @@
 					<td>{{user.PhoneNumber}}</td>
 					<td>{{user.Apartment.Name}}</td>
 					<td>{{user.Email}}</td>
-					<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">view profile</div></td>
-					<td><div class="button" ng-click="vm.approveDriver(user)">upgrade</div></td>
-					<td><div class="button" ng-click="vm.removeUser(user)">remove</div></td>
-				</tr>      
+					<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">View Profile</div></td>
+					<td><div class="button" ng-click="vm.approveDriver(user)">Upgrade</div></td>
+					<td><div class="button" ng-click="vm.removeUser(user)">Remove</div></td>
+				</tr>
 			</table>
 		</div>
 	</div>
