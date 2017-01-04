@@ -22,7 +22,7 @@
             </div>
 
             <div class="medium-3 columns">
-                <label class="middle"><strong># Seats Open:</strong> {{ ride.Vehicle.Capacity - ride.NumberOfRidersInRide | number:0 }}</label>
+                <label class="middle"><strong># Seats Open:</strong> {{ ride.Vehicle.Capacity - ride.NumberOfRidersInRide - 1 | number:0 }}</label>
             </div>
 
             <div class="medium-3 columns">
