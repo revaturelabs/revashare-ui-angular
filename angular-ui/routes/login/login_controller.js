@@ -17,7 +17,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
     else if (key === "2") {
       $scope.$apply(function() {
         vm.loginForm = {
-          username: "demo_user",
+          username: "mohbrien",
           password: "password"
         };
       });
@@ -25,7 +25,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
     else if (key === "4") {
       $scope.$apply(function() {
         vm.loginForm = {
-          username: "rider",
+          username: "gmckinney",
           password: "password"
         };
       });
@@ -33,7 +33,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
     else if (key === "6") {
       $scope.$apply(function() {
         vm.loginForm = {
-          username: "driver",
+          username: "rvoelker",
           password: "password"
         };
       });
