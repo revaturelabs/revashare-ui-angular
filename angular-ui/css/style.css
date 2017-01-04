@@ -38,6 +38,10 @@ input[type=submit] {
   border-radius: 4px;
 }
 
+.button:hover {
+  background-color: #474c55;
+}
+
 a {
   color: #f26925;
 }
@@ -86,7 +90,7 @@ input:disabled {
 
 .table-container {
   max-width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .button-padding {
@@ -133,7 +137,7 @@ footer {
 }
 
 .row-table .row {
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {

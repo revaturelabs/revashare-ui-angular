@@ -65,6 +65,7 @@
 #sidebar-wrapper .sidebar-category-header {
   width: calc(100% - 1rem);
   margin-left: 1rem;
+  margin-top: 1.5rem;
   font-size: 1.5rem;
   border-bottom: 1px solid #474c55; 
 }
