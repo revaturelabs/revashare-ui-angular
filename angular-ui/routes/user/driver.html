@@ -1,52 +1,53 @@
 
-<div class="page-primary-content">
-
-	<h1>User Information</h1>
-	<div class="table-container">
-		<h3>Pending Drivers</h3>
-		<table class="table table-striped">
-			<tr>
-				<th>
-					<a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
-						Name
-						<span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
-						<span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
-					</a>
-				</th>
-				<th>
-					<a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
-						Phone #
-						<span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
-						<span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
-					</a>
-				</th>
-				<th>
-					<a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
-						Apartment Complex
-						<span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
-						<span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
-					</a>
-				</th>
-				<th>
-					<a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
-						Email
-						<span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
-						<span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
-					</a>
-				</th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr ng-repeat="user in vm.pending | orderBy:vm.sort:vm.reverse | limitTo:10">
-				<td>{{user.Name}}</td>
-				<td>{{user.PhoneNumber}}</td>
-				<td>{{user.Apartment.Name}}</td>
-				<td>{{user.Email}}</td>
-				<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">View Profile</div></td>
-				<td><div class="button" ng-click="vm.approveDriver(user)">Upgrade</div></td>
-				<td><div class="button" ng-click="vm.removeUser(user)">Remove</div></td>
-			</tr>
-		</table>
+<div class="row">
+	<div class="medium-12 columns">
+		<h1>User Information</h1>
+		<div class="table-container">
+			<h3>Pending Drivers</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>
+						<a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
+							Name
+							<span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
+							<span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
+						</a>
+					</th>
+					<th>
+						<a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
+							Phone #
+							<span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
+							<span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
+						</a>
+					</th>
+					<th>
+						<a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
+							Apartment Complex
+							<span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
+							<span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
+						</a>
+					</th>
+					<th>
+						<a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
+							Email
+							<span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
+							<span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
+						</a>
+					</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="user in vm.pending | orderBy:vm.sort:vm.reverse | limitTo:10">
+					<td>{{user.Name}}</td>
+					<td>{{user.PhoneNumber}}</td>
+					<td>{{user.Apartment.Name}}</td>
+					<td>{{user.Email}}</td>
+					<td><div class="button" ui-sref="userProfileIndex({username: user.UserName})">View Profile</div></td>
+					<td><div class="button" ng-click="vm.approveDriver(user)">Upgrade</div></td>
+					<td><div class="button" ng-click="vm.removeUser(user)">Remove</div></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>

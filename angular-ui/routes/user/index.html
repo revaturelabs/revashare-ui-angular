@@ -1,100 +1,99 @@
 
-<div class="page-primary-content">
-
-  <h1>User Information</h1>
-  
-  <div class="table-container">
-    <h3>Riders</h3>
-    <table class="table table-striped">
-      <tr>
-        <th>
-          <a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
-            Name
-            <span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
-            Phone #
-            <span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
-            Apartment Complex
-            <span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
-            Email
-            <span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:500">
-        <td>{{rider.Name}}</td>
-        <td>{{rider.PhoneNumber}}</td>
-        <td>{{rider.Apartment.Name}}</td>
-        <td>{{rider.Email}}</td>
-        <td><div class="button" ui-sref="userProfileIndex({username: rider.UserName})">View Profile</div></td>
-        <td><div class="button" ng-click="vm.removeUser(rider)">Remove</div></td>
-      </tr>      
-    </table>
+<div class="row">
+  <div class="medium-12 columns">
+    <h1>User Information</h1>
+    
+    <div class="table-container">
+      <h3>Riders</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>
+            <a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
+              Name
+              <span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
+              Phone #
+              <span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
+              Apartment Complex
+              <span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
+              Email
+              <span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="rider in vm.riders | orderBy:vm.sort:vm.reverse | limitTo:500">
+          <td>{{rider.Name}}</td>
+          <td>{{rider.PhoneNumber}}</td>
+          <td>{{rider.Apartment.Name}}</td>
+          <td>{{rider.Email}}</td>
+          <td><div class="button" ui-sref="userProfileIndex({username: rider.UserName})">View Profile</div></td>
+          <td><div class="button" ng-click="vm.removeUser(rider)">Remove</div></td>
+        </tr>      
+      </table>
+    </div>
+    <div class="table-container">
+      <h3>Drivers</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>
+            <a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
+              Name
+              <span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
+              Phone #
+              <span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
+              Apartment Complex
+              <span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th>
+            <a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
+              Email
+              <span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
+              <span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
+            </a>
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="driver in vm.drivers | limitTo:10">
+          <td>{{driver.Name}}</td>
+          <td>{{driver.PhoneNumber}}</td>
+          <td>{{driver.Apartment.Name}}</td>
+          <td>{{driver.Email}}</td>
+          <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">View Profile</div></td>
+          <td><div class="button" ng-click="vm.demoteDriver(driver)">Make Rider</div></td>
+          <td><div class="button" ng-click="vm.removeUser(driver)">Remove</div></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="table-container">
-    <h3>Drivers</h3>
-    <table class="table table-striped">
-      <tr>
-        <th>
-          <a href="" ng-click="vm.sort = 'Name'; vm.reverse = !vm.reverse">
-            Name
-            <span ng-show="vm.sort == 'Name' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'Name' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'phone'; vm.reverse = !vm.reverse">
-            Phone #
-            <span ng-show="vm.sort == 'phone' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'phone' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'apartment'; vm.reverse = !vm.reverse">
-            Apartment Complex
-            <span ng-show="vm.sort == 'apartment' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'apartment' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th>
-          <a href="" ng-click="vm.sort = 'email'; vm.reverse = !vm.reverse">
-            Email
-            <span ng-show="vm.sort == 'email' && !vm.reverse" class="fa fa-caret-down"></span>
-            <span ng-show="vm.sort == 'email' && vm.reverse" class="fa fa-caret-down"></span>
-          </a>
-        </th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr ng-repeat="driver in vm.drivers | limitTo:10">
-        <td>{{driver.Name}}</td>
-        <td>{{driver.PhoneNumber}}</td>
-        <td>{{driver.Apartment.Name}}</td>
-        <td>{{driver.Email}}</td>
-        <td><div class="button" ui-sref="userProfileIndex({username: driver.UserName})">View Profile</div></td>
-        <td><div class="button" ng-click="vm.demoteDriver(driver)">Make Rider</div></td>
-        <td><div class="button" ng-click="vm.removeUser(driver)">Remove</div></td>
-      </tr>
-    </table>
-  </div>
-  
-
 </div>

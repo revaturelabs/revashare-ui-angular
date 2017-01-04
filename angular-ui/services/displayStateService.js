@@ -1,5 +1,5 @@
 
-angular.module("revashare").service("displayStateService", function ($cookies, $state, userDataService) {
+angular.module("revashare").service("displayStateService", function ($cookies, $window, $state, userDataService) {
 
     // sidebar is always visible at min-width: 992px
     var sidebar_query = window.matchMedia("(min-width: 992px)");
@@ -106,7 +106,7 @@ angular.module("revashare").service("displayStateService", function ($cookies, $
         $cookies.putObject("role", "Guest");
         alertListeners(loginListeners);
 
-        $state.go("welcome");
+        $window.location.reload();
     }
 
     function alert_sidebar_visible () {

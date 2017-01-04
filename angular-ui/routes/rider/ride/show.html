@@ -35,8 +35,8 @@
 </div>
 
 <div ng-hide="vm.isLoadingData">
-    <div class="row-table">
-        <div class="row">
+    <div class="row">
+        <div class="row-table">
             <div class="row">
                 <div class="medium-6 columns">
                     <strong>Driver Name</strong>
@@ -47,8 +47,6 @@
                 </div>
             </div>
 
-            <br/>
-
             <div class="row">
                 <div class="medium-6 columns">
                     <strong>Departure Time</strong>
@@ -58,17 +56,19 @@
                     {{ vm.data.ride.DepartureTime }}
                 </div>
             </div>
+        </div>
+    </div>
 
-            <br/>
+    <br />
+
+    <div class="row">
+        <div class="row">
+            <div class="medium-12 columns">
+                <h3>Vehicle Info</h3>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="row">
-                <div class="medium-12 columns">
-                    <h3>Vehicle Info</h3>
-                </div>
-            </div>
-
+        <div class="row-table">
             <div class="row">
                 <div class="medium-6 columns">
                     <strong>Make</strong>
@@ -78,8 +78,6 @@
                     {{ vm.data.ride.Vehicle.Make }}
                 </div>
             </div>
-
-            <br/>
 
             <div class="row">
                 <div class="medium-6 columns">
@@ -91,8 +89,6 @@
                 </div>
             </div>
 
-            <br/>
-
             <div class="row">
                 <div class="medium-6 columns">
                     <strong>Color</strong>
@@ -102,13 +98,12 @@
                     {{ vm.data.ride.Vehicle.Color }}
                 </div>
             </div>
-
-            <br/>
         </div>
     </div>
 
     <div class="row">
         <div class="medium-12 columns">
+            <br />
             <form rs-disable="vm.isSubmittingRequest" ng-submit="vm.dropRide(vm.data.ride)">
                 <button class="button alert" ng-disabled="vm.isSubmittingRequest">Remove Ride</button>
             </form>

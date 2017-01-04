@@ -97,7 +97,7 @@
             };
 
             vm.hasNoCapacity = function(ride) {
-                return ride.Vehicle.Capacity - ride.NumberOfRidersInRide <= 0;
+                return ride.Vehicle.Capacity - ride.NumberOfRidersInRide - 1 <= 0;
             };
         }
 

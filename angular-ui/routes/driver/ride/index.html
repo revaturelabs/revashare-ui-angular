@@ -12,7 +12,7 @@
 
 <div class="row" ng-hide="vm.isLoadingData">
     <div class="medium-6 columns">
-        <h2>To Work</h2>
+        <h4>To Work</h4>
 
         <div ng-show="vm.toWorkRideExists()">
             <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.toWorkRide.DepartureTime | rsTime }}</div></div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="medium-6 columns">
-        <h2>From Work</h2>
+        <h4>From Work</h4>
         
         <div ng-show="vm.fromWorkRideExists()">
             <div class="row"><div class="medium-6 columns"><strong>Departure Time</strong></div><div class="medium-6 columns">{{ vm.data.fromWorkRide.DepartureTime | rsTime }}</div></div>
