@@ -41,7 +41,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
     else if (key === "8") {
       $scope.$apply(function() {
         vm.loginForm = {
-          username: "adminman",
+          username: "admin",
           password: "password"
         };
       });
