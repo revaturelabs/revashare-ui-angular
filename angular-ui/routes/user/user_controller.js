@@ -125,8 +125,8 @@ angular.module("revashare").controller("user_controller", ['$state', '$statePara
   function approveDriver(rider) {
     pendingUserService.approveDriver(rider,
       function success (response) {
-        var index = vm.riders.indexOf(rider);
-        vm.riders.splice(index, 1);
+        var index = vm.pending.indexOf(rider);
+        vm.pending.splice(index, 1);
         vm.drivers.push(rider);
         $state.$apply;
         toastr.success('successfully upgraded');
