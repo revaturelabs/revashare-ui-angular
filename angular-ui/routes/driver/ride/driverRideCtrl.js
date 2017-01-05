@@ -16,7 +16,7 @@
                         vm.data.departureTime = "";
                     });
                 }
-                else if (key === "7") {
+                else if (key === "6") {
                     $scope.$apply(function() {
                         vm.data.departureTime = "17:00:00";
                     });

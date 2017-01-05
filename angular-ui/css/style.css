@@ -33,13 +33,14 @@ input[type=submit] {
 }
 
 .button {
-  background-color: #f26925;
+  background-color: #474c55;
   color: #fff;
   border-radius: 4px;
 }
 
-.button:hover {
-  background-color: #474c55;
+.button:hover,
+.button:focus {
+  background-color: #3a3e45;
 }
 
 a {

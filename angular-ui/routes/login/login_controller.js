@@ -22,7 +22,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
         };
       });
     }
-    else if (key === "4") {
+    else if (key === "3") {
       $scope.$apply(function() {
         vm.loginForm = {
           username: "gmckinney",
@@ -30,7 +30,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
         };
       });
     }
-    else if (key === "6") {
+    else if (key === "5") {
       $scope.$apply(function() {
         vm.loginForm = {
           username: "rvoelker",
@@ -38,7 +38,7 @@ angular.module('revashare').controller('login_controller', ['$document', '$scope
         };
       });
     }
-    else if (key === "8") {
+    else if (key === "7") {
       $scope.$apply(function() {
         vm.loginForm = {
           username: "admin",
